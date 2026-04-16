@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Adathordozók titkosítása – BitLocker, VeraCrypt, Mobil titkosítás</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Információbiztonság</a>
+
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="becsapos_levelek.html">Becsapós levelek</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="ketfaktoros.html">Kétfaktoros azonosítás</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="https.html">HTTPS és biztonságos böngészés</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="adathordozok.html">Adathordozók titkosítása</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container py-5">
+
+    <h1 class="mb-4 text-center">Adathordozók titkosítása</h1>
+    <hr class="my-5">
+
+    
+    <section id="fontos">
+        <h2>Miért fontos a titkosítás?</h2>
+        <p>
+            A titkosítás az egyik legfontosabb védelmi réteg, amely megakadályozza, hogy illetéktelenek hozzáférjenek az eszközön tárolt adatokhoz.
+            A modern eszközökön rengeteg érzékeny információ található: dokumentumok, fényképek, jelszavak, böngészési előzmények,
+            e-mail fiókok, banki alkalmazások adatai. Ezek mind veszélybe kerülhetnek, ha az eszköz elveszik vagy ellopják.
+        </p>
+
+        <h4>Miért kritikus a titkosítás hiánya?</h4>
+        <ul>
+            <li><strong>Fizikai hozzáférés = teljes hozzáférés titkosítás nélkül.</strong> Egy támadó egyszerűen kiveheti a merevlemezt és kiolvashatja.</li>
+            <li><strong>A képernyőzár nem elég.</strong> A PIN vagy jelszó csak a rendszerbe való belépést védi, a háttértárat nem.</li>
+            <li><strong>GDPR és adatvédelmi követelmények.</strong> Céges eszközök esetén a titkosítás hiánya súlyos jogi következményekkel járhat.</li>
+            <li><strong>Személyes adatok védelme.</strong> Fotók, üzenetek, jelszavak, banki adatok kerülhetnek illetéktelen kezekbe.</li>
+        </ul>
+
+        <p class="alert alert-warning">
+            Titkosítás nélkül az eszköz elvesztése adatlopást jelenthet. Titkosítással az adatok nagy valószínűséggel biztonságban maradnak.
+        </p>
+
+        <h4>Valós példák</h4>
+        <ul>
+            <li>Elveszett pendrive ügyféllistával → adatvédelmi incidens.</li>
+            <li>Ellopott laptop mentett jelszavakkal → teljes digitális identitásvesztés.</li>
+            <li>Elhagyott telefon titkosítás nélkül → fotók, üzenetek, banki appok hozzáférhetőek.</li>
+        </ul>
+    </section>
+
+    <hr class="my-5">
+
+    
+    <section id="bitlocker">
+        <h2>BitLocker – részletes útmutató</h2>
+        <p>
+            A BitLocker a Windows beépített meghajtótitkosító megoldása, amely a teljes háttértárat védi. A titkosítás a háttérben fut,
+            a felhasználó számára észrevétlen, és a rendszer teljesítményét csak minimálisan befolyásolja.
+        </p>
+
+        <h3>Hogyan működik a BitLocker?</h3>
+        <p>
+            A BitLocker AES-alapú titkosítást használ, és a kulcsot a TPM chipben tárolja (ha van ilyen a gépben). A TPM ellenőrzi,
+            hogy a rendszerindítás során nem történt-e módosítás (pl. bootloader csere). Ha minden rendben, kiadja a kulcsot,
+            és a Windows automatikusan feloldja a meghajtót.
+        </p>
+
+        <h4>Mikor kér jelszót?</h4>
+        <ul>
+            <li>Ha a TPM gyanús változást észlel.</li>
+            <li>Ha a rendszergazda úgy állítja be, hogy minden indításkor kérjen PIN-t.</li>
+            <li>Ha a meghajtót másik gépbe helyezik.</li>
+        </ul>
+
+        <h3>BitLocker bekapcsolása – lépésről lépésre</h3>
+
+        <h4>1. BitLocker bekapcsolása</h4>
+        <ol>
+            <li>Nyisd meg a <strong>Vezérlőpult → Rendszer és biztonság → BitLocker meghajtótitkosítás</strong> menüt.</li>
+            <li>Válaszd ki a titkosítani kívánt meghajtót, majd kattints a <strong>„BitLocker bekapcsolása”</strong> gombra.</li>
+        </ol>
+        <img src="images/bitlocker1.png" class="img-fluid rounded shadow mb-4" alt="BitLocker képernyőkép" width="850px" height="850px">
+        <img src="images/bitlocker2.png" class="img-fluid rounded shadow mb-4" alt="BitLocker képernyőkép" width="850px" height="850px">
+        <img src="images/bitlocker3.png" class="img-fluid rounded shadow mb-4" alt="BitLocker képernyőkép" width="850px" height="850px">
+        <h4>2. Feloldási mód kiválasztása</h4>
+        <p>Választható:</p>
+        <ul>
+            <li>Jelszóval feloldás</li>
+            <li>TPM + PIN (vállalati környezetben)</li>
+        </ul>
+
+        <h4>3. Helyreállítási kulcs mentése</h4>
+        <p>
+            A helyreállítási kulcsot mindenképp mentsd el biztonságos helyre (Microsoft-fiók, USB, nyomtatás).
+            Ez a kulcs szükséges, ha a rendszer nem tudja automatikusan feloldani a meghajtót.
+        </p>
+
+        <h4>4. Titkosítási mód kiválasztása</h4>
+        <ul>
+            <li><strong>Csak a használt terület titkosítása</strong> – gyorsabb</li>
+            <li><strong>Teljes meghajtó titkosítása</strong> – biztonságosabb</li>
+        </ul>
+        <p>Majd a titkosítás indítása gombra kattintav elindítja.</p>
+
+
+    </section>
+
+    <hr class="my-5">
+
+    
+    <section id="veracrypt">
+        <h2>VeraCrypt – nyílt forráskódú alternatíva</h2>
+        <p>
+            A VeraCrypt a TrueCrypt továbbfejlesztett változata, amelyet a biztonsági közösség széles körben használ.
+            Nyílt forráskódú, így bárki ellenőrizheti a működését, és nincs benne hátsó ajtó.
+        </p>
+
+        <h3>Miért választják sokan a VeraCryptet?</h3>
+        <ul>
+            <li>Nyílt forráskódú, átlátható.</li>
+            <li>Windows, Linux és macOS rendszereken is működik.</li>
+            <li>Konténereket, partíciókat és teljes meghajtókat is képes titkosítani.</li>
+            <li>Rejtett kötet funkcióval rendelkezik.</li>
+        </ul>
+
+        <h3>Rejtett kötet – miért hasznos?</h3>
+        <p>
+            A rejtett kötet egy másik titkosított kötetben helyezkedik el. Ha valakit kényszerítenek a jelszó kiadására,
+            a külső kötet jelszava megadható, miközben a belső kötet továbbra is rejtve marad.
+        </p>
+
+        <h3>VeraCrypt konténer létrehozása – lépésről lépésre</h3>
+
+        <h4>1. Új kötet létrehozása</h4>
+        <ol>
+            <li>Indítsd el a VeraCryptet, majd kattints a <strong>Create Volume</strong> gombra.</li>
+            <img src="images/veracrypt2.png" class="img-fluid rounded shadow mb-4" alt="VeraCrypt Volume Wizard">
+            <li>Válaszd a <strong>Create an encrypted file container</strong> opciót.</li>
+            <img src="images/veracrypt1.jpg" class="img-fluid rounded shadow mb-4" alt="VeraCrypt Volume Wizard">
+            <li>Ebben a lépésben ki kell választania, hogy szabványos vagy rejtett VeraCrypt kötetet szeretne létrehozni. Ebben az oktatóanyagban az előbbi lehetőséget választjuk, és egy szabványos VeraCrypt kötetet hozunk létre.Mivel ez a lehetőség alapértelmezés szerint ki van választva, egyszerűen kattintson a <strong>Tovább </strong> gombra.</li>
+            <img src="images/veracrypt3.png" class="img-fluid rounded shadow mb-4" alt="VeraCrypt Volume Wizard">
+            <li>Ebben a lépésben meg kell adnia, hogy hová szeretné létrehozni a VeraCrypt kötetet (fájltárolót). Fontos megjegyezni, hogy a VeraCrypt konténer ugyanolyan, mint bármelyik normál fájl. Például áthelyezhető vagy törölhető, mint bármely normál fájl. Szüksége van egy fájlnévre is, amelyet a következő lépésben fog kiválasztani. Kattintson a <strong>Fájl kiválasztása </strong> gombra.</li>
+            <img src="images/veracrypt4.png" class="img-fluid rounded shadow mb-4" alt="VeraCrypt Volume Wizard">
+            <li>Válassza ki a kívánt elérési utat (ahol a konténert létre szeretné hozni) a fájlválasztóban. Írja be a kívánt konténerfájl nevét a Fájlnév mezőbe.Kattintson a <strong> Mentés</strong> gombra.</li>
+            <img src="images/veracrypt5.png" class="img-fluid rounded shadow mb-4" alt="VeraCrypt Volume Wizard">
+            <li>A Kötet létrehozása varázsló ablakában kattintson a <strong>Tovább</strong>gombra.</li>
+            <img src="images/veracrypt6.jpg" class="img-fluid rounded shadow mb-4" alt="VeraCrypt Volume Wizard">
+            <li>Itt kiválaszthatja a kötet titkosítási algoritmusát és hash algoritmusát. Ha nem biztos benne, hogy mit válasszon, használhatja az alapértelmezett beállításokat, és kattintson a <strong>Tovább</strong> gombra.</li>
+            <img src="images/veracrypt7.png" class="img-fluid rounded shadow mb-4" alt="VeraCrypt Volume Wizard">
+            <li>Itt azt adjuk meg, hogy a VeraCrypt konténerünk méretének 250 megabájtot szeretnénk. Természetesen ettől eltérő méretet is megadhat. Miután beírta a kívánt méretet a beviteli mezőbe (piros téglalappal jelölve), kattintson a <strong>Tovább</strong> gombra.</li>
+            <img src="images/veracrypt8.png" class="img-fluid rounded shadow mb-4" alt="VeraCrypt Volume Wizard">
+            <li>Ez az egyik legfontosabb lépés. Itt kell kiválasztania egy jó kötetjelszót. Olvassa el figyelmesen a varázsló ablakában megjelenő információkat arról, hogy mi számít jó jelszónak.
+                Miután kiválasztott egy jó jelszót, írja be azt az első beviteli mezőbe. Ezután írja be újra az első alatti beviteli mezőbe, és kattintson a <strong>Tovább</strong> gombra.
+                Megjegyzés: A Tovább gomb mindaddig letiltásra kerül, amíg a jelszó mindkét beviteli mezőben meg nem egyezik.</li>
+            <img src="images/veracrypt9.jpg" class="img-fluid rounded shadow mb-4" alt="VeraCrypt Volume Wizard">
+            <li>
+                Mozgassa az egérmutatót a lehető legvéletlenszerűbben a Kötet létrehozása varázsló ablakában legalább addig, amíg a véletlenszerűség jelzője zöldre nem vált. 
+                Minél tovább mozgatja az egeret, annál jobb (legalább 30 másodpercig ajánlott mozgatni az egeret).
+                Ez jelentősen növeli a titkosítási kulcsok titkosítási erősségét (ami növeli a biztonságot).
+                Kattintson a <strong>Formázás</strong> gombra.
+                El kell kezdenie a kötet létrehozását. A VeraCrypt most létrehoz egy MyVolume.hc nevű fájlt az F:\Data\ mappában (ahogy a 6. lépésben megadtuk). 
+                Ez a fájl egy VeraCrypt konténer lesz (a titkosított VeraCrypt kötetet fogja tartalmazni). A kötet méretétől függően a kötet létrehozása eltarthat egy ideig.
+            </li>
+            <img src="images/veracrypt10.jpg" class="img-fluid rounded shadow mb-4" alt="VeraCrypt Volume Wizard">
+            <li>A befejezés után a következő párbeszédpanel jelenik meg: </li>
+            <img src="images/veracrypt11.jpg" class="img-fluid rounded shadow mb-4" alt="VeraCrypt Volume Wizard">
+            <li>Sikeresen létrehoztunk egy VeraCrypt kötetet (fájltárolót). A VeraCrypt kötetlétrehozó varázsló ablakában kattintson a <strong>Kilépés</strong> gombra.
+            A varázsló ablakának el kell tűnnie.
+            A fennmaradó lépésekben felcsatoljuk az imént létrehozott kötetet. 
+            Visszatérünk a fő VeraCrypt ablakba (amelynek továbbra is nyitva kell lennie, de ha nem, ismételje meg az 1. lépést a VeraCrypt elindításához, majd folytassa a 13. lépéstől.)</li>
+            <img src="images/veracrypt12.jpg" class="img-fluid rounded shadow mb-4" alt="VeraCrypt Volume Wizard">
+            <li>Válasszon egy meghajtóbetűjelet a listából (piros téglalappal jelölve). Ez lesz az a meghajtóbetűjel, amelyhez a VeraCrypt konténer csatolásra kerül.
+                Megjegyzés: Ebben az oktatóanyagban az M meghajtóbetűjelet választottuk, de természetesen választhat bármely más elérhető meghajtóbetűjelet is.</li>
+            <img src="images/veracrypt13.jpg" class="img-fluid rounded shadow mb-4" alt="VeraCrypt Volume Wizard">
+            <li>Kattintson a <strong>Fájl kiválasztása </strong>gombra.
+
+                Megjelenik a szokásos fájlválasztó ablak.</li>
+            <img src="images/veracrypt14.jpg" class="img-fluid rounded shadow mb-4" alt="VeraCrypt Volume Wizard">
+            <li>A fájlválasztóban keresse meg a konténerfájlt (amelyet a 6-12. lépésekben hoztunk létre), és jelölje ki. Kattintson a <strong>Megnyitás</strong> gombra (a fájlválasztó ablakban).
+                A fájlválasztó ablaknak el kell tűnnie.
+                A következő lépésekben visszatérünk a VeraCrypt főablakába.</li>
+            <img src="images/veracrypt15.jpg" class="img-fluid rounded shadow mb-4" alt="VeraCrypt Volume Wizard">
+            <li>A VeraCrypt főablakában kattintson a <strong>Csatlakoztatás</strong> gombra. Megjelenik a jelszót kérő párbeszédablak.</li>
+            <img src="images/veracrypt16.jpg" class="img-fluid rounded shadow mb-4" alt="VeraCrypt Volume Wizard">
+            <li>Írja be a jelszót (amelyet a 10. lépésben adott meg) a jelszóbeviteli mezőbe (piros téglalappal jelölve).</li>
+            <img src="images/veracrypt17.jpg" class="img-fluid rounded shadow mb-4" alt="VeraCrypt Volume Wizard">
+            <li>Válassza ki a kötet létrehozásakor használt PRF algoritmust (az SHA-512 a VeraCrypt által használt alapértelmezett PRF). Ha nem emlékszik, melyik PRF-et használta, hagyja „automatikus észlelés” értékre állítva, de a csatolási folyamat több időt vesz igénybe. A jelszó megadása után kattintson az <strong>OK</strong> gombra.
+                A VeraCrypt most megpróbálja csatolni a kötetet. Ha a jelszó helytelen (például, ha helytelenül írta be), a VeraCrypt értesíti Önt, és meg kell ismételnie az előző lépést (írja be újra a jelszót, és kattintson az <strong>OK</strong> gombra). Ha a jelszó helyes, a kötet csatolásra kerül.</li>
+            <img src="images/veracrypt18.jpg" class="img-fluid rounded shadow mb-4" alt="VeraCrypt Volume Wizard">
+            <li>Sikeresen csatoltuk a konténert virtuális M lemezként:
+
+A virtuális lemez teljes mértékben titkosított (beleértve a fájlneveket, az foglalási táblázatokat, a szabad területet stb.), és úgy viselkedik, mint egy valódi lemez. Menthet (vagy másolhat, áthelyezhet stb.) fájlokat erre a virtuális lemezre, és azok menet közben titkosítva lesznek írás közben.
+
+Ha például megnyit egy VeraCrypt köteten tárolt fájlt a médialejátszóban, a fájl automatikusan visszafejtésre kerül RAM-ba (memóriába) olvasás közben.
+
+Fontos: Vegye figyelembe, hogy amikor megnyit egy VeraCrypt köteten tárolt fájlt (vagy amikor fájlt ír/másol a VeraCrypt kötetre/kötetről), nem kell újra megadnia a jelszót. A helyes jelszót csak a kötet csatolásakor kell megadnia.
+
+A csatolt kötetet megnyithatja például úgy, hogy kiválasztja a listából, ahogy a fenti képernyőképen látható (kék kijelölés), majd duplán rákattint a kiválasztott elemre.
+
+A csatlakoztatott kötetet ugyanúgy keresheti meg, mint bármely más típusú kötetet. Például a „Számítógép” (vagy a „Sajátgép”) lista megnyitásával és a megfelelő meghajtóbetűjelre (ebben az esetben az M betűre) duplán kattintva.</li>
+        </ol>
+
+        
+        
+        
+
+        <h4>2. Titkosítási algoritmus</h4>
+        <p>Alapértelmezett: <strong>AES</strong> – gyors és biztonságos.</p>
+
+        <h4>3. Jelszó beállítása</h4>
+        <p>Legyen hosszú, egyedi, ne tartalmazzon szótárszavakat.</p>
+
+        <h4>4. Konténer csatolása</h4>
+        <p>A létrehozott konténer egy virtuális meghajtóként jelenik meg.</p>
+        <img src="images/veracrypt19.jpg" class="img-fluid rounded shadow mb-4" alt="VeraCrypt főablak">
+    </section>
+
+    <hr class="my-5">
+
+    
+    <section id="tabla">
+        <h2>BitLocker vs. VeraCrypt – összehasonlítás</h2>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Tulajdonság</th>
+                        <th>BitLocker</th>
+                        <th>VeraCrypt</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Platform</td>
+                        <td>Windows</td>
+                        <td>Windows, Linux, macOS</td>
+                    </tr>
+                    <tr>
+                        <td>Licenc</td>
+                        <td>Zárt, Microsoft</td>
+                        <td>Nyílt forráskódú, ingyenes</td>
+                    </tr>
+                    <tr>
+                        <td>Használat</td>
+                        <td>Teljes meghajtó</td>
+                        <td>Konténer, partíció, teljes meghajtó</td>
+                    </tr>
+                    <tr>
+                        <td>TPM támogatás</td>
+                        <td>Igen</td>
+                        <td>Nincs</td>
+                    </tr>
+                    <tr>
+                        <td>Rejtett kötet</td>
+                        <td>Nincs</td>
+                        <td>Van</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <hr class="my-5">
+
+    
+    <section id="mobil">
+        <h2>Mobil eszközök titkosítása</h2>
+
+        <h3>Android</h3>
+        <p>
+            A modern Android rendszerek automatikusan titkosítják a tárhelyet, ha a felhasználó PIN-t, jelszót vagy biometrikus
+            azonosítást állít be. A titkosítás típusa:
+        </p>
+        <ul>
+            <li><strong>FDE (Full Disk Encryption)</strong> – régebbi készülékeknél</li>
+            <li><strong>FBE (File-Based Encryption)</strong> – újabb készülékeknél, gyorsabb és biztonságosabb</li>
+        </ul>
+
+        <h3>iOS</h3>
+        <p>
+            Az Apple készülékek hardveres titkosítást használnak. A Secure Enclave chip tárolja a kulcsokat.
+            A jelkód hossza közvetlenül befolyásolja a titkosítás erősségét.
+        </p>
+
+        <p class="alert alert-info">
+            A titkosítás erőssége nagyban függ a jelkód hosszától és bonyolultságától.
+        </p>
+    </section>
+
+    <hr class="my-5">
+
+    
+    <section id="elveszett">
+        <h2>Mit tegyünk, ha elveszett az eszköz?</h2>
+
+        <h3>1. Azonnali teendők</h3>
+        <ul>
+            <li>Jelszavak azonnali cseréje (e-mail, bank, közösségi média).</li>
+            <li>Bejelentkezett eszközök kijelentkeztetése (Google, Microsoft, Apple ID).</li>
+            <li>Távoli zárolás vagy törlés bekapcsolása (Find My Device / Find My iPhone).</li>
+            <li>Banki appok értesítése.</li>
+        </ul>
+
+        <h3>2. Munkahelyi eszköz esetén</h3>
+        <ul>
+            <li>Azonnal értesíteni kell az IT-t.</li>
+            <li>Távoli törlés (MDM) aktiválása.</li>
+        </ul>
+
+        <h3>3. Ha az eszköz titkosítva volt</h3>
+        <p class="alert alert-success">
+            Ha az eszköz titkosítva volt, az adatok nagy valószínűséggel biztonságban maradtak.
+        </p>
+    </section>
+
+</div>
+<section id="quiz" class="my-5">
+    <h2>Adathordozók titkosítása – Tudáspróba</h2>
+    <p class="text-muted">Válaszolj a kérdésekre, majd kattints az „Eredmény kiértékelése” gombra.</p>
+
+    <div id="quiz-container"></div>
+
+    <button class="btn btn-primary mt-3" onclick="evaluateQuiz()">Eredmény kiértékelése</button>
+
+    <div id="quiz-result" class="mt-4"></div>
+</section>
+<script>
+const quizData = {
+    "Quiz": [
+        {
+            "Question": "Miért fontos a titkosítás?",
+            "Options": [
+                "Mert gyorsabbá teszi a számítógépet",
+                "Mert megakadályozza, hogy illetéktelenek hozzáférjenek az adatokhoz",
+                "Mert több tárhelyet biztosít",
+                "Mert így nem kell jelszót használni"
+            ],
+            "Answer": 1
+        },
+        {
+            "Question": "Miért nem elég a képernyőzár titkosítás nélkül?",
+            "Options": [
+                "Mert a háttértár tartalma titkosítás nélkül továbbra is olvasható",
+                "Mert a képernyőzár mindig könnyen feltörhető",
+                "Mert a képernyőzár törli az adatokat",
+                "Mert a képernyőzár nem működik laptopokon"
+            ],
+            "Answer": 0
+        },
+        {
+            "Question": "Melyik állítás igaz a BitLockerre?",
+            "Options": [
+                "A Windows beépített meghajtótitkosító eszköze",
+                "Csak Linuxon működik",
+                "Nem támogatja a TPM-et",
+                "Nyílt forráskódú titkosítóprogram"
+            ],
+            "Answer": 0
+        },
+        {
+            "Question": "Mikor kérhet a BitLocker jelszót indításkor?",
+            "Options": [
+                "Ha a TPM gyanús változást észlel",
+                "Ha a háttérkép megváltozik",
+                "Ha a felhasználó túl sok fájlt töröl",
+                "Ha a laptop akkumulátora lemerül"
+            ],
+            "Answer": 0
+        },
+        {
+            "Question": "Mi a helyreállítási kulcs szerepe BitLocker esetén?",
+            "Options": [
+                "A Windows újratelepítéséhez kell",
+                "A meghajtó feloldásához szükséges, ha a rendszer nem tud automatikusan feloldani",
+                "A jelszó megváltoztatásához kell",
+                "A TPM kikapcsolásához kell"
+            ],
+            "Answer": 1
+        },
+        {
+            "Question": "Mi a VeraCrypt egyik különleges funkciója?",
+            "Options": [
+                "Automatikus jelszómentés",
+                "Rejtett kötet létrehozása",
+                "Csak pendrive-ok titkosítása",
+                "Csak fizetős verzióban használható"
+            ],
+            "Answer": 1
+        },
+        {
+            "Question": "Miért kell az egér mozgatása a VeraCrypt kötet létrehozásakor?",
+            "Options": [
+                "A titkosítási kulcs véletlenszerűségének növelése érdekében",
+                "A program így ellenőrzi az egeret",
+                "A kötet méretének beállításához",
+                "A jelszó automatikus generálásához"
+            ],
+            "Answer": 0
+        },
+        {
+            "Question": "Mitől függ az iOS titkosításának erőssége?",
+            "Options": [
+                "A SIM-kártya szolgáltatójától",
+                "A jelkód hosszától és bonyolultságától",
+                "A háttérkép felbontásától",
+                "A telefon színétől"
+            ],
+            "Answer": 1
+        },
+        {
+            "Question": "Melyik Android titkosítási mód a modernebb?",
+            "Options": [
+                "FDE (Full Disk Encryption)",
+                "FBE (File-Based Encryption)",
+                "Nincs titkosítás Androidon",
+                "A titkosítás csak rootolt telefonokon működik"
+            ],
+            "Answer": 1
+        },
+        {
+            "Question": "Mi az első teendő, ha elveszik egy titkosított eszköz?",
+            "Options": [
+                "Új eszköz vásárlása",
+                "Semmi, mert úgysem férnek hozzá",
+                "Azonnali jelszócsere és távoli zárolás",
+                "A készülék szétszerelése"
+            ],
+            "Answer": 2
+        }
+    ]
+};
+
+function loadQuiz() {
+    const container = document.getElementById("quiz-container");
+    let html = "";
+
+    quizData.Quiz.forEach((q, index) => {
+        html += `
+            <div class="card mb-3" id="question-${index}">
+                <div class="card-body">
+                    <h5>${index + 1}. ${q.Question}</h5>
+                    ${q.Options.map((opt, i) => `
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q${index}" value="${i}">
+                            <label class="form-check-label">${opt}</label>
+                        </div>
+                    `).join("")}
+                </div>
+            </div>
+        `;
+    });
+
+    container.innerHTML = html;
+}
+
+function evaluateQuiz() {
+    let score = 0;
+
+    quizData.Quiz.forEach((q, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const card = document.getElementById(`question-${index}`);
+
+
+        card.classList.remove("border-success", "border-danger");
+
+        if (selected) {
+            if (parseInt(selected.value) === q.Answer) {
+                score++;
+                card.classList.add("border", "border-success");
+            } else {
+                card.classList.add("border", "border-danger");
+            }
+        } else {
+            card.classList.add("border", "border-danger");
+        }
+
+        const correctText = q.Options[q.Answer];
+        if (!card.querySelector(".correct-answer")) {
+            const answerDiv = document.createElement("div");
+            answerDiv.className = "correct-answer mt-2 text-muted";
+            answerDiv.innerHTML = `<em>Helyes válasz:</em> <strong>${correctText}</strong>`;
+            card.querySelector(".card-body").appendChild(answerDiv);
+        }
+    });
+
+    document.getElementById("quiz-result").innerHTML = `
+        <div class="alert alert-info">
+            <strong>Eredmény:</strong> ${score} / ${quizData.Quiz.length} pont
+        </div>
+    `;
+}
+
+window.onload = loadQuiz;
+</script>
+
+
+
+
+<footer class="bg-dark text-white text-center py-3">
+    <p class="mb-0">© 2026 Információbiztonsági oktató oldal – Józsa Arnold</p>
+</footer>
+
+</body>
+</html>
