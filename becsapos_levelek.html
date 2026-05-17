@@ -330,8 +330,9 @@
                         <div class="quiz-item" data-correct="true">Furcsa domain: verify-account.ru</div>
                     </div>
 
-                    <button class="btn btn-primary mt-3" onclick="checkTask1()">Eredmény</button>
-                    <button class="btn restart-btn mt-3" onclick="restartTask('task1', task1Pool)">Újraindítás</button>
+                    <button class="action-btn mt-3" onclick="checkTask1()">Eredmény</button>
+                    <button class="restart-btn mt-3" onclick="loadRandomItems(task1Pool, 'task1', 8)">Újraindítás</button>
+
                 </div>
 
                 </div>
@@ -364,9 +365,9 @@
                     <div class="quiz-item" data-correct="false">https://gls-group.com</div>
                 </div>
 
-                <button class="btn btn-primary mt-3" onclick="checkTask2()">Eredmény</button>
-                <button class="btn restart-btn mt-3" onclick="restartTask('task1', task1Pool)">Újraindítás</button>
-                
+                <button class="action-btn mt-3" onclick="checkTask2()">Eredmény</button>
+                <button class="restart-btn mt-3" onclick="loadRandomItems(task2Pool, 'task2', 8)">Újraindítás</button>
+
             </div>
 
             </div>
@@ -390,30 +391,16 @@
                     <div class="quiz-item" data-correct="false">„Nem értem, miről van szó, de megnyitom a mellékletet.”</div>
                 </div>
 
-                <button class="btn btn-primary mt-3" onclick="checkTask3()">Eredmény</button>
-                <button class="btn restart-btn mt-3" onclick="restartTask('task1', task1Pool)">Újraindítás</button>
+                <button class="action-btn mt-3" onclick="checkTask3()">Eredmény</button>
+               <button class="restart-btn mt-3" onclick="loadRandomItems(dangerPool, 'taskDanger', 8)">Újraindítás</button>
+
                 
             </div>
 
             </div>
          </div>
         </div>
-        <div class="modal fade" id="resultModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-
-            <div class="modal-header">
-                <h5 class="modal-title">Eredmény</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-
-            <div class="modal-body" id="resultText">
-            
-            </div>
-
-            </div>
-        </div>
-        </div>
+       
 
 
 
@@ -436,58 +423,128 @@
 
     <h2 class="section-title mt-5">2. Veszélyes mellékletek és kettős kiterjesztés</h2>
 
-    <div class="row g-4">
-        <div class="col-md-7">
-            <h4>2.1 Miért veszélyes a kettős kiterjesztés?</h4>
-            <p>
-                A támadók gyakran küldenek fertőzött mellékleteket, amelyeket ártalmatlannak álcáznak.
-                A leggyakoribb trükk a <strong>kettős kiterjesztés</strong>, amikor a fájl neve például így néz ki:
-            </p>
+<div class="row g-4">
+    
+    <div class="col-md-7">
 
-            <pre class="bg-dark text-light p-3 rounded">
+        <h4>2.1 Miért veszélyes a kettős kiterjesztés?</h4>
+        <p>
+            A támadók gyakran küldenek fertőzött mellékleteket, amelyeket ártalmatlannak álcáznak.
+            A leggyakoribb trükk a <strong>kettős kiterjesztés</strong>, amikor a fájl neve például így néz ki:
+        </p>
+
+        <pre class="bg-dark text-light p-3 rounded">
             szamla_2024.pdf.exe
             delivery_note.pdf.scr
             invoice.docx.js
-            </pre>
+        </pre>
 
-            <p>
-                A Windows alapértelmezésben elrejti a valódi kiterjesztést, így a felhasználó csak azt látja,
-                hogy <strong>szamla_2024.pdf</strong>, miközben valójában egy futtatható programról van szó.
-            </p>
+        <p>
+            A Windows alapértelmezésben elrejti a valódi kiterjesztést, így a felhasználó csak azt látja,
+            hogy <strong>szamla_2024.pdf</strong>, miközben valójában egy futtatható programról van szó.
+        </p>
 
-            <h4 class="mt-4">2.2 Veszélyes kiterjesztések</h4>
-            <ul>
-                <li><strong>.exe</strong> – futtatható program.</li>
-                <li><strong>.scr</strong> – képernyőkímélő, valójában program.</li>
-                <li><strong>.bat</strong> – parancsfájl.</li>
-                <li><strong>.js</strong> – JavaScript futtatás.</li>
-                <li><strong>.vbs</strong> – Visual Basic script.</li>
-            </ul>
+        <h5 class="mt-3">Hogyan verik át a felhasználót?</h5>
+        <ul>
+            <li>PDF vagy Word ikon használata .exe fájlon</li>
+            <li>Hosszú fájlnév sok szóközzel</li>
+            <li>Unicode karakterek, amelyek elrejtik a valódi kiterjesztést</li>
+            <li>Homoglif karakterek (pl. cirill „а” a latin „a” helyett)</li>
+        </ul>
 
-            <h4 class="mt-4">2.3 Védekezés – gyakorlati útmutató</h4>
-            <h6>Kiterjesztések megjelenítése Windowsban</h6>
-            <ol>
-                <li>Nyisd meg a Fájlkezelőt.</li>
-                <li>Válaszd a „Nézet” menüt.</li>
-                <li>Kapcsold be a „Fájlnévkiterjesztések” jelölőnégyzetet.</li>
-            </ol>
+        <h4 class="mt-4">2.2 Mi történik a háttérben, amikor megnyitsz egy fertőzött mellékletet?</h4>
+        <p>A kettős kiterjesztésű fájlok gyakran:</p>
+        <ul>
+            <li><strong>háttérben letöltenek</strong> további kártevőket</li>
+            <li><strong>kriptovírust</strong> indítanak</li>
+            <li><strong>jelszólopó programot</strong> telepítenek</li>
+            <li><strong>távoli hozzáférést</strong> adnak a támadónak (RAT)</li>
+            <li>a gépet <strong>proxyként</strong> használják további támadásokhoz</li>
+        </ul>
 
-            <h6>Felhasználói szabályok</h6>
-            <ul>
-                <li>Csak olyan mellékletet nyiss meg, amit vártál és ismersz.</li>
-                <li>Ha a fájlnév gyanús vagy túl bonyolult, inkább ne nyisd meg.</li>
-                <li>Céges környezetben használj sandboxot vagy virtuális gépet gyanús fájlokhoz.</li>
-            </ul>
+        <p>A fertőzés gyakran <strong>1–2 másodperc alatt</strong> megtörténik.</p>
 
-            <div class="alert alert-danger mt-3">
-                <strong>Szabály:</strong> ha nem tudod pontosan, mi az a fájl, ne futtasd.
-            </div>
+        <h4 class="mt-4">2.3 Veszélyes kiterjesztések</h4>
+        <ul>
+            <li><strong>.exe</strong> – futtatható program</li>
+            <li><strong>.scr</strong> – képernyőkímélő, valójában program</li>
+            <li><strong>.bat</strong> – parancsfájl</li>
+            <li><strong>.cmd</strong> – parancsértelmező</li>
+            <li><strong>.js</strong> – JavaScript futtatás</li>
+            <li><strong>.vbs</strong> – Visual Basic script</li>
+            <li><strong>.ps1</strong> – PowerShell script</li>
+            <li><strong>.jar</strong> – Java futtatható</li>
+        </ul>
+
+        <h4 class="mt-4">2.4 Unicode trükkök – amikor a fájlnév „hazudik”</h4>
+        <p>A támadók speciális karaktereket használnak, hogy a fájlnév mást mutasson, mint ami valójában:</p>
+        <ul>
+            <li><strong>RTL override</strong> – megfordítja a fájlnév végét</li>
+            <li><strong>láthatatlan szóközök</strong> – eltolják a valódi kiterjesztést</li>
+            <li><strong>homoglif karakterek</strong> – megtévesztő betűk</li>
+        </ul>
+
+        <pre class="bg-dark text-light p-3 rounded">
+photo[U+202E]gpj.exe
+        </pre>
+
+        <p>A felhasználó ezt látja: <strong>photo.jpg</strong><br>
+        Valójában: <strong>photo.jpg.exe</strong></p>
+
+        <h4 class="mt-4">2.5 Gyors felismerési checklist (3 másodperc alatt)</h4>
+        <ul>
+            <li>A fájlnév túl hosszú vagy furcsa → <strong>gyanús</strong></li>
+            <li>Kettős kiterjesztés látszik → <strong>azonnal töröld</strong></li>
+            <li>A fájl ikonja nem illik a típushoz → <strong>ne nyisd meg</strong></li>
+            <li>A feladó sürget → <strong>klasszikus támadás</strong></li>
+            <li>„Számla”, „díjbekérő”, de .exe → <strong>100% malware</strong></li>
+        </ul>
+
+        <h4 class="mt-4">2.6 Mit tegyél, ha véletlenül megnyitottad?</h4>
+        <ol>
+            <li><strong>Azonnal kapcsold ki a Wi‑Fit</strong> vagy húzd ki a kábelt.</li>
+            <li><strong>Ne indítsd újra</strong> a gépet.</li>
+            <li>Értesítsd az IT‑t vagy rendszergazdát.</li>
+            <li>Ne próbáld meg „kitörölni” – a malware már fut.</li>
+            <li>Otthoni gépnél futtass teljes víruskeresést és változtasd meg a jelszavaidat.</li>
+        </ol>
+
+        <h4 class="mt-4">2.7 Védekezés – gyakorlati útmutató</h4>
+        <h6>Kiterjesztések megjelenítése Windowsban</h6>
+        <ol>
+            <li>Nyisd meg a Fájlkezelőt.</li>
+            <li>Válaszd a „Nézet” menüt.</li>
+            <li>Kapcsold be a „Fájlnévkiterjesztések” jelölőnégyzetet.</li>
+        </ol>
+
+        <h6>Felhasználói szabályok</h6>
+        <ul>
+            <li>Csak olyan mellékletet nyiss meg, amit vártál és ismersz.</li>
+            <li>Ha a fájlnév gyanús vagy túl bonyolult, inkább ne nyisd meg.</li>
+            <li>Céges környezetben használj sandboxot vagy virtuális gépet gyanús fájlokhoz.</li>
+        </ul>
+
+        <div class="alert alert-danger mt-3">
+            <strong>Szabály:</strong> ha nem tudod pontosan, mi az a fájl, ne futtasd.
         </div>
 
-        <div class="col-md-5">
+        
+        <button class="btn btn-outline-primary mt-4" data-bs-toggle="modal" data-bs-target="#taskDangerModal">
+            Feladat – Veszélyes vagy nem veszélyes?
+        </button><br>
+
+        <button class="btn btn-outline-primary mt-3" data-bs-toggle="modal" data-bs-target="#taskDragModal">
+            Feladat – Húzd a megfelelő kategóriába!
+        </button>
+
+    </div>
+
+    
+            <div class="col-md-5">
             <img src="https://images.unsplash.com/photo-1584433144859-1fc3ab64a957?auto=format&fit=crop&w=900&q=80"
-                 alt="Fájlok és kiterjesztések illusztráció" class="img-fluid rounded shadow mb-4">
-            <div class="info-card">
+                alt="Fájlok és kiterjesztések illusztráció" class="img-fluid rounded shadow mb-4">
+
+            <div class="info-card p-3 rounded shadow-sm bg-light">
                 <h5 class="fw-bold">Példák gyanús fájlnevekre</h5>
                 <ul>
                     <li>„szamla_2024_final.pdf.exe”</li>
@@ -498,6 +555,65 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="taskDangerModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Veszélyes vagy nem veszélyes?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <p>Jelöld ki, melyik fájlnév veszélyes!</p>
+
+                    <div id="taskDanger"></div>
+
+                    <button class="action-btn mt-3" onclick="checkTaskDanger()">Eredmény</button>
+                    <button class="restart-btn mt-3" onclick="loadRandomItems(dangerPool, 'taskDanger', 8)">Újraindítás</button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="taskDragModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Húzd a megfelelő kategóriába!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <p>Húzd a fájlneveket a megfelelő oszlopba:</p>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6 class="text-danger fw-bold">Veszélyes</h6>
+                        <div id="dropDanger" class="dropzone"></div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h6 class="text-success fw-bold">Nem veszélyes</h6>
+                        <div id="dropSafe" class="dropzone"></div>
+                    </div>
+                </div>
+
+                <div id="dragItems" class="mt-3"></div>
+
+                <button class="action-btn mt-3" onclick="checkDragTask()">Eredmény</button>
+                <button class="restart-btn mt-3" onclick="restartDragTask(6)">Újraindítás</button>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
 
     <h2 class="section-title">3. Kriptovírusok (ransomware) – részletes tananyag</h2>
 
@@ -736,12 +852,29 @@
             </div>
         </div>
     </div>
+     <div class="modal fade" id="resultModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Eredmény</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body" id="resultText">
+            
+            </div>
+
+            </div>
+        </div>
+    </div>
 
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
+
 
 
 const task1Pool = [
@@ -769,35 +902,99 @@ const task1Pool = [
 
 const task2Pool = [
     { text: "https://nav-refund.eu", correct: true },
-    { text: "https://nav.gov.hu", correct: false },
-    { text: "https://dhl-delivery-fee.com", correct: true },
-    { text: "https://www.dhl.com", correct: false },
     { text: "https://secure-login-paypal.com", correct: true },
-    { text: "https://paypal.com", correct: false },
+    { text: "https://dhl-delivery-fee.com", correct: true },
     { text: "https://microsoft-support-check.net", correct: true },
-    { text: "https://account.microsoft.com", correct: false },
     { text: "https://gls-delivery-fee.info", correct: true },
-    { text: "https://gls-group.com", correct: false },
     { text: "https://posta-vamkezeles-pay.com", correct: true },
-    { text: "https://posta.hu", correct: false }
+    { text: "https://account.microsoft.com.verify-login.net", correct: true },
+    { text: "https://paypal.com.secure-checkout-pay.net", correct: true },
+    { text: "https://nav.gov.hu-loginverify.com", correct: true },
+    { text: "https://dhl.com.delivery-fee-check.net", correct: true },
+    { text: "https://gls-group.com.hu-fee-payment.info", correct: true },
+    { text: "https://xn--paypl-6ve.com", correct: true }, 
+    { text: "https://posta.hu.verify-payment.eu", correct: true },
+    { text: "https://microsoft.com.account-security-check.net", correct: true },
+    { text: "https://nav.gov.hu", correct: false },
+    { text: "https://www.dhl.com", correct: false },
+    { text: "https://paypal.com", correct: false },
+    { text: "https://account.microsoft.com", correct: false },
+    { text: "https://gls-group.com", correct: false },
+    { text: "https://posta.hu", correct: false },
+    { text: "https://www.microsoft.com", correct: false },
+    { text: "https://www.paypalobjects.com", correct: false },
+    { text: "https://www.gls-hungary.com", correct: false },
+    { text: "https://www.dhlparcel.hu", correct: false }
 ];
+
 
 const task3Pool = [
     { text: "„Rendben, megadom az adataimat, csak küldje el újra a linket.”", correct: false },
-    { text: "„Nem adok meg adatot e-mailben. A hivatalos oldalon ellenőrzöm az ügyet.”", correct: true },
     { text: "„Nem értem, miről van szó, de megnyitom a mellékletet.”", correct: false },
     { text: "„Küldje át a bankkártyám adatait, hogy ellenőrizhesse.”", correct: false },
-    { text: "„Kérem, írjon a hivatalos ügyfélszolgálati címre.”", correct: true }
+    { text: "„Biztosan fontos, gyorsan rákattintok a linkre.”", correct: false },
+    { text: "„Nem baj, hogy furcsa a cím, majd a vírusirtó megfogja.”", correct: false },
+    { text: "„Megadom a jelszavam, hogy ne legyen gond.”", correct: false },
+    { text: "„Letöltöm a mellékletet, hátha tényleg számla.”", correct: false },
+    { text: "„Válaszolok neki, hátha elmagyarázza.”", correct: false },
+    { text: "„Nem adok meg adatot e-mailben. A hivatalos oldalon ellenőrzöm az ügyet.”", correct: true },
+    { text: "„Kérem, írjon a hivatalos ügyfélszolgálati címre.”", correct: true },
+    { text: "„Gyanús a link, ezért külön megnyitom a hivatalos oldalt.”", correct: true },
+    { text: "„Nem nyitok meg mellékletet ismeretlen feladótól.”", correct: true },
+    { text: "„Ellenőrzöm a feladó címét és a domain nevet.”", correct: true },
+    { text: "„Jelzem az IT‑nak, mert gyanús az üzenet.”", correct: true },
+    { text: "„Nem kattintok a linkre, inkább felhívom a céget.”", correct: true }
+];
+
+
+const dangerPool = [
+    { text: "szamla_2024.pdf.exe", correct: true },
+    { text: "invoice_final.pdf .exe", correct: true },
+    { text: "delivery_note.pdf.scr", correct: true },
+    { text: "photo.jpg.exe", correct: true },
+    { text: "document.pdf.js", correct: true },
+    { text: "report_2024.docx.vbs", correct: true },
+    { text: "új_megrendelés.pdf.exe", correct: true },
+    { text: "photo[U+202E]gpj.exe", correct: true },
+    { text: "számla2024.pdf␣.exe", correct: true }, 
+    { text: "megrendeles_2024.docx.js", correct: true },
+    { text: "NAV_ellenorzes_2024.pdf.scr", correct: true },
+    { text: "GLS_delivery_update.pdf.jar", correct: true },
+
+    { text: "holiday_photo.png", correct: false },
+    { text: "report_final.pdf", correct: false },
+    { text: "invoice_2024.pdf", correct: false },
+    { text: "megrendeles_2024.docx", correct: false },
+    { text: "delivery_note_original.pdf", correct: false },
+    { text: "photo.jpg", correct: false },
+    { text: "utmutato_2024.txt", correct: false },
+    { text: "szamla_2024_final.pdf", correct: false }
 ];
 
 
 
-function loadRandomItems(pool, containerId) {
+
+const dragItemsPool = [
+    { text: "szamla_2024.pdf.exe", correct: "danger" },
+    { text: "invoice.docx.js", correct: "danger" },
+    { text: "delivery_note.pdf.scr", correct: "danger" },
+    { text: "photo.jpg.exe", correct: "danger" },
+    { text: "NAV_ellenorzes_2024.pdf.scr", correct: "danger" },
+    { text: "photo[U+202E]gpj.exe", correct: "danger" },
+    { text: "megrendeles_2024.docx.vbs", correct: "danger" },
+    { text: "holiday_photo.png", correct: "safe" },
+    { text: "report_final.pdf", correct: "safe" },
+    { text: "invoice_2024.pdf", correct: "safe" },
+    { text: "delivery_note_original.pdf", correct: "safe" },
+    { text: "szamla_2024_final.pdf", correct: "safe" }
+];
+
+function loadRandomItems(pool, containerId, count) {
     const container = document.getElementById(containerId);
     container.innerHTML = "";
 
     const shuffled = [...pool].sort(() => 0.5 - Math.random());
-    const selected = shuffled.slice(0, 10);
+    const selected = shuffled.slice(0, count);
 
     selected.forEach(item => {
         const div = document.createElement("div");
@@ -805,7 +1002,6 @@ function loadRandomItems(pool, containerId) {
         div.dataset.correct = item.correct;
         div.innerText = item.text;
 
-        
         div.addEventListener("click", () => {
             if (div.classList.contains("locked")) return;
             div.classList.toggle("selected");
@@ -814,6 +1010,7 @@ function loadRandomItems(pool, containerId) {
         container.appendChild(div);
     });
 }
+
 
 
 
@@ -837,25 +1034,20 @@ function evaluate(containerId) {
             }
         }
 
-        
         item.classList.add("locked");
     });
 
     const totalSelected = correctSelected + wrongSelected;
-
-    
     if (totalSelected === 0) return "0%";
 
     const percent = Math.round((correctSelected / totalSelected) * 100);
-
     return `${percent}%`;
 }
 
-
 let lastTask = null;
 
-function showResult(text, taskId, pool) {
-    lastTask = { taskId, pool };
+function showResult(text, taskId, pool, count) {
+    lastTask = { taskId, pool, count };
     document.getElementById('resultText').innerText = text;
 
     const modal = new bootstrap.Modal(document.getElementById('resultModal'));
@@ -863,40 +1055,130 @@ function showResult(text, taskId, pool) {
 }
 
 
-
 function checkTask1() { 
-    showResult("Feladat 1 eredménye: " + evaluate("task1"), "task1", task1Pool); 
+    showResult("Eredmény: " + evaluate("task1"), "task1", task1Pool, 8); 
 }
 
 function checkTask2() { 
-    showResult("Feladat 2 eredménye: " + evaluate("task2"), "task2", task2Pool); 
+    showResult("Eredmény: " + evaluate("task2"), "task2", task2Pool, 8); 
 }
 
 function checkTask3() { 
-    showResult("Feladat 3 eredménye: " + evaluate("task3"), "task3", task3Pool); 
+    showResult("Eredmény: " + evaluate("task3"), "task3", task3Pool, 8); 
 }
 
 
 document.getElementById('task1Modal').addEventListener('shown.bs.modal', () => {
-    loadRandomItems(task1Pool, "task1");
+    loadRandomItems(task1Pool, "task1", 8);
 });
 
 document.getElementById('task2Modal').addEventListener('shown.bs.modal', () => {
-    loadRandomItems(task2Pool, "task2");
+    loadRandomItems(task2Pool, "task2", 8);
 });
 
 document.getElementById('task3Modal').addEventListener('shown.bs.modal', () => {
-    loadRandomItems(task3Pool, "task3");
+    loadRandomItems(task3Pool, "task3", 8);
 });
+
+
+
+
+document.getElementById('taskDangerModal').addEventListener('shown.bs.modal', () => {
+    loadRandomItems(dangerPool, "taskDanger", 8);
+});
+
+
+function checkTaskDanger() {
+    showResult("Eredmény: " + evaluate("taskDanger"), "taskDanger", dangerPool, 8);
+}
+
+
+let draggedItem = null;
+
+function restartDragTask(count) {
+    document.getElementById("dropDanger").innerHTML = "";
+    document.getElementById("dropSafe").innerHTML = "";
+    document.getElementById("dragItems").innerHTML = "";
+
+    const shuffled = [...dragItemsPool].sort(() => 0.5 - Math.random());
+    const selected = shuffled.slice(0, count);
+
+    selected.forEach(item => {
+        const div = document.createElement("div");
+        div.classList.add("drag-item");
+        div.draggable = true;
+        div.dataset.correct = item.correct;
+        div.innerText = item.text;
+
+        div.addEventListener("dragstart", e => draggedItem = e.target);
+
+        document.getElementById("dragItems").appendChild(div);
+    });
+}
+
+
+
+
+document.getElementById('taskDragModal').addEventListener('shown.bs.modal', () => {
+    restartDragTask(6);
+});
+
+
+document.querySelectorAll(".dropzone").forEach(zone => {
+    zone.addEventListener("dragover", e => {
+        e.preventDefault();
+        zone.classList.add("drag-over");
+    });
+
+    zone.addEventListener("dragleave", () => {
+        zone.classList.remove("drag-over");
+    });
+
+    zone.addEventListener("drop", () => {
+        zone.classList.remove("drag-over");
+        if (draggedItem) {
+            zone.appendChild(draggedItem);
+            draggedItem = null;
+        }
+    });
+});
+
+function checkDragTask() {
+    let correct = 0;
+    let wrong = 0;
+
+    document.querySelectorAll("#dropDanger .drag-item").forEach(item => {
+        if (item.dataset.correct === "danger") correct++;
+        else wrong++;
+    });
+
+    document.querySelectorAll("#dropSafe .drag-item").forEach(item => {
+        if (item.dataset.correct === "safe") correct++;
+        else wrong++;
+    });
+
+    const total = correct + wrong;
+    const percent = total === 0 ? 0 : Math.round((correct / total) * 100);
+
+    showResult("Eredmény: " + percent + "%", "dragItems", dragItemsPool, 6);
+}
+
 
 
 
 document.getElementById('resultModal').addEventListener('hidden.bs.modal', () => {
-    if (lastTask) {
-        loadRandomItems(lastTask.pool, lastTask.taskId);
-        lastTask = null;
+    if (!lastTask) return;
+
+    if (lastTask.taskId === "dragItems") {
+        restartDragTask(lastTask.count);
+    } else {
+        loadRandomItems(lastTask.pool, lastTask.taskId, lastTask.count);
     }
+
+    lastTask = null;
 });
+
+
 
 </script>
 

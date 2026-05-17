@@ -176,7 +176,7 @@ body {
     to { opacity: 1; transform: scale(1); }
 }
 
-
+.action-btn,
 .restart-btn {
     background: #f0f4ff;
     color: #1a3fa3;
@@ -188,7 +188,7 @@ body {
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-
+.action-btn:hover,
 .restart-btn:hover {
     background: #dce6ff;
     border-color: #8aa6ff;
@@ -207,4 +207,32 @@ body {
 .restart-btn:disabled {
     opacity: 0.6;
     cursor: not-allowed;
+}
+
+.dropzone {
+    min-height: 150px;
+    background: #f8f9fc;
+    border: 2px dashed #c7d1e2;
+    border-radius: 10px;
+    padding: 10px;
+    transition: 0.2s;
+}
+
+.dropzone.drag-over {
+    background: #e8f0ff;
+    border-color: #7aa7ff;
+}
+
+.drag-item {
+    padding: 10px 14px;
+    background: #ffffff;
+    border: 1px solid #d0d7e2;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    cursor: grab;
+    transition: 0.2s;
+}
+
+.drag-item:active {
+    cursor: grabbing;
 }
