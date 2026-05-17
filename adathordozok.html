@@ -346,14 +346,22 @@ A csatlakoztatott kötetet ugyanúgy keresheti meg, mint bármely más típusú 
 </div>
 <section id="quiz" class="my-5">
     <h2>Adathordozók titkosítása – Tudáspróba</h2>
-    <p class="text-muted">Válaszolj a kérdésekre, majd kattints az „Eredmény kiértékelése” gombra.</p>
+    <p class="text-muted">Válaszolj a kérdésekre.</p>
 
     <div id="quiz-container"></div>
 
-    <button class="btn btn-primary mt-3" onclick="evaluateQuiz()">Eredmény kiértékelése</button>
 
     <div id="quiz-result" class="mt-4"></div>
 </section>
+<div class="container mt-4">
+    <div id="quiz-box" class="card p-3"></div>
+    <button id="next-btn" class="btn btn-primary mt-3" onclick="nextQuestion()" style="display:none;">
+        Következő kérdés
+    </button>
+
+    <div id="quiz-result" class="mt-4"></div>
+</div>
+
 <script>
 const quizData = {
     "Quiz": [
@@ -460,68 +468,86 @@ const quizData = {
     ]
 };
 
-function loadQuiz() {
-    const container = document.getElementById("quiz-container");
-    let html = "";
+let currentIndex = 0;
+let score = 0;
+let answers = [];
 
-    quizData.Quiz.forEach((q, index) => {
-        html += `
-            <div class="card mb-3" id="question-${index}">
-                <div class="card-body">
-                    <h5>${index + 1}. ${q.Question}</h5>
-                    ${q.Options.map((opt, i) => `
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q${index}" value="${i}">
-                            <label class="form-check-label">${opt}</label>
-                        </div>
-                    `).join("")}
-                </div>
+function loadQuestion() {
+    const q = quizData.Quiz[currentIndex];
+    const box = document.getElementById("quiz-box");
+
+    box.innerHTML = `
+        <h5>${currentIndex + 1}. ${q.Question}</h5>
+        ${q.Options.map((opt, i) => `
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="answer" value="${i}">
+                <label class="form-check-label">${opt}</label>
             </div>
-        `;
-    });
-
-    container.innerHTML = html;
-}
-
-function evaluateQuiz() {
-    let score = 0;
-
-    quizData.Quiz.forEach((q, index) => {
-        const selected = document.querySelector(`input[name="q${index}"]:checked`);
-        const card = document.getElementById(`question-${index}`);
-
-
-        card.classList.remove("border-success", "border-danger");
-
-        if (selected) {
-            if (parseInt(selected.value) === q.Answer) {
-                score++;
-                card.classList.add("border", "border-success");
-            } else {
-                card.classList.add("border", "border-danger");
-            }
-        } else {
-            card.classList.add("border", "border-danger");
-        }
-
-        const correctText = q.Options[q.Answer];
-        if (!card.querySelector(".correct-answer")) {
-            const answerDiv = document.createElement("div");
-            answerDiv.className = "correct-answer mt-2 text-muted";
-            answerDiv.innerHTML = `<em>Helyes válasz:</em> <strong>${correctText}</strong>`;
-            card.querySelector(".card-body").appendChild(answerDiv);
-        }
-    });
-
-    document.getElementById("quiz-result").innerHTML = `
-        <div class="alert alert-info">
-            <strong>Eredmény:</strong> ${score} / ${quizData.Quiz.length} pont
-        </div>
+        `).join("")}
+        <button class="btn btn-success mt-3" onclick="submitAnswer()">Válasz elküldése</button>
     `;
 }
 
-window.onload = loadQuiz;
+function submitAnswer() {
+    const selected = document.querySelector('input[name="answer"]:checked');
+    if (!selected) return alert("Válassz egy lehetőséget!");
+
+    const answer = parseInt(selected.value);
+    const correct = quizData.Quiz[currentIndex].Answer;
+
+    answers.push({
+        question: quizData.Quiz[currentIndex].Question,
+        selected: quizData.Quiz[currentIndex].Options[answer],
+        correct: quizData.Quiz[currentIndex].Options[correct],
+        isCorrect: answer === correct
+    });
+
+    if (answer === correct) score++;
+
+    document.getElementById("next-btn").style.display = "block";
+}
+
+function nextQuestion() {
+    currentIndex++;
+
+    document.getElementById("next-btn").style.display = "none";
+
+    if (currentIndex < quizData.Quiz.length) {
+        loadQuestion();
+    } else {
+        showResults();
+    }
+}
+
+function showResults() {
+    let html = `
+        <h3>Eredmény: ${score} / ${quizData.Quiz.length} pont</h3>
+        <ul class="list-group mt-3">
+    `;
+
+    answers.forEach((a, i) => {
+        html += `
+            <li class="list-group-item">
+                <strong>${i + 1}. ${a.question}</strong><br>
+                <span style="color:${a.isCorrect ? 'green' : 'red'};">
+                    Te válaszod: ${a.selected}
+                </span><br>
+                <em>Helyes válasz: ${a.correct}</em>
+            </li>
+        `;
+    });
+
+    html += "</ul>";
+
+    document.getElementById("quiz-box").innerHTML = "";
+    document.getElementById("next-btn").style.display = "none";
+    document.getElementById("quiz-result").innerHTML = html;
+}
+
+window.onload = loadQuestion;
 </script>
+
+
 
 
 
