@@ -53,10 +53,18 @@
 </section>
 
 <div class="wave"></div>
+   <div class="topic-nav text-center mt-4">
+    <a href="#phishing" class="btn btn-outline-primary mx-1">Phishing</a>
+    <a href="#attachments" class="btn btn-outline-primary mx-1">Veszélyes mellékletek</a>
+    <a href="#ransomware" class="btn btn-outline-primary mx-1">Kriptovírusok</a>
+    <a href="#smishing" class="btn btn-outline-primary mx-1">SMS és csomagos csalások</a>
+    <a href="#exam" class="btn btn-outline-primary mx-1">Interaktív feladat</a>
+</div>
+
 
 <div class="container py-5">
 
-    <h2 class="section-title">1. Phishing – Az e-mailes átverések teljes rendszere</h2>
+    <h2 id="phishing">1. Phishing – Az e-mailes átverések teljes rendszere</h2>
 
     <div class="row g-4 align-items-start">
         <div class="col-lg-7">
@@ -398,8 +406,6 @@
         </div>
        
 
-
-
         <div class="col-lg-5">
             <div class="alert alert-info mb-4">
                 <strong>Tipp tanároknak:</strong> érdemes a feladatokat csoportmunkában végeztetni, majd közösen
@@ -417,7 +423,7 @@
         </div>
     </div>
 
-    <h2 class="section-title mt-5">2. Veszélyes mellékletek és kettős kiterjesztés</h2>
+    <h2 id="attachments">2. Veszélyes mellékletek és kettős kiterjesztés</h2>
 
 <div class="row g-4">
     
@@ -611,7 +617,7 @@ photo[U+202E]gpj.exe
 
 
 
-    <h2 class="section-title">3. Kriptovírusok (ransomware)</h2>
+    <h2 id="ransomware">3. Kriptovírusok (ransomware)</h2>
 
 <div class="row g-4">
     <div class="col-md-8">
@@ -785,7 +791,7 @@ photo[U+202E]gpj.exe
 </div>
 
 
-   <h2 class="section-title">4. SMS és csomagos csalások (smishing)</h2>
+   <h2 id="smishing">4. SMS és csomagos csalások (smishing)</h2>
 
 <div class="row g-4 align-items-start">
     <div class="col-lg-7">
@@ -876,7 +882,7 @@ photo[U+202E]gpj.exe
     </div>
 </div>
 
-    <h2 class="section-title">5. Interaktív feladatok – Találd meg a hibát!</h2>
+    <h2 id="exam">5. Interaktív feladatok – Találd meg a hibát!</h2>
 
     <div class="row g-4">
         <div class="col-lg-7">
@@ -992,6 +998,48 @@ photo[U+202E]gpj.exe
             </div>
         </div>
     </div>
+
+   <div id="exam-container" class="quiz-wrapper mt-5">
+    <h2 class="text-center mb-4">📘 Záróvizsga – Teljes tananyag</h2>
+
+    <div id="exam-box" class="quiz-box">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div id="exam-progress" class="quiz-progress"></div>
+            <div id="exam-bar-wrapper" class="flex-grow-1 ms-3">
+                <div id="exam-bar-bg">
+                    <div id="exam-bar-fill"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="exam-flex">
+
+    <div class="exam-image-wrapper" id="exam-image" style="display:none;">
+        <img id="exam-image-tag" src="" alt="Kérdés illusztráció">
+    </div>
+
+    <div class="exam-right">
+        <h4 id="exam-question"></h4>
+        <div id="exam-answers"></div>
+    </div>
+
+</div>
+
+
+        <div class="quiz-nav mt-4 d-flex justify-content-between">
+            <button id="prev-btn" class="btn btn-outline-secondary" style="visibility:hidden;">⬅ Előző</button>
+            <button id="next-btn" class="btn btn-primary">Következő ➡</button>
+        </div>
+    </div>
+
+    <div id="exam-result" class="quiz-result text-center mt-5" style="display:none;">
+        <h3>🎉 Eredmény</h3>
+        <p id="exam-score"></p>
+        <p id="exam-eval" class="fw-bold"></p>
+        <button class="btn btn-outline-primary" onclick="startExam()">Újraindítás</button>
+    </div>
+</div>
+
 
 </div>
 
@@ -1425,7 +1473,179 @@ document.querySelectorAll(".quiz-btn").forEach(btn => {
 });
 
 
+const allQuestions = [
+    
+    { q: "Mi a phishing lényege?", a: ["Technikai sebezhetőség kihasználása", "Az ember pszichológiai manipulálása", "Automatikus vírusfertőzés"], c: 1 },
+    { q: "Melyik pszichológiai trükk NEM jellemző a phishingre?", a: ["Sürgetés", "Félelemkeltés", "Humor"], c: 2 },
+    { q: "Mi az authority bias?", a: ["Tekintélyre hivatkozás", "Kíváncsiság felkeltése", "Jutalom ígérete"], c: 0 },
+    { q: "Mi a spear phishing?", a: ["Tömeges levél", "Személyre szabott támadás", "Telefonos átverés"], c: 1 },
+    { q: "Mi a whaling?", a: ["Vezetők elleni célzott támadás", "Makró vírus", "QR‑kódos csalás"], c: 0 },
+    { q: "Mi a clone phishing?", a: ["Valódi e-mail lemásolása", "Hamis QR-kód", "Telefonos csalás"], c: 0 },
+    { q: "Mi a BEC?", a: ["Céges pénzügyi átverés", "Fájlvírus", "Makróhiba"], c: 0 },
+    { q: "Mi a vishing?", a: ["Telefonos csalás", "QR‑kódos átverés", "Hamis weboldal"], c: 0 },
+    { q: "Mi a quishing?", a: ["QR‑kódos phishing", "Telefonos átverés", "Hamis számla"], c: 0 },
+    { q: "Melyik a gyanús feladó?", a: ["info@nav.gov.hu", "support@secure-bank-help.com", "ugyfelszolgalat@gls.com"], c: 1 },
+    { q: "Melyik a leginkább gyanús tárgy?", a: ["Számlatartozás értesítő", "Gyanús bejelentkezést észleltünk", "AZONNALI TEENDŐ – Fiókzárolás"], c: 2 },
+    { q: "Melyik a hamis link?", a: ["https://nav.gov.hu", "https://nav-refund.eu", "https://account.microsoft.com"], c: 1 },
+    { q: "Mi a helyes reakció gyanús e-mailre?", a: ["Megnyitod", "Törlöd vagy jelented", "Válaszolsz"], c: 1 },
+    { q: "Mi a phishing fő célja?", a: ["Adatlopás", "Képszerkesztés", "Hangfelvétel"], c: 0 },
+    { q: "Mi a Unicode domain hamisítás lényege?", a: ["Hasonló karakterekkel megtévesztés", "Fájlméret növelése", "Ikoncsere"], c: 0 },
+    { q: "Mi a helyes lépés, ha egy link gyanús?", a: ["Rákattintasz", "Egérrel fölé viszed és ellenőrzöd", "Továbbítod másnak"], c: 1 },
+    { q: "Mi a social engineering lényege?", a: ["Ember manipulálása", "Hardverhiba", "Szoftverfrissítés"], c: 0 },
+    { q: "Mi a helyes reakció NAV‑os csalásra?", a: ["Megnyitod a linket", "Ellenőrzöd a hivatalos oldalon", "Visszaírsz"], c: 1 },
+    { q: "Mi a GLS/DPD csomagos csalás célja?", a: ["Csomagküldés", "Vámkezelési díj kicsalása", "Reklám"], c: 1 },
+    { q: "KÉPES – Mi a gyanús ezen az Instagram‑os e-mailen?", 
+      a: ["Sürgetés és fióklezárás fenyegetése", "Hivatalos domain", "Semmi gyanús"], 
+      c: 0,
+      img: "images/kviz2.png" }, 
 
+    
+    { q: "Mi a kettős kiterjesztés célja?", a: ["Gyorsabb megnyitás", "Valódi kiterjesztés elrejtése", "Fájlméret csökkentése"], c: 1 },
+    { q: "Melyik a veszélyes fájlnév?", a: ["szamla_2024.pdf", "photo.jpg.exe", "dokumentum.docx"], c: 1 },
+    { q: "Mi a homoglif trükk?", a: ["Hasonló betűk cseréje", "Fájlméret növelése", "Ikoncsere"], c: 0 },
+    { q: "Mi a RAT?", a: ["Távoli hozzáférést adó kártevő", "Számlázó program", "Képszerkesztő"], c: 0 },
+    { q: "Mi történhet fertőzött melléklet megnyitásakor?", a: ["Letölt további kártevőket", "Csak képet jelenít meg", "Semmi"], c: 0 },
+    { q: "KÉPES – Miben gyanús ez az üzenet, amely APK letöltésére kér?", 
+      a: ["Ismeretlen forrásból APK‑t töltet le", "Hivatalos áruházba visz", "Semmi gond vele"], 
+      c: 0,
+      img: "images/kviz1.jpg" }, 
+    { q: "Mi a helyes lépés fertőzés gyanúja után?", a: ["Újraindítás", "Wi‑Fi kikapcsolása", "Megnyitás újra"], c: 1 },
+    { q: "Melyik NEM veszélyes kiterjesztés?", a: [".exe", ".scr", ".jpg"], c: 2 },
+    { q: "Mi a sandbox célja?", a: ["Biztonságos tesztelés", "Fájl tömörítés", "Kép szerkesztés"], c: 0 },
+    { q: "Mi a helyes reakció gyanús mellékletre?", a: ["Megnyitod", "Továbbítod", "Nem nyitod meg és jelzed"], c: 2 },
+    { q: "Mi a Unicode RTL override?", a: ["Fájlnév végét megfordítja", "Ikoncsere", "Fájlméret növelése"], c: 0 },
+    { q: "Mi a proxy fertőzés?", a: ["Gép felhasználása más támadásokhoz", "Képátalakítás", "Hangtorzítás"], c: 0 },
+    { q: "Mi a helyes lépés ZIP melléklet esetén?", a: ["Automatikus megnyitás", "Tartalom ellenőrzése", "Továbbítás"], c: 1 },
+    { q: "Mi a makró vírus?", a: ["Word/Excel makróban futó kártevő", "Képnézegető", "Hangfájl"], c: 0 },
+    
+
+    { q: "Mi a ransomware célja?", a: ["Titkosítás és zsarolás", "Képszerkesztés", "Hangfelvétel"], c: 0 },
+    { q: "Mi a ransomware első lépése?", a: ["Fájlok feltérképezése", "Titkosítás", "Törlés"], c: 0 },
+    { q: "Mi a ransomware végső lépése?", a: ["Zsaroló üzenet megjelenítése", "Windows frissítés", "Fájlok törlése"], c: 0 },
+    { q: "Melyik titkosítást használják gyakran?", a: ["AES + RSA", "ZIP", "PNG"], c: 0 },
+    { q: "Miért hatékony a ransomware?", a: ["Visszafejthetetlen titkosítás kulcs nélkül", "Lassú működés", "Kevésbé terjed"], c: 0 },
+    { q: "KÉPES – Mit látsz ezen a képen?", 
+      a: ["Ransomware zsaroló üzenetet", "Egyszerű szöveges jegyzetet", "Számlát"], 
+      c: 0,
+      img: "images/kviz3.png" },
+    { q: "Mi a helyes lépés fertőzés után?", a: ["Wi‑Fi kikapcsolása", "Újraindítás", "Megnyitás újra"], c: 0 },
+    { q: "Mi a hálózati fertőzés veszélye?", a: ["Tömeges kár", "Lassú gép", "Hanghiba"], c: 0 },
+    { q: "Mi a shadow copy törlése?", a: ["Árnyékmásolatok eltávolítása", "Képszerkesztés", "Hangfelvétel"], c: 0 },
+    { q: "Mi a kulcskezelés célja?", a: ["Titkosítási kulcs védelme", "Kép tömörítés", "Hangtorzítás"], c: 0 },
+
+    
+    { q: "Mi a smishing?", a: ["SMS‑es phishing", "Telefonos csalás", "QR‑kódos átverés"], c: 0 },
+    { q: "Mi a csomagos csalás célja?", a: ["Vámkezelési díj kicsalása", "Csomagküldés", "Reklám"], c: 0 },
+    { q: "Mi a helyes reakció gyanús SMS-re?", a: ["Megnyitod", "Törlöd", "Visszaírsz"], c: 1 },
+    { q: "KÉPES – Mi a gyanús ezen a Royal Mail‑es SMS‑en?", 
+      a: ["Díjfizetésre kér egy furcsa domainen", "Mindig így kommunikál a posta", "Semmi gyanús"], 
+      c: 0,
+      img: "images/kviz5.jpg" }, 
+    { q: "KÉPES – Mi a gyanús ezen a FedEx‑es SMS‑en?", 
+      a: ["Rövidített, ismeretlen link", "Hivatalos alkalmazásra mutat", "Semmi gyanús"], 
+      c: 0,
+      img: "images/kviz4.jpg" } 
+];
+
+let selectedQuestions = [];
+let index = 0;
+let answers = [];
+
+function startExam() {
+    selectedQuestions = [...allQuestions]
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 15);
+
+    index = 0;
+    answers = Array(15).fill(null);
+
+    document.getElementById("exam-result").style.display = "none";
+    document.getElementById("exam-box").style.display = "block";
+
+    loadExamQuestion();
+}
+
+function loadExamQuestion() {
+    const q = selectedQuestions[index];
+
+    document.getElementById("exam-progress").innerText =
+        `Kérdés ${index + 1} / 15`;
+
+    const percent = ((index) / 15) * 100;
+    document.getElementById("exam-bar-fill").style.width = `${percent}%`;
+
+    document.getElementById("exam-question").innerText = q.q;
+
+    const imgWrapper = document.getElementById("exam-image");
+    const imgTag = document.getElementById("exam-image-tag");
+    if (q.img) {
+        imgTag.src = q.img;
+        imgWrapper.style.display = "block";
+    } else {
+        imgWrapper.style.display = "none";
+    }
+
+    const box = document.getElementById("exam-answers");
+    box.innerHTML = "";
+
+    q.a.forEach((ans, i) => {
+        const div = document.createElement("div");
+        div.classList.add("quiz-answer");
+        div.innerText = ans;
+
+        if (answers[index] === i) div.classList.add("selected");
+
+        div.onclick = () => {
+            answers[index] = i;
+            loadExamQuestion();
+        };
+
+        box.appendChild(div);
+    });
+
+    document.getElementById("prev-btn").style.visibility =
+        index === 0 ? "hidden" : "visible";
+
+    document.getElementById("next-btn").innerText =
+        index === 14 ? "Befejezés" : "Következő ➡";
+}
+
+document.getElementById("prev-btn").onclick = () => {
+    if (index > 0) index--;
+    loadExamQuestion();
+};
+
+document.getElementById("next-btn").onclick = () => {
+    if (index < 14) {
+        index++;
+        loadExamQuestion();
+    } else {
+        finishExam();
+    }
+};
+
+function finishExam() {
+    let score = 0;
+
+    selectedQuestions.forEach((q, i) => {
+        if (answers[i] === q.c) score++;
+    });
+
+    const percent = Math.round((score / 15) * 100);
+
+    document.getElementById("exam-box").style.display = "none";
+    document.getElementById("exam-result").style.display = "block";
+
+    document.getElementById("exam-score").innerText =
+        `Pontszám: ${score} / 15 (${percent}%)`;
+
+    document.getElementById("exam-eval").innerText =
+        percent >= 80 ? "✔ Kiváló! Átmentél!" :
+        percent >= 60 ? "⚠ Majdnem! Még egy kis gyakorlás kell." :
+                        "❌ Sikertelen. Gyakorolj még!";
+}
+
+startExam();
 </script>
 
 
