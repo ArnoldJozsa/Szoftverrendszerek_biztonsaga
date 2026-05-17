@@ -83,3 +83,19 @@ body {
     background: url('https://svgshare.com/i/ubC.svg');
     background-size: cover;
 }
+.quiz-question {
+    padding: 12px;
+    margin-bottom: 10px;
+    background: #f7f7f7;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.quiz-question.correct {
+    background: #c8f7c5;
+}
+
+.quiz-question.wrong {
+    background: #f7c5c5;
+}

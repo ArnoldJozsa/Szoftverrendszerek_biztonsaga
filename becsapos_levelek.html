@@ -2,7 +2,7 @@
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
-    <title>Becsapós levelek és kriptovírusok – Oktatóanyag</title>
+    <title>Becsapós levelek, üzenetek és kriptovírusok – Oktatóanyag</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -12,18 +12,34 @@
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand fw-bold" href="index.html">Biztonsági Oktatóanyag</a>
-        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+        <a class="navbar-brand" href="index.html">Információbiztonság</a>
+
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div id="nav" class="collapse navbar-collapse">
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link active" href="#">Becsapós levelek</a></li>
-                <li class="nav-item"><a class="nav-link" href="ketfaktor.html">Kétfaktoros azonosítás</a></li>
-                <li class="nav-item"><a class="nav-link" href="https.html">HTTPS</a></li>
-                <li class="nav-item"><a class="nav-link" href="adathordozok.html">Titkosítás</a></li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="becsapos_levelek.html">Becsapós levelek</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="ketfaktoros.html">Kétfaktoros azonosítás</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="https.html">HTTPS és biztonságos böngészés</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="adathordozok.html">Adathordozók titkosítása</a>
+                </li>
+
             </ul>
         </div>
     </div>
@@ -31,8 +47,8 @@
 
 <section class="hero">
     <div class="container">
-        <h1>Becsapós levelek, mellékletek és kriptovírusok</h1>
-        <p>Részletes, tanítható oktatóanyag a leggyakoribb e-mailes támadásokról, példákkal és interaktív feladatokkal.</p>
+        <h1>Becsapós levelek, üzenetek és kriptovírusok</h1>
+        <p>Részletes, tanítható oktatóanyag a leggyakoribb e-mailes, SMS-es és csomagos csalásokról, példákkal és interaktív feladatokkal.</p>
     </div>
 </section>
 
@@ -40,22 +56,33 @@
 
 <div class="container py-5">
 
-    <h2 class="section-title">1. Phishing – Az e-mailes átverések rendszere</h2>
+    <h2 class="section-title">1. Phishing – Az e-mailes átverések teljes rendszere</h2>
 
-    <div class="row g-4">
-        <div class="col-md-8">
-            <h4>1.1 Mi a phishing?</h4>
+    <div class="row g-4 align-items-start">
+        <div class="col-lg-7">
+            <h4>1.1 Mi a phishing valójában?</h4>
             <p>
-                A <strong>phishing</strong> egy szociális manipuláción alapuló kibertámadás, amelyben a támadó
-                hitelesnek tűnő e-mailt küld, pszichológiai nyomást gyakorol, és ráveszi a felhasználót, hogy
-                saját maga hajtsa végre a káros műveletet (adatmegadás, melléklet megnyitása, linkre kattintás).
+                A <strong>phishing</strong> olyan szociális manipuláción alapuló kibertámadás, amelyben a támadó
+                hitelesnek tűnő e-mailt vagy üzenetet küld, pszichológiai nyomást gyakorol, és ráveszi az áldozatot,
+                hogy saját maga hajtsa végre a káros műveletet: adatot adjon meg, mellékletet nyisson meg, vagy
+                hamis weboldalra kattintson.
             </p>
             <p>
-                A phishing nem elsősorban technikai, hanem <strong>emberi gyengeségekre építő</strong> támadás:
-                a támadó azt használja ki, hogy a felhasználó bízik a feladóban, siet, fél, vagy éppen túl kíváncsi.
+                A támadás lényege, hogy <strong>nem a gépet, hanem az embert támadják</strong>. A technika csak eszköz,
+                a döntést mindig a felhasználó hozza meg – ezért kulcsfontosságú a tudatosság és a felismerés.
             </p>
 
-            <h4 class="mt-4">1.2 Miért működik a phishing? – pszichológiai trükkök</h4>
+            <h4 class="mt-4">1.2 A phishing céljai</h4>
+            <ul>
+                <li><strong>Adatlopás:</strong> jelszavak, bankkártyaadatok, személyes adatok megszerzése.</li>
+                <li><strong>Pénzszerzés:</strong> közvetlen pénzátutalás kicsalása, hamis számlák befizettetése.</li>
+                <li><strong>Fertőzés:</strong> kártékony program (pl. kriptovírus) futtatása mellékletből.</li>
+                <li><strong>Hozzáférés szerzése:</strong> céges rendszerekbe való bejutás, jogosultságok megszerzése.</li>
+                <li><strong>Hírnévrombolás:</strong> fiókok átvétele, hamis posztok, üzenetek küldése az áldozat nevében.</li>
+            </ul>
+
+            <h4 class="mt-4">1.3 A phishing pszichológiája – miért működik?</h4>
+            <p>A támadók az emberi gondolkodás automatikus reakcióit használják ki:</p>
             <ul>
                 <li><strong>Authority bias:</strong> tekintélyre hivatkozás – „Bank”, „NAV”, „Rendőrség”, „Microsoft”.</li>
                 <li><strong>Urgency:</strong> sürgetés – „24 órán belül töröljük a fiókod”, „azonnali teendő szükséges”.</li>
@@ -64,32 +91,114 @@
                 <li><strong>Curiosity:</strong> kíváncsiság – „nézd meg ezt a képet rólad”, „itt a számlád, amit kértél”.</li>
             </ul>
 
-            <h4 class="mt-4">1.3 A phishing típusai – példákkal</h4>
-            <p><strong>Spear phishing:</strong> személyre szabott támadás, ahol a támadó ismeri az áldozat nevét, szerepét.</p>
-            <p class="mb-1"><em>Példa:</em></p>
+            <div class="alert alert-info mt-3">
+                <strong>Lényeg:</strong> ha egy üzenet sürget, félelmet kelt, jutalmat ígér vagy túl szép, hogy igaz legyen,
+                azonnal kapcsoljon be a „gyanújelző”.
+            </div>
+        </div>
+
+        <div class="col-lg-5">
+            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=900&q=80"
+                 alt="Phishing e-mail illusztráció" class="img-fluid rounded shadow mb-4">
+            <div class="info-card">
+                <h5 class="fw-bold">Gyakori phishing tárgyak</h5>
+                <ul>
+                    <li>„Biztonsági frissítés szükséges”</li>
+                    <li>„Sikertelen csomagkézbesítés”</li>
+                    <li>„Számlatartozás értesítő”</li>
+                    <li>„Fiókellenőrzés szükséges”</li>
+                    <li>„Adóvisszatérítés érhető el”</li>
+                    <li>„Gyanús bejelentkezést észleltünk”</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4 mt-5">
+        <div class="col-lg-7">
+            <h4>1.4 A phishing típusai – minden fontos támadási forma</h4>
+
+            <h6 class="mt-3">Spear phishing</h6>
+            <p>
+                Személyre szabott támadás, ahol a támadó ismeri az áldozat nevét, szerepét, munkahelyét.
+                Gyakran korábbi kiszivárgott adatokra épít.
+            </p>
             <ul>
                 <li>„Szia Enikő, itt a múlt heti megbeszélés jegyzőkönyve. Kérlek, nézd át és erősítsd meg.”</li>
             </ul>
 
-            <p class="mt-3"><strong>Whaling:</strong> vezetők, döntéshozók elleni támadás.</p>
-            <p class="mb-1"><em>Példa:</em></p>
+            <h6 class="mt-3">Whaling</h6>
+            <p>
+                Vezetők, döntéshozók elleni támadás. Célja nagy összegű utalás vagy hozzáférés megszerzése.
+            </p>
             <ul>
                 <li>„Ügyvezetői jóváhagyás szükséges – sürgős utalás a beszállítónak, a határidő ma lejár.”</li>
             </ul>
 
-            <p class="mt-3"><strong>Clone phishing:</strong> valódi e-mail lemásolása, módosított linkkel vagy melléklettel.</p>
-            <p class="mb-1"><em>Példa:</em></p>
+            <h6 class="mt-3">Clone phishing</h6>
+            <p>
+                Valódi e-mail lemásolása, módosított linkkel vagy melléklettel. A felhasználó már látott hasonló levelet,
+                ezért könnyebben elhiszi.
+            </p>
             <ul>
                 <li>„Frissítettük a dokumentumot, töltsd le az új verziót innen.” – a link már a támadó szerverére mutat.</li>
             </ul>
 
-            <p class="mt-3"><strong>BEC (Business Email Compromise):</strong> céges pénzügyi átverés.</p>
-            <p class="mb-1"><em>Példa:</em></p>
+            <h6 class="mt-3">BEC (Business Email Compromise)</h6>
+            <p>
+                Céges pénzügyi átverés, amikor a támadó egy vezető vagy beszállító nevében kér utalást.
+            </p>
             <ul>
                 <li>„A beszállító bankszámlaszáma megváltozott, kérjük, a következő utalást már az új számlára indítsa.”</li>
             </ul>
 
-            <h4 class="mt-4">1.4 Phishing felismerése – professzionális ellenőrzőlista</h4>
+            <h6 class="mt-3">Social media phishing</h6>
+            <p>
+                Közösségi oldalakon érkező üzenetek, hamis bejelentkezési oldalak, nyereményjátékok.
+            </p>
+            <ul>
+                <li>„Valaki megjelölt egy fotón, nézd meg itt.”</li>
+                <li>„Ingyen ajándék a követőinknek, csak itt: [link].”</li>
+            </ul>
+
+            <h6 class="mt-3">Voice phishing (vishing)</h6>
+            <p>
+                Telefonhívással történő átverés, amikor a támadó banki ügyintézőnek, rendőrnek vagy NAV-osnak adja ki magát.
+            </p>
+            <ul>
+                <li>„A bank biztonsági osztályáról hívjuk, diktálja be a kódot, amit SMS-ben kapott.”</li>
+            </ul>
+
+            <h6 class="mt-3">QR-phishing (quishing)</h6>
+            <p>
+                Hamis QR-kódokkal történő átverés, például parkolási díj, csomagkövetés vagy belépés álcája alatt.
+            </p>
+            <ul>
+                <li>„Parkolási díj befizetése QR-kóddal – szkenneld be itt.”</li>
+            </ul>
+        </div>
+
+        <div class="col-lg-5">
+            <img src="https://images.unsplash.com/photo-1510511459019-5dda7724fd87?auto=format&fit=crop&w=900&q=80"
+                 alt="Phishing típusok illusztráció" class="img-fluid rounded shadow mb-4">
+            <div class="info-card">
+                <h5 class="fw-bold">Támadási lánc (attack chain)</h5>
+                <ol class="mb-0">
+                    <li>Felderítés – célpontok, e-mail címek gyűjtése.</li>
+                    <li>Célpont kiválasztása – ki a legsebezhetőbb.</li>
+                    <li>E-mail/üzenet megírása – pszichológiai trükkökkel.</li>
+                    <li>Küldés – tömegesen vagy célzottan.</li>
+                    <li>Kattintás – az áldozat végrehajtja a kérést.</li>
+                    <li>Adatlopás/fertőzés – a támadó eléri a célját.</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4 mt-5">
+        <div class="col-lg-7">
+            <h4>1.5 Phishing felismerése – profi ellenőrzőlista</h4>
+
             <h6>Feladó ellenőrzése</h6>
             <ul>
                 <li>Gyanús domain: <code>paypaI.com</code> (nagy i helyett nagy L), <code>secure-bank-support.com</code>.</li>
@@ -118,40 +227,119 @@
                 <li>ZIP, RAR, vagy makrót igénylő Office dokumentum.</li>
             </ul>
 
-            <h4 class="mt-4">1.5 Valós phishing példák (anonimizálva)</h4>
-            <p><strong>Példa 1 – Banki fiókzárolás:</strong> „Biztonsági okokból fiókja zárolásra került. Kérjük, erősítse meg adatait az alábbi linken.”</p>
-            <p><strong>Példa 2 – Csomagkézbesítés:</strong> „A csomag kézbesítése sikertelen volt. Nyissa meg a mellékelt számlát a kézbesítés újraindításához.”</p>
-            <p><strong>Példa 3 – NAV nevében:</strong> „Adóvisszatérítés érhető el az Ön részére. Töltse ki az űrlapot a visszatérítés igényléséhez.”</p>
-
             <div class="alert alert-warning mt-3">
-                <strong>Összefoglalás:</strong> ha egy e-mail sürget, félelmet kelt, adatot kér vagy mellékletet erőltet, mindig gyanakodj.
+                <strong>Összefoglalás:</strong> ha egy üzenet sürget, félelmet kelt, adatot kér vagy mellékletet erőltet,
+                mindig gyanakodj, és ellenőrizd külön a szolgáltató hivatalos csatornáin.
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-lg-5">
+            <img src="https://images.unsplash.com/photo-1584433144859-1fc3ab64a957?auto=format&fit=crop&w=900&q=80"
+                 alt="Biztonsági figyelmeztetés illusztráció" class="img-fluid rounded shadow">
+        </div>
+    </div>
+
+    <div class="row g-4 mt-5">
+        <div class="col-lg-7">
+            <h4>1.6 Valós phishing példák – tanórai elemzéshez</h4>
+
+            <h6>Banki fiókzárolás</h6>
+            <p>
+                „Biztonsági okokból fiókja zárolásra került. Kérjük, erősítse meg adatait az alábbi linken, különben
+                24 órán belül töröljük a hozzáférését.”
+            </p>
+
+            <h6>Csomagkézbesítés</h6>
+            <p>
+                „A csomag kézbesítése sikertelen volt. Kérjük, fizesse be a 350 Ft vámkezelési díjat az alábbi linken,
+                különben a csomagot visszaküldjük a feladónak.”
+            </p>
+
+            <h6>NAV nevében</h6>
+            <p>
+                „Adóvisszatérítés érhető el az Ön részére. Igényelje most az alábbi oldalon, különben elveszíti a jogosultságát.”
+            </p>
+
+            <h6>Microsoft fiókellenőrzés</h6>
+            <p>
+                „Szokatlan bejelentkezést észleltünk az Ön Microsoft-fiókjában. Ha nem Ön volt, erősítse meg személyazonosságát.”
+            </p>
+
+            <h6>Jelszó lejárat</h6>
+            <p>
+                „A jelszava 24 órán belül lejár. Kattintson ide a jelszó megújításához, különben nem tud majd belépni.”
+            </p>
+        </div>
+
+        <div class="col-lg-5">
             <div class="info-card mb-4">
-                <h5 class="fw-bold">Gyakori phishing tárgyak</h5>
+                <h5 class="fw-bold">Elemző kérdések tanórára</h5>
                 <ul>
-                    <li>„Biztonsági frissítés szükséges”</li>
-                    <li>„Sikertelen csomagkézbesítés”</li>
-                    <li>„Számlatartozás értesítő”</li>
-                    <li>„Fiókellenőrzés szükséges”</li>
-                    <li>„Adóvisszatérítés érhető el”</li>
+                    <li>Mi a sürgető elem az üzenetben?</li>
+                    <li>Hol hivatkozik tekintélyre (bank, NAV, nagy cég)?</li>
+                    <li>Milyen adatot próbál kicsalni?</li>
+                    <li>Van-e gyanús link vagy melléklet?</li>
+                    <li>Meg lehet-e erősíteni a tartalmat a hivatalos oldalon?</li>
                 </ul>
             </div>
 
+            <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=900&q=80"
+                 alt="E-mailek elemzése illusztráció" class="img-fluid rounded shadow">
+        </div>
+    </div>
+
+    <div class="row g-4 mt-5">
+        <div class="col-lg-7">
+            <h4>1.7 Gyakorlati feladatok – tanórai használatra</h4>
+
+            <h6>Feladat 1 – Mi a gyanús ebben az e-mailben?</h6>
+            <p>
+                A tanulók kapnak 5 különböző e-mailt (banki, NAV-os, csomagos, közösségi médiás, céges),
+                és meg kell jelölniük:
+            </p>
+            <ul>
+                <li>gyanús feladót</li>
+                <li>hibás domaint</li>
+                <li>gyanús linket</li>
+                <li>mellékletet</li>
+                <li>sürgető vagy félelemkeltő elemet</li>
+            </ul>
+
+            <h6>Feladat 2 – Valódi vagy hamis?</h6>
+            <p>
+                A tanulók 10 linket kapnak: 5 valódi, 5 hamisított. Feladat: eldönteni, melyik melyik, és indokolni a döntést.
+            </p>
+
+            <h6>Feladat 3 – Írj vissza a támadónak!</h6>
+            <p>
+                A tanulók megfogalmaznak egy udvarias, de biztonságos választ, amelyben:
+            </p>
+            <ul>
+                <li>nem adnak meg adatot</li>
+                <li>nem nyitnak meg mellékletet</li>
+                <li>hivatkoznak a hivatalos csatornákra</li>
+            </ul>
+            
+        </div>
+
+        <div class="col-lg-5">
+            <div class="alert alert-info mb-4">
+                <strong>Tipp tanároknak:</strong> érdemes a feladatokat csoportmunkában végeztetni, majd közösen
+                megbeszélni, ki mit vett észre. Így a diákok egymástól is tanulnak.
+            </div>
+
             <div class="info-card">
-                <h5 class="fw-bold">Gyakorlati tanácsok</h5>
+                <h5 class="fw-bold">Játékos feladat – pontozás</h5>
                 <ul>
-                    <li>Soha ne kattints e-mailből érkező linkre banki belépéshez.</li>
-                    <li>Mindig kézzel írd be a bankod címét a böngészőbe.</li>
-                    <li>Ha bizonytalan vagy, hívd fel a szolgáltatót a hivatalos számán.</li>
+                    <li>Minden helyesen azonosított gyanús elem: 1 pont.</li>
+                    <li>Minden jól megindokolt döntés: +1 bónuszpont.</li>
+                    <li>A legtöbb pontot szerző csoport „Phishing-nyomozó” címet kap.</li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <h2 class="section-title">2. Veszélyes mellékletek és kettős kiterjesztés</h2>
+    <h2 class="section-title mt-5">2. Veszélyes mellékletek és kettős kiterjesztés</h2>
 
     <div class="row g-4">
         <div class="col-md-7">
@@ -202,22 +390,15 @@ invoice.docx.js
         </div>
 
         <div class="col-md-5">
-            <div class="info-card mb-4">
+            <img src="https://images.unsplash.com/photo-1584433144859-1fc3ab64a957?auto=format&fit=crop&w=900&q=80"
+                 alt="Fájlok és kiterjesztések illusztráció" class="img-fluid rounded shadow mb-4">
+            <div class="info-card">
                 <h5 class="fw-bold">Példák gyanús fájlnevekre</h5>
                 <ul>
                     <li>„szamla_2024_final.pdf.exe”</li>
                     <li>„photo.jpg.exe”</li>
                     <li>„dhl_delivery_note.pdf.scr”</li>
                     <li>„invoice_overdue.docx.js”</li>
-                </ul>
-            </div>
-
-            <div class="info-card">
-                <h5 class="fw-bold">Biztonságosabb gyakorlat</h5>
-                <ul>
-                    <li>PDF-et csak megbízható forrásból nyiss meg.</li>
-                    <li>Office dokumentumnál ne engedélyezd automatikusan a makrókat.</li>
-                    <li>Ismeretlen feladótól érkező ZIP mellékletet kezeld gyanúval.</li>
                 </ul>
             </div>
         </div>
@@ -284,6 +465,8 @@ invoice.docx.js
         </div>
 
         <div class="col-md-4">
+            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=900&q=80"
+                 alt="Zsaroló üzenet illusztráció" class="img-fluid rounded shadow mb-4">
             <div class="info-card mb-4">
                 <h5 class="fw-bold">Zsaroló üzenet példa</h5>
                 <p class="text-danger fw-bold">
@@ -303,12 +486,67 @@ invoice.docx.js
         </div>
     </div>
 
-    <h2 class="section-title">4. Interaktív feladat – Találd meg a hibát!</h2>
+    <h2 class="section-title">4. SMS és csomagos csalások (smishing)</h2>
 
-    <div class="row">
+    <div class="row g-4 align-items-start">
+        <div class="col-lg-7">
+            <h4>4.1 Mi az a smishing?</h4>
+            <p>
+                A <strong>smishing</strong> az SMS-en keresztül történő phishing. A támadó rövid szöveges üzenetben
+                próbál rávenni arra, hogy egy linkre kattints, alkalmazást telepíts, vagy adatot adj meg.
+            </p>
+            <p>
+                Mivel az SMS rövid, a támadók gyakran használnak rövidített linkeket, és sürgető, fenyegető
+                vagy csábító szöveget.
+            </p>
+
+            <h4 class="mt-4">4.2 Csomagos csalások – tipikus minták</h4>
+            <ul>
+                <li>„Csomagja érkezett, de a kézbesítés sikertelen volt. Kattintson ide az újrakézbesítéshez.”</li>
+                <li>„Kis összegű vámkezelési díj szükséges a csomag átvételéhez. Fizessen itt: [link].”</li>
+                <li>„A futár nem találta otthon, erősítse meg címét az alábbi linken.”</li>
+            </ul>
+
+            <h4 class="mt-4">4.3 Banki és NAV-os SMS csalások</h4>
+            <ul>
+                <li>„Gyanús tranzakciót észleltünk a számláján. Ha nem Ön volt, kattintson ide.”</li>
+                <li>„Adóvisszatérítés érhető el. Igényelje itt: [link].”</li>
+                <li>„Bankkártyája zárolásra kerül. Erősítse meg adatait az alábbi oldalon.”</li>
+            </ul>
+
+            <h4 class="mt-4">4.4 Hogyan ismerjük fel a smishinget?</h4>
+            <ul>
+                <li>Ismeretlen szám vagy külföldi előhívó.</li>
+                <li>Sürgetés, fenyegetés, fizetésre felszólítás.</li>
+                <li>Rövidített vagy furcsa link.</li>
+                <li>Olyan szolgáltatóra hivatkozik, amit nem is használsz.</li>
+            </ul>
+
+            <div class="alert alert-warning mt-3">
+                <strong>Szabály:</strong> bank, NAV, futárszolgálat nem kér SMS-ben jelszót, bankkártyaadatot,
+                és nem küld rövidített linket fizetéshez.
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=900&q=80"
+                 alt="Telefonos üzenetek illusztráció" class="img-fluid rounded shadow mb-4">
+            <div class="info-card">
+                <h5 class="fw-bold">Gyakori smishing üzenetek</h5>
+                <ul>
+                    <li>„DHL: csomagja érkezett, fizessen 350 Ft vámot itt: bit.ly/...”</li>
+                    <li>„[BANK]: gyanús bejelentkezés történt. Erősítse meg itt: secure-login.xyz”</li>
+                    <li>„NAV: adóvisszatérítés érhető el. Igényelje most: nav-refund.eu”</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="section-title">5. Interaktív feladatok – Találd meg a hibát!</h2>
+
+    <div class="row g-4">
         <div class="col-lg-7">
             <div class="phishing-mail mb-4">
-                <h5 class="mb-3">Banki phishing példa</h5>
+                <h5 class="mb-3">5.1 Banki phishing e-mail</h5>
                 <div class="mb-2">
                     <strong>Feladó:</strong>
                     <span class="clickable-area" data-correct="true" data-msg="A domain gyanús: nem egyezik a valódi bank címével.">
@@ -352,54 +590,53 @@ invoice.docx.js
                 </p>
             </div>
 
+            <div class="phishing-mail mb-4">
+                <h5 class="mb-3">5.2 Csomagküldős SMS – Valódi vagy hamis?</h5>
+                <p>
+                    <span class="clickable-area" data-correct="true" data-msg="Rövidített link, fizetésre felszólítás – tipikus smishing.">
+                        „DHL: csomagja érkezett, de a kézbesítés sikertelen volt. Fizessen 350 Ft vámot itt: bit.ly/dhl-kezbesites”
+                    </span>
+                </p>
+                <p>
+                    <span class="clickable-area" data-correct="false">
+                        „GLS: holnapi napon kézbesítjük csomagját. Ha nem tartózkodik otthon, kérjük, válasszon új időpontot az ügyfélszolgálaton.”
+                    </span>
+                </p>
+                <p>
+                    <span class="clickable-area" data-correct="true" data-msg="Ismeretlen domain, fizetés linkről – gyanús.">
+                        „Posta: csomagja vámkezelésre vár. Fizessen itt: posta-vamkezeles-pay.com”
+                    </span>
+                </p>
+            </div>
+
             <div class="phishing-mail">
-                <h5 class="mb-3">Csomagküldős átverés példa</h5>
-                <div class="mb-2">
-                    <strong>Feladó:</strong>
-                    <span class="clickable-area" data-correct="true" data-msg="Ingyenes e-mail cím egy állítólagos futárszolgálattól – gyanús.">
-                        dhl-support-delivery@gmail.com
-                    </span>
-                </div>
-
-                <div class="mb-2">
-                    <strong>Tárgy:</strong>
-                    <span class="clickable-area" data-correct="true" data-msg="Sürgetés és fizetésre utalás – tipikus átverés.">
-                        Sürgős: Fizetési elmaradás a csomag kézbesítéséhez
-                    </span>
-                </div>
-
-                <hr>
-
-                <p>
-                    Tisztelt Ügyfelünk! A csomagja kézbesítése
-                    <span class="clickable-area" data-correct="true" data-msg="Homályos, általános megfogalmazás – nincs konkrét adat.">
-                        fizetési elmaradás
-                    </span>
-                    miatt sikertelen volt.
-                </p>
-
-                <p>
-                    Kérjük, nyissa meg a mellékelt számlát, és rendezze tartozását:
-                </p>
-
-                <p>
-                    Melléklet:
-                    <span class="clickable-area" data-correct="true" data-msg="Ismeretlen ZIP melléklet – gyakori malware hordozó.">
-                        delivery_invoice.zip
-                    </span>
-                </p>
+                <h5 class="mb-3">5.3 Mini kvíz – Mit tennél?</h5>
+                <p class="mb-1">„NAV: adóvisszatérítés érhető el. Igényelje most: nav-refund.eu”</p>
+                <button class="btn btn-outline-success btn-sm quiz-btn" data-correct="false" data-msg="Nem jó válasz. Előbb ellenőrizd a NAV hivatalos oldalát.">Rákattintok a linkre</button>
+                <button class="btn btn-outline-primary btn-sm quiz-btn" data-correct="true" data-msg="Helyes! Mindig a hivatalos oldalt keresd fel külön.">Megnyitom külön a nav.gov.hu-t</button>
+                <button class="btn btn-outline-secondary btn-sm quiz-btn" data-correct="false" data-msg="Nem elég csak figyelmen kívül hagyni, érdemes jelenteni is.">Figyelmen kívül hagyom</button>
             </div>
 
             <div id="hint" class="mt-3"></div>
         </div>
 
         <div class="col-lg-5">
-            <div class="alert alert-info">
+            <div class="alert alert-info mb-4">
                 <strong>Tipp:</strong> Kattints minden olyan részre, ami gyanúsnak tűnik. Gondold végig:
                 <ul class="mb-0">
-                    <li>Valóban ettől a cégtől vársz e-mailt?</li>
+                    <li>Valóban ettől a cégtől vársz e-mailt vagy SMS-t?</li>
                     <li>Valóban rendeltél csomagot?</li>
-                    <li>Miért kérnek adatot vagy fizetést e-mailben?</li>
+                    <li>Miért kérnek adatot vagy fizetést üzenetben?</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h5 class="fw-bold">Játékos feladat tanórára</h5>
+                <ul>
+                    <li>Oszd csoportokra a diákokat.</li>
+                    <li>Minden csoport kap 5 e-mailt és 5 SMS-t.</li>
+                    <li>Feladat: jelöljék be, miért gyanúsak az egyes üzenetek.</li>
+                    <li>A végén közösen megbeszélhető, ki mit vett észre.</li>
                 </ul>
             </div>
         </div>
@@ -412,6 +649,7 @@ invoice.docx.js
 <script>
     const areas = document.querySelectorAll('.clickable-area');
     const hintBox = document.getElementById('hint');
+    const quizButtons = document.querySelectorAll('.quiz-btn');
 
     areas.forEach(area => {
         area.addEventListener('click', () => {
@@ -422,10 +660,25 @@ invoice.docx.js
 
             if (isCorrect) {
                 area.classList.add('correct');
-                hintBox.innerHTML = '<div class="alert alert-success">' + msg + '</div>';
+                hintBox.innerHTML = '<div class="alert alert-success">' + (msg || 'Jól gondolkodtál, ez gyanús elem.') + '</div>';
             } else {
                 area.classList.add('wrong');
-                hintBox.innerHTML = '<div class="alert alert-danger">Ez nem gyanús elem.</div>';
+                hintBox.innerHTML = '<div class="alert alert-danger">Ez önmagában nem feltétlenül gyanús elem.</div>';
+            }
+        });
+    });
+
+    quizButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            quizButtons.forEach(b => b.classList.remove('btn-success', 'btn-danger'));
+            const isCorrect = btn.dataset.correct === 'true';
+            const msg = btn.dataset.msg;
+            if (isCorrect) {
+                btn.classList.add('btn-success');
+                hintBox.innerHTML = '<div class="alert alert-success">' + msg + '</div>';
+            } else {
+                btn.classList.add('btn-danger');
+                hintBox.innerHTML = '<div class="alert alert-danger">' + msg + '</div>';
             }
         });
     });
