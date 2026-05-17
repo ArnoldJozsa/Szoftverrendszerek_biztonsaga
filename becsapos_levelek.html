@@ -2,262 +2,430 @@
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
-    <title>Becsapós levelek és kriptovírusok</title>
+    <title>Becsapós levelek és kriptovírusok – Oktatóanyag</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            padding-top: 4.5rem;
-        }
-        .phishing-mail {
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            padding: 1rem;
-            background-color: #fdfdfd;
-            position: relative;
-        }
-        .clickable-area {
-            cursor: pointer;
-            position: relative;
-        }
-        .clickable-area.correct {
-            outline: 2px solid #198754;
-        }
-        .clickable-area.wrong {
-            outline: 2px solid #dc3545;
-        }
-        .hint-box {
-            margin-top: 0.5rem;
-            font-size: 0.9rem;
-        }
-        .code-like {
-            font-family: "Consolas", "Courier New", monospace;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
 </head>
+
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">Szoftverrendszerek biztonsága</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">Biztonsági Oktatóanyag</a>
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div id="nav" class="collapse navbar-collapse">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link active" href="becsapos_levelek.html">Becsapós levelek</a></li>
+                <li class="nav-item"><a class="nav-link active" href="#">Becsapós levelek</a></li>
                 <li class="nav-item"><a class="nav-link" href="ketfaktor.html">Kétfaktoros azonosítás</a></li>
-                <li class="nav-item"><a class="nav-link" href="https.html">HTTPS és böngészés</a></li>
-                <li class="nav-item"><a class="nav-link" href="adathordozok.html">Adathordozók titkosítása</a></li>
+                <li class="nav-item"><a class="nav-link" href="https.html">HTTPS</a></li>
+                <li class="nav-item"><a class="nav-link" href="adathordozok.html">Titkosítás</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
-<main class="container mb-5">
+<section class="hero">
+    <div class="container">
+        <h1>Becsapós levelek, mellékletek és kriptovírusok</h1>
+        <p>Részletes, tanítható oktatóanyag a leggyakoribb e-mailes támadásokról, példákkal és interaktív feladatokkal.</p>
+    </div>
+</section>
 
-  
-    <section class="mb-4">
-        <h1 class="mb-3">Becsapós levelek, mellékletek, kettős kiterjesztés, kriptovírusok</h1>
-        <p class="lead">
-            Ezen az oldalon megtanulhatod, hogyan ismerd fel a gyanús e-maileket, veszélyes mellékleteket
-            és a kriptovírusokat. A cél, hogy a mindennapi levelezés során magabiztosan kiszúrd a támadásokat.
-        </p>
-    </section>
+<div class="wave"></div>
 
-   
-    <section class="mb-5">
-        <h2>Becsapós (phishing) e-mailek</h2>
-        <div class="row">
-            <div class="col-lg-7">
-                <p>
-                    A <strong>phishing</strong> olyan támadás, ahol a támadó e-mailben próbálja
-                    megszerezni az adataidat, vagy rávenni, hogy kattints egy veszélyes linkre
-                    vagy mellékletre. Gyakran ismert cégek, bankok, futárszolgálatok nevében írnak.
-                </p>
-                <h5>Gyakori gyanús jelek</h5>
+<div class="container py-5">
+
+    <h2 class="section-title">1. Phishing – Az e-mailes átverések rendszere</h2>
+
+    <div class="row g-4">
+        <div class="col-md-8">
+            <h4>1.1 Mi a phishing?</h4>
+            <p>
+                A <strong>phishing</strong> egy szociális manipuláción alapuló kibertámadás, amelyben a támadó
+                hitelesnek tűnő e-mailt küld, pszichológiai nyomást gyakorol, és ráveszi a felhasználót, hogy
+                saját maga hajtsa végre a káros műveletet (adatmegadás, melléklet megnyitása, linkre kattintás).
+            </p>
+            <p>
+                A phishing nem elsősorban technikai, hanem <strong>emberi gyengeségekre építő</strong> támadás:
+                a támadó azt használja ki, hogy a felhasználó bízik a feladóban, siet, fél, vagy éppen túl kíváncsi.
+            </p>
+
+            <h4 class="mt-4">1.2 Miért működik a phishing? – pszichológiai trükkök</h4>
+            <ul>
+                <li><strong>Authority bias:</strong> tekintélyre hivatkozás – „Bank”, „NAV”, „Rendőrség”, „Microsoft”.</li>
+                <li><strong>Urgency:</strong> sürgetés – „24 órán belül töröljük a fiókod”, „azonnali teendő szükséges”.</li>
+                <li><strong>Fear appeal:</strong> félelemkeltés – „biztonsági probléma történt”, „gond van a számláddal”.</li>
+                <li><strong>Greed appeal:</strong> jutalom – „nyereményjátékot nyertél”, „visszatérítés jár neked”.</li>
+                <li><strong>Curiosity:</strong> kíváncsiság – „nézd meg ezt a képet rólad”, „itt a számlád, amit kértél”.</li>
+            </ul>
+
+            <h4 class="mt-4">1.3 A phishing típusai – példákkal</h4>
+            <p><strong>Spear phishing:</strong> személyre szabott támadás, ahol a támadó ismeri az áldozat nevét, szerepét.</p>
+            <p class="mb-1"><em>Példa:</em></p>
+            <ul>
+                <li>„Szia Enikő, itt a múlt heti megbeszélés jegyzőkönyve. Kérlek, nézd át és erősítsd meg.”</li>
+            </ul>
+
+            <p class="mt-3"><strong>Whaling:</strong> vezetők, döntéshozók elleni támadás.</p>
+            <p class="mb-1"><em>Példa:</em></p>
+            <ul>
+                <li>„Ügyvezetői jóváhagyás szükséges – sürgős utalás a beszállítónak, a határidő ma lejár.”</li>
+            </ul>
+
+            <p class="mt-3"><strong>Clone phishing:</strong> valódi e-mail lemásolása, módosított linkkel vagy melléklettel.</p>
+            <p class="mb-1"><em>Példa:</em></p>
+            <ul>
+                <li>„Frissítettük a dokumentumot, töltsd le az új verziót innen.” – a link már a támadó szerverére mutat.</li>
+            </ul>
+
+            <p class="mt-3"><strong>BEC (Business Email Compromise):</strong> céges pénzügyi átverés.</p>
+            <p class="mb-1"><em>Példa:</em></p>
+            <ul>
+                <li>„A beszállító bankszámlaszáma megváltozott, kérjük, a következő utalást már az új számlára indítsa.”</li>
+            </ul>
+
+            <h4 class="mt-4">1.4 Phishing felismerése – professzionális ellenőrzőlista</h4>
+            <h6>Feladó ellenőrzése</h6>
+            <ul>
+                <li>Gyanús domain: <code>paypaI.com</code> (nagy i helyett nagy L), <code>secure-bank-support.com</code>.</li>
+                <li>Ingyenes e-mail cím (Gmail, Yahoo) hivatalos céges kommunikációban.</li>
+                <li>Külföldi domain magyar szolgáltató nevében.</li>
+            </ul>
+
+            <h6>Linkek ellenőrzése</h6>
+            <ul>
+                <li>Vidd fölé az egeret: a böngésző alján látható a valódi URL.</li>
+                <li>Rövidített linkek (bit.ly, tinyurl) esetén fokozott óvatosság.</li>
+                <li>Unicode domain hamisítás: első ránézésre jónak tűnő, valójában más karaktereket tartalmazó címek.</li>
+            </ul>
+
+            <h6>Tartalmi jelek</h6>
+            <ul>
+                <li>Helyesírási hibák, furcsa megfogalmazás.</li>
+                <li>Sürgetés, határidő, fenyegetés.</li>
+                <li>Homályos indoklás („biztonsági okokból”, „rendszerhiba miatt”).</li>
+                <li>Általános megszólítás: „Kedves Ügyfelünk” a név helyett.</li>
+            </ul>
+
+            <h6>Mellékletek</h6>
+            <ul>
+                <li>Váratlan számla, csomagértesítő, fizetési felszólítás.</li>
+                <li>ZIP, RAR, vagy makrót igénylő Office dokumentum.</li>
+            </ul>
+
+            <h4 class="mt-4">1.5 Valós phishing példák (anonimizálva)</h4>
+            <p><strong>Példa 1 – Banki fiókzárolás:</strong> „Biztonsági okokból fiókja zárolásra került. Kérjük, erősítse meg adatait az alábbi linken.”</p>
+            <p><strong>Példa 2 – Csomagkézbesítés:</strong> „A csomag kézbesítése sikertelen volt. Nyissa meg a mellékelt számlát a kézbesítés újraindításához.”</p>
+            <p><strong>Példa 3 – NAV nevében:</strong> „Adóvisszatérítés érhető el az Ön részére. Töltse ki az űrlapot a visszatérítés igényléséhez.”</p>
+
+            <div class="alert alert-warning mt-3">
+                <strong>Összefoglalás:</strong> ha egy e-mail sürget, félelmet kelt, adatot kér vagy mellékletet erőltet, mindig gyanakodj.
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="info-card mb-4">
+                <h5 class="fw-bold">Gyakori phishing tárgyak</h5>
                 <ul>
-                    <li><strong>Gyanús feladó:</strong> hasonló, de nem azonos domain (pl. <span class="code-like">support@paypaI.com</span> – nagy „i” helyett nagy „L”).</li>
-                    <li><strong>Sürgetés:</strong> „AZONNAL FRISSÍTS!”, „Fiókod 24 órán belül törlődik”.</li>
-                    <li><strong>Helyesírási hibák:</strong> furcsa megfogalmazás, fordítógépes szöveg.</li>
-                    <li><strong>Váratlan melléklet:</strong> számla, amit nem te rendeltél.</li>
-                    <li><strong>Gyanús link:</strong> ha fölé viszed az egeret, más cím jelenik meg, mint amit a szöveg ígér.</li>
+                    <li>„Biztonsági frissítés szükséges”</li>
+                    <li>„Sikertelen csomagkézbesítés”</li>
+                    <li>„Számlatartozás értesítő”</li>
+                    <li>„Fiókellenőrzés szükséges”</li>
+                    <li>„Adóvisszatérítés érhető el”</li>
                 </ul>
-                <div class="alert alert-warning">
-                    <strong>Szabály:</strong> ha a levél sürget, pénzt kér, vagy adatot akar kicsikarni,
-                    mindig lépj ki az e-mailből, és <strong>külön</strong> keresd fel a szolgáltató hivatalos oldalát.
-                </div>
             </div>
-            <div class="col-lg-5">
-                <div class="card">
-                    <div class="card-header">Példa tipikus phishing levél tárgyaira</div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">„Fontos biztonsági frissítés a fiókodhoz”</li>
-                        <li class="list-group-item">„Sikertelen csomagkézbesítés – erősítsd meg címed!”</li>
-                        <li class="list-group-item">„Számlatartozásod van, azonnali fizetés szükséges”</li>
-                        <li class="list-group-item">„Nyereményjátékot nyertél – add meg adataid!”</li>
-                    </ul>
-                </div>
+
+            <div class="info-card">
+                <h5 class="fw-bold">Gyakorlati tanácsok</h5>
+                <ul>
+                    <li>Soha ne kattints e-mailből érkező linkre banki belépéshez.</li>
+                    <li>Mindig kézzel írd be a bankod címét a böngészőbe.</li>
+                    <li>Ha bizonytalan vagy, hívd fel a szolgáltatót a hivatalos számán.</li>
+                </ul>
             </div>
         </div>
-    </section>
+    </div>
 
-   
-    <section class="mb-5">
-        <h2>Mellékletek és kettős kiterjesztés</h2>
-        <p>
-            A támadók gyakran mellékletben küldik a kártékony programot. Hogy álcázzák, sokszor
-            <strong>kettős kiterjesztést</strong> használnak, például:
-        </p>
-        <pre class="code-like bg-light p-2 rounded">
-szamla.pdf.exe
-dokumentum.docx.scr
-kép.jpg.exe
-        </pre>
-        <p>
-            A Windows alapértelmezésben elrejti a valódi kiterjesztést, így a felhasználó csak annyit lát, hogy
-            <span class="code-like">szamla.pdf</span>. Valójában azonban egy futtatható programról van szó.
-        </p>
+    <h2 class="section-title">2. Veszélyes mellékletek és kettős kiterjesztés</h2>
 
-        <h5>Mit tehetsz ellene?</h5>
-        <ul>
-            <li><strong>Kapcsold be a kiterjesztések megjelenítését</strong> a Windowsban.</li>
-            <li><strong>Soha ne nyiss meg</strong> ismeretlen feladótól érkező mellékletet.</li>
-            <li><strong>Ne futtass</strong> mellékletet csak azért, mert „számla” vagy „díjbekérő” van a nevében.</li>
-        </ul>
+    <div class="row g-4">
+        <div class="col-md-7">
+            <h4>2.1 Miért veszélyes a kettős kiterjesztés?</h4>
+            <p>
+                A támadók gyakran küldenek fertőzött mellékleteket, amelyeket ártalmatlannak álcáznak.
+                A leggyakoribb trükk a <strong>kettős kiterjesztés</strong>, amikor a fájl neve például így néz ki:
+            </p>
 
-        <div class="alert alert-danger">
-            <strong>Figyelem:</strong> a <span class="code-like">.exe</span>, <span class="code-like">.scr</span>, <span class="code-like">.bat</span> kiterjesztésű fájlok
-            futtatható programok – ezek különösen veszélyesek mellékletként.
-        </div>
-    </section>
+            <pre class="bg-dark text-light p-3 rounded">
+szamla_2024.pdf.exe
+delivery_note.pdf.scr
+invoice.docx.js
+            </pre>
 
-    
-    <section class="mb-5">
-        <h2>Kriptovírusok (ransomware)</h2>
-        <p>
-            A kriptovírus olyan kártékony program, amely <strong>titkosítja a fájljaidat</strong>, majd
-            <strong>pénzt követel</strong> a visszafejtésért. Gyakran éppen egy rosszindulatú melléklet
-            megnyitásával indul el.
-        </p>
-        <h5>Mit csinál egy kriptovírus?</h5>
-        <ul>
-            <li>Feltérképezi a gépen és hálózaton elérhető fájlokat.</li>
-            <li>Titkosítja őket erős algoritmussal.</li>
-            <li>Zsaroló üzenetet jelenít meg (pl. „Fizesd ki X összeget kriptovalutában”).</li>
-        </ul>
-        <div class="alert alert-danger">
-            <strong>Fontos:</strong> a váltságdíj kifizetése <strong>nem garantálja</strong>, hogy visszakapod az adataidat.
-        </div>
+            <p>
+                A Windows alapértelmezésben elrejti a valódi kiterjesztést, így a felhasználó csak azt látja,
+                hogy <strong>szamla_2024.pdf</strong>, miközben valójában egy futtatható programról van szó.
+            </p>
 
-        <h5>Megelőzés</h5>
-        <ul>
-            <li><strong>Rendszeres biztonsági mentés</strong> (offline vagy felhőben).</li>
-            <li><strong>Frissített operációs rendszer</strong> és alkalmazások.</li>
-            <li><strong>Vírusvédelem</strong> és e-mail szűrés.</li>
-            <li><strong>Makrók tiltása</strong> ismeretlen dokumentumokban.</li>
-        </ul>
-    </section>
+            <h4 class="mt-4">2.2 Veszélyes kiterjesztések</h4>
+            <ul>
+                <li><strong>.exe</strong> – futtatható program.</li>
+                <li><strong>.scr</strong> – képernyőkímélő, valójában program.</li>
+                <li><strong>.bat</strong> – parancsfájl.</li>
+                <li><strong>.js</strong> – JavaScript futtatás.</li>
+                <li><strong>.vbs</strong> – Visual Basic script.</li>
+            </ul>
 
-    
-    <section class="mb-5">
-        <h2>Interaktív feladat: Találd meg a hibát a levélben!</h2>
-        <p>
-            Kattints azokra a részekre a levélben, amelyek szerinted gyanúsak. A kattintás után
-            visszajelzést kapsz, hogy jól gondoltad-e.
-        </p>
+            <h4 class="mt-4">2.3 Védekezés – gyakorlati útmutató</h4>
+            <h6>Kiterjesztések megjelenítése Windowsban</h6>
+            <ol>
+                <li>Nyisd meg a Fájlkezelőt.</li>
+                <li>Válaszd a „Nézet” menüt.</li>
+                <li>Kapcsold be a „Fájlnévkiterjesztések” jelölőnégyzetet.</li>
+            </ol>
 
-        <div class="row">
-            <div class="col-lg-7">
-                <div class="phishing-mail">
-                    <div class="mb-2">
-                        <strong>Feladó:</strong>
-                        <span class="clickable-area" data-correct="true" data-msg="A domain gyanús: nem egyezik a valódi bank címével.">
-                            biztonsag@secure-bank-support.com
-                        </span>
-                    </div>
-                    <div class="mb-2">
-                        <strong>Címzett:</strong> te@pelda.hu
-                    </div>
-                    <div class="mb-2">
-                        <strong>Tárgy:</strong>
-                        <span class="clickable-area" data-correct="true" data-msg="Sürgető, fenyegető hangnem – tipikus phishing jel.">
-                            AZONNALI TEENDŐ: Fiókod 24 órán belül törlődik!
-                        </span>
-                    </div>
-                    <hr>
-                    <p>
-                        Tisztelt Ügyfelünk!
-                    </p>
-                    <p>
-                        Rendszerünk <span class="clickable-area" data-correct="true" data-msg="Homályos indoklás, semmi konkrétum – gyanús.">szokatlan aktivitást</span> észlelt az ön számláján.
-                        A fiókja biztonsága érdekében <strong>azonnal</strong> meg kell erősítenie adatait.
-                    </p>
-                    <p>
-                        Kérjük, kattintson az alábbi linkre, és jelentkezzen be:
-                    </p>
-                    <p>
-                        <span class="clickable-area" data-correct="true" data-msg="A link szövege bankot ígér, de a cím valami teljesen más.">
-                            <a href="#">https://www.secure-bank.hu/bejelentkezes</a>
-                            <br>
-                            (valódi cím: http://login-secure-bank-support.com.verify-account.ru)
-                        </span>
-                    </p>
-                    <p>
-                        Ha 24 órán belül nem erősíti meg adatait, fiókját <strong>véglegesen töröljük</strong>.
-                    </p>
-                    <p>
-                        Üdvözlettel,<br>
-                        „Biztonsági Osztály”
-                    </p>
-                    <p class="mt-3">
-                        Melléklet:
-                        <span class="clickable-area" data-correct="true" data-msg="Kettős kiterjesztés: valójában futtatható program, nem PDF.">
-                            szamla.pdf.exe
-                        </span>
-                    </p>
-                </div>
-                <div id="hint" class="hint-box"></div>
-            </div>
-            <div class="col-lg-5">
-                <div class="alert alert-info">
-                    <strong>Tipp:</strong> gondold végig:
-                    <ul class="mb-0">
-                        <li>Ismerős a feladó címe?</li>
-                        <li>Valóban a bankod szokott így fogalmazni?</li>
-                        <li>Rákattintanál egy ilyen linkre?</li>
-                        <li>Megnyitnál egy ilyen nevű mellékletet?</li>
-                    </ul>
-                </div>
+            <h6>Felhasználói szabályok</h6>
+            <ul>
+                <li>Csak olyan mellékletet nyiss meg, amit vártál és ismersz.</li>
+                <li>Ha a fájlnév gyanús vagy túl bonyolult, inkább ne nyisd meg.</li>
+                <li>Céges környezetben használj sandboxot vagy virtuális gépet gyanús fájlokhoz.</li>
+            </ul>
+
+            <div class="alert alert-danger mt-3">
+                <strong>Szabály:</strong> ha nem tudod pontosan, mi az a fájl, ne futtasd.
             </div>
         </div>
-    </section>
 
-</main>
+        <div class="col-md-5">
+            <div class="info-card mb-4">
+                <h5 class="fw-bold">Példák gyanús fájlnevekre</h5>
+                <ul>
+                    <li>„szamla_2024_final.pdf.exe”</li>
+                    <li>„photo.jpg.exe”</li>
+                    <li>„dhl_delivery_note.pdf.scr”</li>
+                    <li>„invoice_overdue.docx.js”</li>
+                </ul>
+            </div>
 
+            <div class="info-card">
+                <h5 class="fw-bold">Biztonságosabb gyakorlat</h5>
+                <ul>
+                    <li>PDF-et csak megbízható forrásból nyiss meg.</li>
+                    <li>Office dokumentumnál ne engedélyezd automatikusan a makrókat.</li>
+                    <li>Ismeretlen feladótól érkező ZIP mellékletet kezeld gyanúval.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="section-title">3. Kriptovírusok (ransomware) – részletes tananyag</h2>
+
+    <div class="row g-4">
+        <div class="col-md-8">
+            <h4>3.1 Hogyan működik a ransomware?</h4>
+            <p>
+                A kriptovírusok (ransomware) olyan kártékony programok, amelyek a felhasználó fájljait
+                <strong>titkosítják</strong>, majd pénzt követelnek a visszafejtésért. A titkosítás általában
+                erős algoritmusokkal (pl. AES-256, RSA-2048) történik, így a fájlok visszaállítása
+                gyakorlatilag lehetetlen a kulcs nélkül.
+            </p>
+            <p>A tipikus működés:</p>
+            <ol>
+                <li>Fájlok feltérképezése (dokumentumok, képek, adatbázisok).</li>
+                <li>Fájlok titkosítása.</li>
+                <li>Árnyékmásolatok törlése.</li>
+                <li>Kapcsolat a támadó szerverével.</li>
+                <li>Zsaroló üzenet megjelenítése.</li>
+            </ol>
+
+            <h4 class="mt-4">3.2 Fertőzési módok – részletesen</h4>
+            <ul>
+                <li>Fertőzött e-mail melléklet (pl. „számla”, „fizetési felszólítás”).</li>
+                <li>Makróval fertőzött Word/Excel dokumentum.</li>
+                <li>Régi, nem frissített rendszer sebezhetőségeinek kihasználása.</li>
+                <li>USB eszközök, külső adathordozók.</li>
+                <li>Gyenge jelszavú vagy nyitott Remote Desktop (RDP) szolgáltatás.</li>
+            </ul>
+
+            <h4 class="mt-4">3.3 Valós ransomware családok</h4>
+            <p><strong>WannaCry:</strong> Windows SMB sebezhetőséget használt ki, világszintű fertőzést okozott.</p>
+            <p><strong>Locky:</strong> e-mail mellékletből indult, főleg vállalatokat támadott.</p>
+            <p><strong>Ryuk:</strong> célzott vállalati támadások, nagy összegű váltságdíjakkal.</p>
+
+            <h4 class="mt-4">3.4 Megelőzés – oktatóanyag szinten</h4>
+            <h6>3-2-1 backup stratégia</h6>
+            <ul>
+                <li><strong>3</strong> példány az adataidról.</li>
+                <li><strong>2</strong> különböző adathordozón.</li>
+                <li><strong>1</strong> offline vagy fizikailag elkülönítve.</li>
+            </ul>
+
+            <h6>Makrók tiltása</h6>
+            <ul>
+                <li>Office → Beállítások → Trust Center → Makrók tiltása.</li>
+                <li>Csak megbízható forrásból származó dokumentumban engedélyezz makrót.</li>
+            </ul>
+
+            <h6>Zero Trust szemlélet</h6>
+            <ul>
+                <li>Alapértelmezésben senki és semmi nem megbízható.</li>
+                <li>Minden hozzáférést, kérést, kapcsolatot ellenőrizni kell.</li>
+            </ul>
+
+            <div class="alert alert-info mt-3">
+                <strong>Lényeg:</strong> a ransomware ellen a legjobb védelem a rendszeres biztonsági mentés
+                és a felhasználók tudatos oktatása.
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="info-card mb-4">
+                <h5 class="fw-bold">Zsaroló üzenet példa</h5>
+                <p class="text-danger fw-bold">
+                    „Fájljaid titkosítva lettek. Fizess 500$-t Bitcoinban 48 órán belül, különben minden adatod elveszik.”
+                </p>
+            </div>
+
+            <div class="info-card">
+                <h5 class="fw-bold">Mit tegyünk fertőzés után?</h5>
+                <ul>
+                    <li>Azonnal leválasztani a gépet a hálózatról.</li>
+                    <li>Nem fizetni automatikusan a váltságdíjat.</li>
+                    <li>Biztonsági mentésből visszaállítani, ha lehetséges.</li>
+                    <li>Biztonsági szakember bevonása.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="section-title">4. Interaktív feladat – Találd meg a hibát!</h2>
+
+    <div class="row">
+        <div class="col-lg-7">
+            <div class="phishing-mail mb-4">
+                <h5 class="mb-3">Banki phishing példa</h5>
+                <div class="mb-2">
+                    <strong>Feladó:</strong>
+                    <span class="clickable-area" data-correct="true" data-msg="A domain gyanús: nem egyezik a valódi bank címével.">
+                        biztonsag@secure-bank-support.com
+                    </span>
+                </div>
+
+                <div class="mb-2">
+                    <strong>Tárgy:</strong>
+                    <span class="clickable-area" data-correct="true" data-msg="Sürgető, fenyegető hangnem – tipikus phishing jel.">
+                        AZONNALI TEENDŐ: Fiókod 24 órán belül törlődik!
+                    </span>
+                </div>
+
+                <hr>
+
+                <p>
+                    Tisztelt Ügyfelünk! Rendszerünk
+                    <span class="clickable-area" data-correct="true" data-msg="Homályos indoklás, semmi konkrétum – gyanús.">
+                        szokatlan aktivitást
+                    </span>
+                    észlelt az ön számláján.
+                </p>
+
+                <p>
+                    Kérjük, kattintson az alábbi linkre, és erősítse meg adatait:
+                </p>
+
+                <p>
+                    <span class="clickable-area" data-correct="true" data-msg="A link szövege bankot ígér, de a cím valami teljesen más.">
+                        <a href="#">https://www.secure-bank.hu/bejelentkezes</a><br>
+                        (valódi cím: http://login-secure-bank-support.com.verify-account.ru)
+                    </span>
+                </p>
+
+                <p>
+                    Melléklet:
+                    <span class="clickable-area" data-correct="true" data-msg="Kettős kiterjesztés: valójában futtatható program.">
+                        szamla_2024.pdf.exe
+                    </span>
+                </p>
+            </div>
+
+            <div class="phishing-mail">
+                <h5 class="mb-3">Csomagküldős átverés példa</h5>
+                <div class="mb-2">
+                    <strong>Feladó:</strong>
+                    <span class="clickable-area" data-correct="true" data-msg="Ingyenes e-mail cím egy állítólagos futárszolgálattól – gyanús.">
+                        dhl-support-delivery@gmail.com
+                    </span>
+                </div>
+
+                <div class="mb-2">
+                    <strong>Tárgy:</strong>
+                    <span class="clickable-area" data-correct="true" data-msg="Sürgetés és fizetésre utalás – tipikus átverés.">
+                        Sürgős: Fizetési elmaradás a csomag kézbesítéséhez
+                    </span>
+                </div>
+
+                <hr>
+
+                <p>
+                    Tisztelt Ügyfelünk! A csomagja kézbesítése
+                    <span class="clickable-area" data-correct="true" data-msg="Homályos, általános megfogalmazás – nincs konkrét adat.">
+                        fizetési elmaradás
+                    </span>
+                    miatt sikertelen volt.
+                </p>
+
+                <p>
+                    Kérjük, nyissa meg a mellékelt számlát, és rendezze tartozását:
+                </p>
+
+                <p>
+                    Melléklet:
+                    <span class="clickable-area" data-correct="true" data-msg="Ismeretlen ZIP melléklet – gyakori malware hordozó.">
+                        delivery_invoice.zip
+                    </span>
+                </p>
+            </div>
+
+            <div id="hint" class="mt-3"></div>
+        </div>
+
+        <div class="col-lg-5">
+            <div class="alert alert-info">
+                <strong>Tipp:</strong> Kattints minden olyan részre, ami gyanúsnak tűnik. Gondold végig:
+                <ul class="mb-0">
+                    <li>Valóban ettől a cégtől vársz e-mailt?</li>
+                    <li>Valóban rendeltél csomagot?</li>
+                    <li>Miért kérnek adatot vagy fizetést e-mailben?</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    
     const areas = document.querySelectorAll('.clickable-area');
     const hintBox = document.getElementById('hint');
 
     areas.forEach(area => {
         area.addEventListener('click', () => {
-            
             areas.forEach(a => a.classList.remove('correct', 'wrong'));
 
             const isCorrect = area.dataset.correct === 'true';
-            const msg = area.dataset.msg || '';
+            const msg = area.dataset.msg;
 
             if (isCorrect) {
                 area.classList.add('correct');
-                hintBox.innerHTML = '<div class="alert alert-success mb-0"><strong>Jó észrevétel!</strong> ' + msg + '</div>';
+                hintBox.innerHTML = '<div class="alert alert-success">' + msg + '</div>';
             } else {
                 area.classList.add('wrong');
-                hintBox.innerHTML = '<div class="alert alert-danger mb-0"><strong>Ez most nem gyanús elem.</strong> Próbálj meg másik részt megjelölni!</div>';
+                hintBox.innerHTML = '<div class="alert alert-danger">Ez nem gyanús elem.</div>';
             }
         });
     });
