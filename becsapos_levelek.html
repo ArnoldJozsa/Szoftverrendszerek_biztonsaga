@@ -615,142 +615,270 @@ photo[U+202E]gpj.exe
 
 
 
-    <h2 class="section-title">3. Kriptovírusok (ransomware) – részletes tananyag</h2>
+    <h2 class="section-title">3. Kriptovírusok (ransomware)</h2>
 
-    <div class="row g-4">
-        <div class="col-md-8">
-            <h4>3.1 Hogyan működik a ransomware?</h4>
-            <p>
-                A kriptovírusok (ransomware) olyan kártékony programok, amelyek a felhasználó fájljait
-                <strong>titkosítják</strong>, majd pénzt követelnek a visszafejtésért. A titkosítás általában
-                erős algoritmusokkal (pl. AES-256, RSA-2048) történik, így a fájlok visszaállítása
-                gyakorlatilag lehetetlen a kulcs nélkül.
+<div class="row g-4">
+    <div class="col-md-8">
+
+        <h4>3.1 Hogyan működik a ransomware?</h4>
+        <p>
+            A kriptovírusok (ransomware) olyan kártékony programok, amelyek a felhasználó fájljait
+            <strong>titkosítják</strong>, majd pénzt követelnek a visszafejtésért. A modern ransomware-ek
+            többsége <strong>hibrid titkosítást</strong> használ: a fájlokat gyors szimmetrikus algoritmus
+            (pl. AES-256) titkosítja, a kulcsot pedig aszimmetrikus algoritmus (pl. RSA-2048) védi.
+        </p>
+
+        <p>A tipikus működés:</p>
+        <ol>
+            <li><strong>Fájlok feltérképezése</strong> – dokumentumok, képek, adatbázisok, hálózati meghajtók.</li>
+            <li><strong>Titkosítás</strong> – minden fájl új kiterjesztést kap (pl. .locked, .encrypted).</li>
+            <li><strong>Árnyékmásolatok törlése</strong> – hogy ne lehessen visszaállítani.</li>
+            <li><strong>Kapcsolat a támadó szerverével</strong> – kulcsok, fertőzési statisztikák továbbítása.</li>
+            <li><strong>Zsaroló üzenet megjelenítése</strong> – fizetési instrukciók, határidők.</li>
+        </ol>
+
+        <h5 class="mt-3">Miért ennyire hatékony?</h5>
+        <ul>
+            <li>A titkosítás <strong>visszafejthetetlen</strong> a kulcs nélkül.</li>
+            <li>A támadók gyakran <strong>automatizált rendszereket</strong> használnak.</li>
+            <li>A fertőzés sokszor <strong>észrevétlenül</strong> történik.</li>
+            <li>A vállalatoknál a hálózati meghajtók miatt <strong>tömeges kár</strong> keletkezik.</li>
+        </ul>
+
+        <h4 class="mt-4">3.2 Fertőzési módok – részletesen</h4>
+        <p>A ransomware többféle úton juthat be a rendszerbe:</p>
+        <ul>
+            <li><strong>Fertőzött e-mail melléklet</strong> – számlának, díjbekérőnek álcázva.</li>
+            <li><strong>Makróval fertőzött Office dokumentum</strong> – „Engedélyezze a tartalmat” trükk.</li>
+            <li><strong>Exploitok</strong> – régi, nem frissített Windows vagy alkalmazások sebezhetőségei.</li>
+            <li><strong>USB eszközök</strong> – autorun vagy rejtett futtatható fájlok.</li>
+            <li><strong>Gyenge jelszavú RDP</strong> – a támadók belépnek, majd kézzel telepítik a vírust.</li>
+            <li><strong>Drive-by download</strong> – fertőzött weboldal automatikusan letölt valamit.</li>
+        </ul>
+
+        <h5 class="mt-3">Támadási lánc (Kill Chain)</h5>
+        <p>A modern ransomware támadások gyakran több lépésből állnak:</p>
+        <ol>
+            <li>Belépés (phishing, RDP, exploit).</li>
+            <li>Oldalsó mozgás (lateral movement) a hálózaton.</li>
+            <li>Admin jogosultság megszerzése.</li>
+            <li>Biztonsági mentések törlése.</li>
+            <li>Tömeges titkosítás.</li>
+        </ol>
+
+        <h4 class="mt-4">3.3 Valós ransomware családok</h4>
+        <p><strong>WannaCry:</strong> Windows SMB sebezhetőséget használt ki, világszintű fertőzést okozott.</p>
+        <p><strong>Locky:</strong> e-mail mellékletből indult, főleg vállalatokat támadott.</p>
+        <p><strong>Ryuk:</strong> célzott vállalati támadások, nagy összegű váltságdíjakkal.</p>
+        <p><strong>Conti:</strong> professzionális bűnszervezet, dupla zsarolást alkalmazott (adatlopás + titkosítás).</p>
+        <p><strong>REvil:</strong> ellátási lánc támadások, Kaseya-incidens.</p>
+
+        <h4 class="mt-4">3.4 Megelőzés – oktatóanyag szinten</h4>
+
+        <h6>3-2-1 backup stratégia</h6>
+        <ul>
+            <li><strong>3</strong> példány az adataidról.</li>
+            <li><strong>2</strong> különböző adathordozón.</li>
+            <li><strong>1</strong> offline vagy fizikailag elkülönítve.</li>
+        </ul>
+
+        <h6>Makrók tiltása</h6>
+        <ul>
+            <li>Office → Beállítások → Trust Center → Makrók tiltása.</li>
+            <li>Csak megbízható forrásból származó dokumentumban engedélyezz makrót.</li>
+        </ul>
+
+        <h6>Zero Trust szemlélet</h6>
+        <ul>
+            <li>Alapértelmezésben senki és semmi nem megbízható.</li>
+            <li>Minden hozzáférést, kérést, kapcsolatot ellenőrizni kell.</li>
+        </ul>
+
+        <h6>Vállalati védelem</h6>
+        <ul>
+            <li>Végpontvédelem (EDR) használata.</li>
+            <li>Rendszeres sebezhetőségvizsgálat.</li>
+            <li>Hálózati szegmentáció.</li>
+            <li>Admin jogosultságok minimalizálása.</li>
+        </ul>
+
+        <div class="alert alert-info mt-3">
+            <strong>Lényeg:</strong> a ransomware ellen a legjobb védelem a rendszeres biztonsági mentés,
+            a frissítések telepítése és a felhasználók tudatos oktatása.
+        </div>
+        <button class="btn btn-outline-primary mt-3" data-bs-toggle="modal" data-bs-target="#taskRansomModal">
+            Feladat – Mit tegyünk fertőzés után?
+        </button>
+        <br>
+        <button class="btn btn-outline-primary mt-3" data-bs-toggle="modal" data-bs-target="#taskRansomImgModal">
+            Feladat – Valódi ransomware vagy ártalmatlan?
+        </button>
+
+
+    </div>
+
+    <div class="col-md-4">
+        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=900&q=80"
+             alt="Zsaroló üzenet illusztráció" class="img-fluid rounded shadow mb-4">
+
+        <div class="info-card mb-4">
+            <h5 class="fw-bold">Zsaroló üzenet példa</h5>
+            <p class="text-danger fw-bold">
+                „Fájljaid titkosítva lettek. Fizess 500$-t Bitcoinban 48 órán belül, különben minden adatod elveszik.”
             </p>
-            <p>A tipikus működés:</p>
-            <ol>
-                <li>Fájlok feltérképezése (dokumentumok, képek, adatbázisok).</li>
-                <li>Fájlok titkosítása.</li>
-                <li>Árnyékmásolatok törlése.</li>
-                <li>Kapcsolat a támadó szerverével.</li>
-                <li>Zsaroló üzenet megjelenítése.</li>
-            </ol>
-
-            <h4 class="mt-4">3.2 Fertőzési módok – részletesen</h4>
-            <ul>
-                <li>Fertőzött e-mail melléklet (pl. „számla”, „fizetési felszólítás”).</li>
-                <li>Makróval fertőzött Word/Excel dokumentum.</li>
-                <li>Régi, nem frissített rendszer sebezhetőségeinek kihasználása.</li>
-                <li>USB eszközök, külső adathordozók.</li>
-                <li>Gyenge jelszavú vagy nyitott Remote Desktop (RDP) szolgáltatás.</li>
-            </ul>
-
-            <h4 class="mt-4">3.3 Valós ransomware családok</h4>
-            <p><strong>WannaCry:</strong> Windows SMB sebezhetőséget használt ki, világszintű fertőzést okozott.</p>
-            <p><strong>Locky:</strong> e-mail mellékletből indult, főleg vállalatokat támadott.</p>
-            <p><strong>Ryuk:</strong> célzott vállalati támadások, nagy összegű váltságdíjakkal.</p>
-
-            <h4 class="mt-4">3.4 Megelőzés – oktatóanyag szinten</h4>
-            <h6>3-2-1 backup stratégia</h6>
-            <ul>
-                <li><strong>3</strong> példány az adataidról.</li>
-                <li><strong>2</strong> különböző adathordozón.</li>
-                <li><strong>1</strong> offline vagy fizikailag elkülönítve.</li>
-            </ul>
-
-            <h6>Makrók tiltása</h6>
-            <ul>
-                <li>Office → Beállítások → Trust Center → Makrók tiltása.</li>
-                <li>Csak megbízható forrásból származó dokumentumban engedélyezz makrót.</li>
-            </ul>
-
-            <h6>Zero Trust szemlélet</h6>
-            <ul>
-                <li>Alapértelmezésben senki és semmi nem megbízható.</li>
-                <li>Minden hozzáférést, kérést, kapcsolatot ellenőrizni kell.</li>
-            </ul>
-
-            <div class="alert alert-info mt-3">
-                <strong>Lényeg:</strong> a ransomware ellen a legjobb védelem a rendszeres biztonsági mentés
-                és a felhasználók tudatos oktatása.
-            </div>
         </div>
 
-        <div class="col-md-4">
-            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=900&q=80"
-                 alt="Zsaroló üzenet illusztráció" class="img-fluid rounded shadow mb-4">
-            <div class="info-card mb-4">
-                <h5 class="fw-bold">Zsaroló üzenet példa</h5>
-                <p class="text-danger fw-bold">
-                    „Fájljaid titkosítva lettek. Fizess 500$-t Bitcoinban 48 órán belül, különben minden adatod elveszik.”
-                </p>
+        <div class="info-card">
+            <h5 class="fw-bold">Mit tegyünk fertőzés után?</h5>
+            <ul>
+                <li>Azonnal leválasztani a gépet a hálózatról.</li>
+                <li>Nem fizetni automatikusan a váltságdíjat.</li>
+                <li>Biztonsági mentésből visszaállítani, ha lehetséges.</li>
+                <li>Biztonsági szakember bevonása.</li>
+                <li>Incidensnapló készítése (időpontok, események).</li>
+                <li>Hatóság értesítése nagyobb károk esetén.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="taskRansomModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Feladat – Mit tegyünk fertőzés után?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
 
-            <div class="info-card">
-                <h5 class="fw-bold">Mit tegyünk fertőzés után?</h5>
-                <ul>
-                    <li>Azonnal leválasztani a gépet a hálózatról.</li>
-                    <li>Nem fizetni automatikusan a váltságdíjat.</li>
-                    <li>Biztonsági mentésből visszaállítani, ha lehetséges.</li>
-                    <li>Biztonsági szakember bevonása.</li>
-                </ul>
+            <div class="modal-body">
+                <p>Jelöld ki azokat a lépéseket, amelyek helyesek ransomware fertőzés után.</p>
+
+                <div id="taskRansom"></div>
+
+                <div class="d-flex gap-2 mt-3">
+                    <button class="action-btn" onclick="checkTaskRansom()">Eredmény</button>
+                    <button class="restart-btn" onclick="loadRandomItems(taskRansomPool, 'taskRansom', 8)">Újraindítás</button>
+                </div>
             </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="taskRansomImgModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Feladat – Valódi ransomware vagy ártalmatlan?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <p>Vigyázz! Némelyik kép valódi ransomware képernyő. Találd meg őket!</p>
+
+                <div id="taskRansomImg" class="image-grid"></div>
+
+                <div class="d-flex gap-2 mt-3">
+                    <button class="action-btn" onclick="checkTaskRansomImg()">Eredmény</button>
+                    <button class="restart-btn" onclick="loadRansomImages()">Újraindítás</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+   <h2 class="section-title">4. SMS és csomagos csalások (smishing)</h2>
+
+<div class="row g-4 align-items-start">
+    <div class="col-lg-7">
+
+        <h4>4.1 Mi az a smishing?</h4>
+        <p>
+            A <strong>smishing</strong> az SMS-en keresztül történő phishing. A támadó rövid szöveges üzenetben
+            próbál rávenni arra, hogy egy linkre kattints, alkalmazást telepíts, vagy személyes adatot adj meg.
+            A módszer azért hatékony, mert az SMS-t sokan még mindig „megbízhatóbbnak” érzik, mint az e-mailt.
+        </p>
+        <p>
+            A támadók gyakran használnak <strong>rövidített linkeket</strong> (bit.ly, tinyurl, cutt.ly), 
+            sürgető vagy fenyegető hangnemet, illetve olyan szolgáltatók nevében írnak, amelyeket sokan használnak
+            (pl. futárszolgálatok, bankok, NAV).
+        </p>
+
+        <h4 class="mt-4">4.2 Csomagos csalások – tipikus minták</h4>
+        <p>
+            A csomagos smishing üzenetek a leggyakoribbak. A támadók a csomagküldésre építenek, mert
+            szinte mindenki rendel online, így nagy az esély, hogy „találatot” érnek el.
+        </p>
+        <ul>
+            <li>„Csomagja érkezett, de a kézbesítés sikertelen volt. Kattintson ide az újrakézbesítéshez.”</li>
+            <li>„Kis összegű vámkezelési díj szükséges a csomag átvételéhez. Fizessen itt: [link].”</li>
+            <li>„A futár nem találta otthon, erősítse meg címét az alábbi linken.”</li>
+            <li>„A csomagja visszaküldésre kerül, ha nem igazolja a kézbesítést 24 órán belül.”</li>
+        </ul>
+
+        <h5 class="mt-3">Hogyan működik a csomagos csalás?</h5>
+        <ul>
+            <li>A link egy hamis futárszolgálati oldalra visz.</li>
+            <li>A felhasználót bankkártyaadatok megadására kérik.</li>
+            <li>A támadók azonnal megterhelik a számlát.</li>
+            <li>Gyakran további adathalász támadások követik.</li>
+        </ul>
+
+        <h4 class="mt-4">4.3 Banki és NAV-os SMS csalások</h4>
+        <p>
+            Ezek különösen veszélyesek, mert a feladó neve gyakran <strong>hamisítható</strong>, így az SMS
+            akár a valódi banki üzenetek közé is bekerülhet.
+        </p>
+        <ul>
+            <li>„Gyanús tranzakciót észleltünk a számláján. Ha nem Ön volt, kattintson ide.”</li>
+            <li>„Adóvisszatérítés érhető el. Igényelje itt: [link].”</li>
+            <li>„Bankkártyája zárolásra kerül. Erősítse meg adatait az alábbi oldalon.”</li>
+            <li>„NAV: elmaradt befizetés miatt végrehajtási eljárás indul.”</li>
+        </ul>
+
+        <h4 class="mt-4">4.4 Hogyan ismerjük fel a smishinget?</h4>
+        <ul>
+            <li><strong>Ismeretlen szám</strong> vagy külföldi előhívó (+44, +353, +31).</li>
+            <li><strong>Sürgetés</strong>, fenyegetés, fizetésre felszólítás.</li>
+            <li><strong>Rövidített vagy furcsa link</strong> (bit.ly, xyz-login, secure-update).</li>
+            <li><strong>Helyesírási hibák</strong>, gépi fordításra utaló szöveg.</li>
+            <li>Olyan szolgáltatóra hivatkozik, amit <strong>nem is használsz</strong>.</li>
+            <li>Az üzenet túl általános: „Tisztelt Ügyfelünk”, „Kedves Felhasználó”.</li>
+        </ul>
+
+        <h4 class="mt-4">4.5 Mit tegyünk, ha smishinget kapunk?</h4>
+        <ul>
+            <li>Ne kattints a linkre.</li>
+            <li>Ne válaszolj az üzenetre.</li>
+            <li>Blokkold a számot.</li>
+            <li>Jelentsd a szolgáltatódnak (pl. Telekom, Vodafone, Yettel).</li>
+            <li>Ha rákattintottál: azonnal <strong>bankkártya tiltás</strong> + <strong>jelszócsere</strong>.</li>
+        </ul>
+
+        <div class="alert alert-warning mt-3">
+            <strong>Szabály:</strong> bank, NAV, futárszolgálat nem kér SMS-ben jelszót, bankkártyaadatot,
+            és nem küld rövidített linket fizetéshez.
         </div>
     </div>
 
-    <h2 class="section-title">4. SMS és csomagos csalások (smishing)</h2>
+    <div class="col-lg-5">
+        <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=900&q=80"
+             alt="Telefonos üzenetek illusztráció" class="img-fluid rounded shadow mb-4">
 
-    <div class="row g-4 align-items-start">
-        <div class="col-lg-7">
-            <h4>4.1 Mi az a smishing?</h4>
-            <p>
-                A <strong>smishing</strong> az SMS-en keresztül történő phishing. A támadó rövid szöveges üzenetben
-                próbál rávenni arra, hogy egy linkre kattints, alkalmazást telepíts, vagy adatot adj meg.
-            </p>
-            <p>
-                Mivel az SMS rövid, a támadók gyakran használnak rövidített linkeket, és sürgető, fenyegető
-                vagy csábító szöveget.
-            </p>
-
-            <h4 class="mt-4">4.2 Csomagos csalások – tipikus minták</h4>
+        <div class="info-card">
+            <h5 class="fw-bold">Gyakori smishing üzenetek</h5>
             <ul>
-                <li>„Csomagja érkezett, de a kézbesítés sikertelen volt. Kattintson ide az újrakézbesítéshez.”</li>
-                <li>„Kis összegű vámkezelési díj szükséges a csomag átvételéhez. Fizessen itt: [link].”</li>
-                <li>„A futár nem találta otthon, erősítse meg címét az alábbi linken.”</li>
+                <li>„DHL: csomagja érkezett, fizessen 350 Ft vámot itt: bit.ly/...”</li>
+                <li>„[BANK]: gyanús bejelentkezés történt. Erősítse meg itt: secure-login.xyz”</li>
+                <li>„NAV: adóvisszatérítés érhető el. Igényelje most: nav-refund.eu”</li>
+                <li>„GLS: a csomagja vámkezelés alatt áll. Fizessen 290 Ft-ot.”</li>
+                <li>„PayPal: fiókja korlátozásra került. Azonosítsa magát.”</li>
             </ul>
-
-            <h4 class="mt-4">4.3 Banki és NAV-os SMS csalások</h4>
-            <ul>
-                <li>„Gyanús tranzakciót észleltünk a számláján. Ha nem Ön volt, kattintson ide.”</li>
-                <li>„Adóvisszatérítés érhető el. Igényelje itt: [link].”</li>
-                <li>„Bankkártyája zárolásra kerül. Erősítse meg adatait az alábbi oldalon.”</li>
-            </ul>
-
-            <h4 class="mt-4">4.4 Hogyan ismerjük fel a smishinget?</h4>
-            <ul>
-                <li>Ismeretlen szám vagy külföldi előhívó.</li>
-                <li>Sürgetés, fenyegetés, fizetésre felszólítás.</li>
-                <li>Rövidített vagy furcsa link.</li>
-                <li>Olyan szolgáltatóra hivatkozik, amit nem is használsz.</li>
-            </ul>
-
-            <div class="alert alert-warning mt-3">
-                <strong>Szabály:</strong> bank, NAV, futárszolgálat nem kér SMS-ben jelszót, bankkártyaadatot,
-                és nem küld rövidített linket fizetéshez.
-            </div>
-        </div>
-        <div class="col-lg-5">
-            <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=900&q=80"
-                 alt="Telefonos üzenetek illusztráció" class="img-fluid rounded shadow mb-4">
-            <div class="info-card">
-                <h5 class="fw-bold">Gyakori smishing üzenetek</h5>
-                <ul>
-                    <li>„DHL: csomagja érkezett, fizessen 350 Ft vámot itt: bit.ly/...”</li>
-                    <li>„[BANK]: gyanús bejelentkezés történt. Erősítse meg itt: secure-login.xyz”</li>
-                    <li>„NAV: adóvisszatérítés érhető el. Igényelje most: nav-refund.eu”</li>
-                </ul>
-            </div>
         </div>
     </div>
+</div>
 
     <h2 class="section-title">5. Interaktív feladatok – Találd meg a hibát!</h2>
 
@@ -972,8 +1100,6 @@ const dangerPool = [
 ];
 
 
-
-
 const dragItemsPool = [
     { text: "szamla_2024.pdf.exe", correct: "danger" },
     { text: "invoice.docx.js", correct: "danger" },
@@ -988,6 +1114,90 @@ const dragItemsPool = [
     { text: "delivery_note_original.pdf", correct: "safe" },
     { text: "szamla_2024_final.pdf", correct: "safe" }
 ];
+
+const taskRansomPool = [
+    { text: "Azonnal leválasztani a gépet a hálózatról.", correct: true },
+    { text: "Nem fizetni automatikusan a váltságdíjat.", correct: true },
+    { text: "Biztonsági mentésből visszaállítani, ha lehetséges.", correct: true },
+    { text: "Biztonsági szakember bevonása.", correct: true },
+    { text: "Incidensnapló készítése (időpontok, események).", correct: true },
+    { text: "Hatóság értesítése nagyobb károk esetén.", correct: true },
+    { text: "Újraindítani a gépet, hátha eltűnik a vírus.", correct: false },
+    { text: "Megnyitni a titkosított fájlokat, hátha működnek.", correct: false },
+    { text: "Letölteni egy 'ingyenes visszafejtő programot' ismeretlen oldalról.", correct: false },
+    { text: "Fizetni a támadónak azonnal, hogy gyorsabban megoldódjon.", correct: false },
+    { text: "Tovább dolgozni a fertőzött gépen, amíg megoldják.", correct: false },
+    { text: "Másolni a titkosított fájlokat pendrive-ra, hogy 'biztonságban legyenek'.", correct: false }
+];
+
+const ransomwareImagePool = [
+    { src: "images/ransomware1.png", correct: true },
+    { src: "images/ransomware2.png", correct: true },
+    { src: "images/ransomware3.jpg", correct: true },
+    { src: "images/ransomware4.png", correct: true },
+    { src: "images/safe1.jpg", correct: false },
+    { src: "images/safe2.webp", correct: false },
+    { src: "images/safe3.jpg", correct: false },
+    { src: "images/safe4.jpeg", correct: false }
+];
+
+function loadRansomImages() {
+    const container = document.getElementById("taskRansomImg");
+    container.innerHTML = "";
+
+    const shuffled = [...ransomwareImagePool].sort(() => 0.5 - Math.random());
+    const selected = shuffled.slice(0, 8);
+
+    selected.forEach(item => {
+        const div = document.createElement("div");
+        div.classList.add("image-item");
+        div.dataset.correct = item.correct;
+
+        const img = document.createElement("img");
+        img.src = item.src + "?v=" + Date.now();
+
+
+        div.appendChild(img);
+
+        div.addEventListener("click", () => {
+            if (div.classList.contains("locked")) return;
+            div.classList.toggle("selected");
+        });
+
+        container.appendChild(div);
+    });
+}
+
+document.getElementById('taskRansomImgModal').addEventListener('shown.bs.modal', loadRansomImages);
+
+function checkTaskRansomImg() {
+    const items = document.querySelectorAll("#taskRansomImg .image-item");
+
+    let correctSelected = 0;
+    let wrongSelected = 0;
+
+    items.forEach(item => {
+        const isCorrect = item.dataset.correct === "true";
+        const isSelected = item.classList.contains("selected");
+
+        if (isSelected) {
+            if (isCorrect) {
+                item.classList.add("correct");
+                correctSelected++;
+            } else {
+                item.classList.add("wrong");
+                wrongSelected++;
+            }
+        }
+
+        item.classList.add("locked");
+    });
+
+    const total = correctSelected + wrongSelected;
+    const percent = total === 0 ? 0 : Math.round((correctSelected / total) * 100);
+
+    showResult("Eredmény: " + percent + "%", "taskRansomImg", ransomwareImagePool, 8);
+}
 
 function loadRandomItems(pool, containerId, count) {
     const container = document.getElementById(containerId);
@@ -1164,6 +1374,13 @@ function checkDragTask() {
 }
 
 
+document.getElementById('taskRansomModal').addEventListener('shown.bs.modal', () => {
+    loadRandomItems(taskRansomPool, "taskRansom", 8);
+});
+
+function checkTaskRansom() {
+    showResult("Eredmény: " + evaluate("taskRansom"), "taskRansom", taskRansomPool, 8);
+}
 
 
 document.getElementById('resultModal').addEventListener('hidden.bs.modal', () => {
