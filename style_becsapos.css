@@ -1,0 +1,210 @@
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #f8f9fa;
+    color: #0d1b2a;
+    line-height: 1.7;
+}
+
+
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+                url('https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&w=1400&q=80');
+    background-size: cover;
+    background-position: center;
+    padding: 140px 0;
+    text-align: center;
+    color: white;
+}
+
+.hero h1 {
+    font-size: 3.2rem;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 1.4rem;
+    opacity: 0.9;
+}
+
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    border-left: 6px solid #00b4d8;
+    padding-left: 14px;
+    margin-top: 60px;
+    margin-bottom: 25px;
+}
+
+
+.info-card {
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(8px);
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: transform .2s, box-shadow .2s;
+}
+
+.info-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+}
+
+
+.phishing-mail {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+.clickable-area {
+    cursor: pointer;
+    padding: 3px 5px;
+    border-radius: 4px;
+    transition: background .2s, outline .2s;
+}
+
+.clickable-area.correct {
+    outline: 2px solid #198754;
+    background: rgba(25,135,84,0.15);
+}
+
+.clickable-area.wrong {
+    outline: 2px solid #dc3545;
+    background: rgba(220,53,69,0.15);
+}
+
+.wave {
+    width: 100%;
+    height: 80px;
+    background: url('https://svgshare.com/i/ubC.svg');
+    background-size: cover;
+}
+
+
+.quiz-item {
+    padding: 14px 18px;
+    margin-bottom: 12px;
+    background: #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid #e3e6ea;
+    transition: all 0.25s ease;
+    font-size: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+}
+
+
+.quiz-item:not(.locked):hover {
+    background: #f3f8ff;
+    border-color: #bcd4ff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+
+.quiz-item.selected {
+    background: #e8f0ff;
+    border-color: #7aa7ff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+}
+
+
+.quiz-item.correct {
+    background: #d9f7e3 !important;
+    border-color: #4caf50 !important;
+    color: #1b5e20 !important;
+    box-shadow: 0 4px 12px rgba(76,175,80,0.25) !important;
+}
+
+
+.quiz-item.wrong {
+    background: #ffe0e0 !important;
+    border-color: #e53935 !important;
+    color: #b71c1c !important;
+    box-shadow: 0 4px 12px rgba(229,57,53,0.25) !important;
+}
+
+
+.quiz-item.locked {
+    cursor: not-allowed;
+    opacity: 0.75;
+}
+.modal-dialog {
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content {
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-body {
+    overflow-y: auto;
+    max-height: calc(90vh - 120px); 
+    padding-right: 10px;
+}
+
+.modal-header {
+    background: linear-gradient(135deg, #1e88e5, #1565c0);
+    color: white;
+    border-bottom: none;
+    padding: 18px 24px;
+}
+.modal-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: #b7c4d4;
+    border-radius: 3px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background: #8fa2b8;
+}
+
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+
+.restart-btn {
+    background: #f0f4ff;
+    color: #1a3fa3;
+    border: 1px solid #b9c8ff;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+
+.restart-btn:hover {
+    background: #dce6ff;
+    border-color: #8aa6ff;
+    color: #0f2f8a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+}
+
+
+.restart-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+
+
+.restart-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
