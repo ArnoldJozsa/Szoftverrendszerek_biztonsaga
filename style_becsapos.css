@@ -59,23 +59,27 @@ body {
     padding: 20px;
     box-shadow: 0 6px 18px rgba(0,0,0,0.1);
 }
-
 .clickable-area {
     cursor: pointer;
-    padding: 3px 5px;
+    padding: 2px 4px;
     border-radius: 4px;
-    transition: background .2s, outline .2s;
+    transition: background-color 0.2s, box-shadow 0.2s;
 }
 
-.clickable-area.correct {
-    outline: 2px solid #198754;
-    background: rgba(25,135,84,0.15);
+.clickable-area:hover {
+    background-color: #eef3ff;
 }
 
-.clickable-area.wrong {
-    outline: 2px solid #dc3545;
-    background: rgba(220,53,69,0.15);
+.highlight-correct {
+    background-color: #d4edda !important;
+    box-shadow: 0 0 0 2px #28a745 inset;
 }
+
+.highlight-wrong {
+    background-color: #f8d7da !important;
+    box-shadow: 0 0 0 2px #dc3545 inset;
+}
+
 
 .wave {
     width: 100%;
