@@ -121,754 +121,359 @@
 
     </div>
 
-</div>
+    <h2 id="tipusok" class="mt-5">2. A kétfaktoros azonosítás különböző formái</h2>
 
-<h2 id="tipusok">2. A kétfaktoros azonosítás különböző formái</h2>
+    <div class="row g-4 align-items-start">
 
-<div class="row g-4 align-items-start">
+        <div class="col-lg-7">
 
-    <div class="col-lg-7">
+            <h4>2.1 SMS alapú hitelesítés</h4>
 
-        <h4>2.1 SMS alapú hitelesítés</h4>
+            <p>
+                Az egyik legismertebb kétfaktoros megoldás az SMS-ben küldött egyszer használatos kód.
+                Bejelentkezéskor a rendszer egy rövid érvényességű kódot küld a felhasználó telefonjára,
+                amelyet a jelszó után kell megadni.
+            </p>
 
-        <p>
-            Az egyik legismertebb kétfaktoros megoldás az SMS-ben küldött egyszer használatos kód.
-            Bejelentkezéskor a rendszer egy rövid érvényességű kódot küld a felhasználó telefonjára,
-            amelyet a jelszó után kell megadni.
-        </p>
-
-        <p>
-            Bár ez a módszer jelentősen biztonságosabb, mint a kizárólagos jelszóhasználat,
-            mára több ismert támadási módszer is létezik ellene.
-        </p>
-
-        <ul>
-            <li><strong>Előnye:</strong> egyszerű és gyors használat.</li>
-            <li><strong>Hátránya:</strong> SIM-csere (SIM swap) támadásokkal kijátszható.</li>
-            <li><strong>Kockázat:</strong> a telefonszám eltérítése esetén a támadó megkaphatja a kódokat.</li>
-        </ul>
-
-        <div class="alert alert-warning mt-3">
-            <strong>Fontos:</strong> az SMS-alapú 2FA jobb, mint a semmi,
-            de ma már nem számít a legerősebb megoldásnak.
-        </div>
-
-        <h4 class="mt-5">2.2 Authenticator alkalmazások</h4>
-
-        <p>
-            Az authenticator alkalmazások a modern kétfaktoros hitelesítés legnépszerűbb formái közé tartoznak.
-            A rendszer nem SMS-ben küldi a kódot, hanem a telefonon futó alkalmazás generálja azt.
-        </p>
-
-        <p>
-            A legismertebb alkalmazások:
-        </p>
-
-        <ul>
-            <li><strong>Google Authenticator</strong></li>
-            <li><strong>Microsoft Authenticator</strong></li>
-            <li><strong>Authy</strong></li>
-        </ul>
-
-        <p>
-            Ezek az alkalmazások úgynevezett <strong>időalapú egyszer használatos kódokat</strong>
-            (TOTP – Time-based One-Time Password) generálnak.
-        </p>
-
-        <p>
-            A kódok általában 30 másodpercenként automatikusan változnak,
-            ezért a támadóknak nagyon rövid idejük van azok felhasználására.
-        </p>
-
-        <h5 class="mt-3">Miért biztonságosabb?</h5>
-
-        <ul>
-            <li>A kód nem SMS-ben érkezik.</li>
-            <li>Nehezebb eltéríteni, mint a telefonszámot.</li>
-            <li>Offline is működik internetkapcsolat nélkül.</li>
-            <li>A generált kód rövid ideig érvényes.</li>
-        </ul>
-
-        <h5 class="mt-3">Hátrányok</h5>
-
-        <ul>
-            <li>A telefon elvesztése problémát okozhat.</li>
-            <li>Biztonsági mentés nélkül a hozzáférés elveszhet.</li>
-            <li>A QR-kód beállítását védeni kell.</li>
-        </ul>
-
-    </div>
-
-    <div class="col-lg-5">
-
-        <img src="https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=900&q=80"
-             alt="Authenticator alkalmazás"
-             class="img-fluid rounded shadow mb-4">
-
-        <div class="info-card">
-            <h5 class="fw-bold">Authenticator alkalmazások előnyei</h5>
+            <p>
+                Bár ez a módszer jelentősen biztonságosabb, mint a kizárólagos jelszóhasználat,
+                mára több ismert támadási módszer is létezik ellene.
+            </p>
 
             <ul>
-                <li>Gyors bejelentkezés</li>
-                <li>Nincs szükség SMS-re</li>
-                <li>Magasabb biztonság</li>
-                <li>Offline működés</li>
-                <li>Széles körű támogatás</li>
+                <li><strong>Előnye:</strong> egyszerű és gyors használat.</li>
+                <li><strong>Hátránya:</strong> SIM-csere (SIM swap) támadásokkal kijátszható.</li>
+                <li><strong>Kockázat:</strong> a telefonszám eltérítése esetén a támadó megkaphatja a kódokat.</li>
             </ul>
+
+            <div class="alert alert-warning mt-3">
+                <strong>Fontos:</strong> az SMS-alapú 2FA jobb, mint a semmi,
+                de ma már nem számít a legerősebb megoldásnak.
+            </div>
+
+            <h4 class="mt-5">2.2 Authenticator alkalmazások</h4>
+
+            <p>
+                Az authenticator alkalmazások a modern kétfaktoros hitelesítés legnépszerűbb formái közé tartoznak.
+                A rendszer nem SMS-ben küldi a kódot, hanem a telefonon futó alkalmazás generálja azt.
+            </p>
+
+            <p>
+                A legismertebb alkalmazások:
+            </p>
+
+            <ul>
+                <li><strong>Google Authenticator</strong></li>
+                <li><strong>Microsoft Authenticator</strong></li>
+                <li><strong>Authy</strong></li>
+            </ul>
+
+            <p>
+                Ezek az alkalmazások úgynevezett <strong>időalapú egyszer használatos kódokat</strong>
+                (TOTP – Time-based One-Time Password) generálnak.
+            </p>
+
+            <p>
+                A kódok általában 30 másodpercenként automatikusan változnak,
+                ezért a támadóknak nagyon rövid idejük van azok felhasználására.
+            </p>
+
+            <h5 class="mt-3">Miért biztonságosabb?</h5>
+
+            <ul>
+                <li>A kód nem SMS-ben érkezik.</li>
+                <li>Nehezebb eltéríteni, mint a telefonszámot.</li>
+                <li>Offline is működik internetkapcsolat nélkül.</li>
+                <li>A generált kód rövid ideig érvényes.</li>
+            </ul>
+
+            <h5 class="mt-3">Hátrányok</h5>
+
+            <ul>
+                <li>A telefon elvesztése problémát okozhat.</li>
+                <li>Biztonsági mentés nélkül a hozzáférés elveszhet.</li>
+                <li>A QR-kód beállítását védeni kell.</li>
+            </ul>
+
+        </div>
+
+        <div class="col-lg-5">
+
+            <img src="https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=900&q=80"
+                 alt="Authenticator alkalmazás"
+                 class="img-fluid rounded shadow mb-4">
+
+            <div class="info-card">
+                <h5 class="fw-bold">Authenticator alkalmazások előnyei</h5>
+
+                <ul>
+                    <li>Gyors bejelentkezés</li>
+                    <li>Nincs szükség SMS-re</li>
+                    <li>Magasabb biztonság</li>
+                    <li>Offline működés</li>
+                    <li>Széles körű támogatás</li>
+                </ul>
+            </div>
+
         </div>
 
     </div>
 
-</div>
+    <div class="row g-4 align-items-start mt-5">
 
-<div class="row g-4 align-items-start mt-5">
+        <div class="col-lg-7">
 
-    <div class="col-lg-7">
+            <h4>2.3 Push értesítéses jóváhagyás</h4>
 
-        <h4>2.3 Push értesítéses jóváhagyás</h4>
+            <p>
+                Egyre több szolgáltatás használ push értesítéses hitelesítést.
+                Ilyenkor a felhasználó telefonjára egy értesítés érkezik:
+            </p>
 
-        <p>
-            Egyre több szolgáltatás használ push értesítéses hitelesítést.
-            Ilyenkor a felhasználó telefonjára egy értesítés érkezik:
-        </p>
-
-        <pre class="bg-dark text-light p-3 rounded">
+            <pre class="bg-dark text-light p-3 rounded">
 „Approve sign-in?”
-        </pre>
+            </pre>
 
-        <p>
-            A felhasználó egyetlen gombnyomással jóváhagyhatja vagy elutasíthatja a bejelentkezést.
-        </p>
+            <p>
+                A felhasználó egyetlen gombnyomással jóváhagyhatja vagy elutasíthatja a bejelentkezést.
+            </p>
 
-        <h5 class="mt-3">Előnyei</h5>
-
-        <ul>
-            <li>Rendkívül gyors és kényelmes.</li>
-            <li>Nem kell kézzel beírni a kódot.</li>
-            <li>Egyszerű mobilhasználat.</li>
-            <li>Modern vállalati rendszerekben gyakori.</li>
-        </ul>
-
-        <h5 class="mt-3">Kockázatok</h5>
-
-        <ul>
-            <li>A felhasználó megszokásból jóváhagyhatja.</li>
-            <li>Push bombing támadás esetén sok értesítés érkezhet.</li>
-            <li>Figyelmetlenség esetén illetéktelen belépés történhet.</li>
-        </ul>
-
-        <div class="alert alert-info mt-3">
-            <strong>Tanács:</strong> csak olyan bejelentkezést hagyj jóvá,
-            amelyet valóban te kezdeményeztél.
-        </div>
-
-    </div>
-
-    <div class="col-lg-5">
-
-        <div class="info-card">
-            <h5 class="fw-bold">Push hitelesítés példák</h5>
+            <h5 class="mt-3">Előnyei</h5>
 
             <ul>
-                <li>Microsoft Authenticator</li>
-                <li>Google Prompt</li>
-                <li>Duo Mobile</li>
-                <li>Banki mobilalkalmazások</li>
+                <li>Rendkívül gyors és kényelmes.</li>
+                <li>Nem kell kézzel beírni a kódot.</li>
+                <li>Egyszerű mobilhasználat.</li>
+                <li>Modern vállalati rendszerekben gyakori.</li>
             </ul>
-        </div>
 
-    </div>
-
-</div>
-
-<div class="row g-4 align-items-start mt-5">
-
-    <div class="col-lg-7">
-
-        <h4>2.4 Hardveres tokenek</h4>
-
-        <p>
-            A hardveres tokenek fizikai eszközök, amelyek a legerősebb hitelesítési megoldások közé tartoznak.
-        </p>
-
-        <p>
-            A legismertebb ilyen eszköz a <strong>YubiKey</strong>,
-            de sok bank saját hitelesítő tokent is használ.
-        </p>
-
-        <p>
-            A felhasználó USB-n, NFC-n vagy Bluetooth-on keresztül hitelesíti magát.
-        </p>
-
-        <h5 class="mt-3">Előnyei</h5>
-
-        <ul>
-            <li>Nagyon magas biztonság.</li>
-            <li>Phishing ellen is erős védelem.</li>
-            <li>Nehéz távolról feltörni.</li>
-            <li>Vállalati környezetben ajánlott.</li>
-        </ul>
-
-        <h5 class="mt-3">Hátrányai</h5>
-
-        <ul>
-            <li>Külön eszköz szükséges.</li>
-            <li>Elveszhet vagy megsérülhet.</li>
-            <li>Drágább megoldás.</li>
-        </ul>
-
-    </div>
-
-    <div class="col-lg-5">
-
-        <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=900&q=80"
-             alt="Hardveres token"
-             class="img-fluid rounded shadow mb-4">
-
-        <div class="info-card">
-            <h5 class="fw-bold">Hardveres token példák</h5>
+            <h5 class="mt-3">Kockázatok</h5>
 
             <ul>
-                <li>YubiKey</li>
-                <li>RSA SecurID</li>
-                <li>Banki tokenek</li>
-                <li>USB biztonsági kulcsok</li>
+                <li>A felhasználó megszokásból jóváhagyhatja.</li>
+                <li>Push bombing támadás esetén sok értesítés érkezhet.</li>
+                <li>Figyelmetlenség esetén illetéktelen belépés történhet.</li>
             </ul>
+
+            <div class="alert alert-info mt-3">
+                <strong>Tanács:</strong> csak olyan bejelentkezést hagyj jóvá,
+                amelyet valóban te kezdeményeztél.
+            </div>
+
         </div>
 
-    </div>
+        <div class="col-lg-5">
 
-</div>
+            <div class="info-card">
+                <h5 class="fw-bold">Push hitelesítés példák</h5>
 
-<h2 class="mt-5">3. Összehasonlító táblázat</h2>
-
-<h4 class="mt-4">Különböző 2FA megoldások összehasonlítása</h4>
-
-<div class="table-responsive mt-4">
-
-    <table class="table table-bordered table-hover align-middle">
-
-        <thead class="table-dark">
-            <tr>
-                <th>Típus</th>
-                <th>Biztonság</th>
-                <th>Kényelem</th>
-                <th>Gyengeség</th>
-            </tr>
-        </thead>
-
-        <tbody>
-
-            <tr>
-                <td>SMS</td>
-                <td>Közepes</td>
-                <td>Egyszerű</td>
-                <td>SIM-csere támadások</td>
-            </tr>
-
-            <tr>
-                <td>Authenticator alkalmazás</td>
-                <td>Magas</td>
-                <td>Jó</td>
-                <td>Telefon elvesztése</td>
-            </tr>
-
-            <tr>
-                <td>Push értesítés</td>
-                <td>Magas</td>
-                <td>Nagyon kényelmes</td>
-                <td>Jóváhagyási figyelmetlenség</td>
-            </tr>
-
-            <tr>
-                <td>Hardver token</td>
-                <td>Nagyon magas</td>
-                <td>Közepes</td>
-                <td>Fizikai eszköz szükséges</td>
-            </tr>
-
-        </tbody>
-
-    </table>
-
-</div>
-
-<div class="info-card mt-4">
-
-    <h5 class="fw-bold">Melyik 2FA megoldás a legbiztonságosabb?</h5>
-
-    <p>
-        A szakértők szerint a hardveres tokenek és az authenticator alkalmazások
-        jelentik jelenleg a legerősebb védelmet az átlagos felhasználók számára.
-    </p>
-
-    <p>
-        Az SMS-alapú hitelesítés még mindig sokkal biztonságosabb,
-        mint a kizárólagos jelszóhasználat, azonban a SIM-csere támadások miatt
-        már nem számít modern, kiemelten biztonságos megoldásnak.
-    </p>
-
-    <p>
-        A vállalati rendszerekben egyre gyakoribb a push értesítéses
-        hitelesítés és a hardveres biztonsági kulcsok használata,
-        mivel ezek jelentősen csökkentik a phishing támadások sikerességét.
-    </p>
-
-</div>
-
-<div class="alert alert-secondary mt-4">
-
-    <strong>Érdekesség:</strong>
-
-    A Microsoft kutatásai szerint a kétfaktoros azonosítás
-    több mint 99%-kal csökkenti az automatizált fiókfeltörések sikerességét.
-
-</div>
-
-<h2 class="mt-5" id="hibak">4. Gyakori hibák és tévhitek</h2>
-
-<div class="row g-4 align-items-start mt-3">
-
-    <div class="col-lg-7">
-
-        <h4>4.1 Gyakori hibák</h4>
-
-        <p>
-            Bár a kétfaktoros azonosítás jelentősen növeli a biztonságot,
-            a felhasználók sokszor olyan hibákat követnek el,
-            amelyek gyengítik vagy akár teljesen hatástalanná teszik a védelmet.
-        </p>
-
-        <p>
-            A támadók gyakran nem magát a technológiát törik fel,
-            hanem a felhasználók figyelmetlenségét és rossz szokásait használják ki.
-        </p>
-
-        <h5 class="mt-4">Leggyakoribb hibák</h5>
-
-        <ul class="mt-3">
-
-            <li class="mb-3">
-                <strong>Ugyanaz a jelszó mindenhol:</strong>
-                ha egy weboldal adatbázisa kiszivárog,
-                a támadók más szolgáltatásokba is megpróbálnak belépni ugyanazzal a jelszóval.
-            </li>
-
-            <li class="mb-3">
-                <strong>A 2FA kikapcsolása:</strong>
-                sok felhasználó kényelmi okokból letiltja a kétfaktoros hitelesítést,
-                így a fiók ismét csak a jelszótól függ.
-            </li>
-
-            <li class="mb-3">
-                <strong>Az SMS túlzott bizalma:</strong>
-                sokan azt gondolják, hogy az SMS-kód teljesen biztonságos,
-                pedig SIM-csere támadással a támadó megszerezheti az üzeneteket.
-            </li>
-
-            <li class="mb-3">
-                <strong>Jóváhagyás gondolkodás nélkül:</strong>
-                push értesítés esetén a felhasználók gyakran automatikusan rányomnak az
-                „Approve” gombra anélkül, hogy ellenőriznék a bejelentkezést.
-            </li>
-
-            <li class="mb-3">
-                <strong>Biztonsági mentés hiánya:</strong>
-                authenticator alkalmazás használatakor sokan nem mentik el a helyreállító kódokat,
-                ezért telefoncsere vagy elvesztés esetén kizárhatják magukat a saját fiókjukból.
-            </li>
-
-        </ul>
-
-        <div class="alert alert-warning mt-4">
-
-            <strong>Fontos:</strong>
-
-            A legerősebb technológia sem nyújt teljes védelmet,
-            ha a felhasználó figyelmetlen vagy nem követi az alapvető biztonsági szabályokat.
+                <ul>
+                    <li>Microsoft Authenticator</li>
+                    <li>Google Prompt</li>
+                    <li>Duo Mobile</li>
+                    <li>Banki mobilalkalmazások</li>
+                </ul>
+            </div>
 
         </div>
 
     </div>
 
-    <div class="col-lg-5">
+    <div class="row g-4 align-items-start mt-5">
 
-        <div class="info-card">
+        <div class="col-lg-7">
 
-            <h5 class="fw-bold">Mire figyeljünk?</h5>
+            <h4>2.4 Hardveres tokenek</h4>
+
+            <p>
+                A hardveres tokenek fizikai eszközök, amelyek a legerősebb hitelesítési megoldások közé tartoznak.
+            </p>
+
+            <p>
+                A legismertebb ilyen eszköz a <strong>YubiKey</strong>,
+                de sok bank saját hitelesítő tokent is használ.
+            </p>
+
+            <p>
+                A felhasználó USB-n, NFC-n vagy Bluetooth-on keresztül hitelesíti magát.
+            </p>
+
+            <h5 class="mt-3">Előnyei</h5>
 
             <ul>
-                <li>Használjunk egyedi jelszavakat</li>
-                <li>Kapcsoljuk be a 2FA-t minden fontos fiókon</li>
-                <li>Ne hagyjunk jóvá ismeretlen bejelentkezést</li>
-                <li>Mentsük el a helyreállító kódokat</li>
-                <li>Frissítsük rendszeresen az eszközöket</li>
+                <li>Nagyon magas biztonság.</li>
+                <li>Phishing ellen is erős védelem.</li>
+                <li>Nehéz távolról feltörni.</li>
+                <li>Vállalati környezetben ajánlott.</li>
+            </ul>
+
+            <h5 class="mt-3">Hátrányai</h5>
+
+            <ul>
+                <li>Külön eszköz szükséges.</li>
+                <li>Elveszhet vagy megsérülhet.</li>
+                <li>Drágább megoldás.</li>
             </ul>
 
         </div>
 
-        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80"
-             alt="Biztonsági figyelmeztetés"
-             class="img-fluid rounded shadow mt-4">
+        <div class="col-lg-5">
+
+            <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=900&q=80"
+                 alt="Hardveres token"
+                 class="img-fluid rounded shadow mb-4">
+
+            <div class="info-card">
+                <h5 class="fw-bold">Hardveres token példák</h5>
+
+                <ul>
+                    <li>YubiKey</li>
+                    <li>RSA SecurID</li>
+                    <li>Banki tokenek</li>
+                    <li>USB biztonsági kulcsok</li>
+                </ul>
+            </div>
+
+        </div>
 
     </div>
 
-</div>
+    <h2 class="mt-5">3. Összehasonlító táblázat</h2>
 
-<div class="row g-4 align-items-start mt-5">
+    <h4 class="mt-4">Különböző 2FA megoldások összehasonlítása</h4>
 
-    <div class="col-lg-7">
+    <div class="table-responsive mt-4">
 
-        <h4>4.2 Gyakori tévhitek</h4>
+        <table class="table table-bordered table-hover align-middle">
+
+            <thead class="table-dark">
+                <tr>
+                    <th>Típus</th>
+                    <th>Biztonság</th>
+                    <th>Kényelem</th>
+                    <th>Gyengeség</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>SMS</td>
+                    <td>Közepes</td>
+                    <td>Egyszerű</td>
+                    <td>SIM-csere támadások</td>
+                </tr>
+
+                <tr>
+                    <td>Authenticator alkalmazás</td>
+                    <td>Magas</td>
+                    <td>Jó</td>
+                    <td>Telefon elvesztése</td>
+                </tr>
+
+                <tr>
+                    <td>Push értesítés</td>
+                    <td>Magas</td>
+                    <td>Nagyon kényelmes</td>
+                    <td>Jóváhagyási figyelmetlenség</td>
+                </tr>
+
+                <tr>
+                    <td>Hardver token</td>
+                    <td>Nagyon magas</td>
+                    <td>Közepes</td>
+                    <td>Fizikai eszköz szükséges</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="info-card mt-4">
+
+        <h5 class="fw-bold">Melyik 2FA megoldás a legbiztonságosabb?</h5>
 
         <p>
-            A kétfaktoros azonosítással kapcsolatban számos tévhit terjed az interneten.
-            Ezek hamis biztonságérzetet adhatnak a felhasználóknak.
-        </p>
-
-        <h5 class="mt-4">Gyakori tévhitek</h5>
-
-        <div class="mt-4">
-
-            <p class="fs-5">
-                ❌ <strong>„A 2FA feltörhetetlen.”</strong>
-            </p>
-
-            <p>
-                A kétfaktoros hitelesítés jelentősen növeli a biztonságot,
-                de phishing, SIM swap vagy social engineering támadásokkal továbbra is kijátszható lehet.
-            </p>
-
-            <hr>
-
-            <p class="fs-5">
-                ❌ <strong>„Az SMS-kód teljesen biztonságos.”</strong>
-            </p>
-
-            <p>
-                Az SMS-alapú hitelesítés jobb a sima jelszónál,
-                de a modernebb authenticator alkalmazások és hardveres tokenek erősebb védelmet nyújtanak.
-            </p>
-
-            <hr>
-
-            <p class="fs-5">
-                ❌ <strong>„Engem úgysem támadnak meg.”</strong>
-            </p>
-
-            <p>
-                Az automatizált támadások során a bűnözők gyakran egyszerre több ezer felhasználót próbálnak megcélozni,
-                ezért bárki áldozattá válhat.
-            </p>
-
-            <hr>
-
-            <p class="fs-5">
-                ❌ <strong>„A hosszú jelszó önmagában elég.”</strong>
-            </p>
-
-            <p>
-                Egy erős jelszó fontos, de adatszivárgás vagy phishing esetén önmagában nem nyújt megfelelő védelmet.
-            </p>
-
-        </div>
-
-        <div class="alert alert-info mt-4">
-
-            <strong>Lényeg:</strong>
-
-            A kétfaktoros azonosítás jelentősen növeli a biztonságot,
-            de nem helyettesíti a tudatos felhasználói magatartást.
-
-        </div>
-
-    </div>
-
-    <div class="col-lg-5">
-
-        <div class="info-card">
-
-            <h5 class="fw-bold">Miért működnek még mindig a támadások?</h5>
-
-            <p>
-                A legtöbb sikeres támadás nem technikai hibát,
-                hanem emberi figyelmetlenséget használ ki.
-            </p>
-
-            <ul>
-                <li>Kapkodás</li>
-                <li>Félelemkeltés</li>
-                <li>Sürgetés</li>
-                <li>Megszokásból történő kattintás</li>
-                <li>Hamis biztonságérzet</li>
-            </ul>
-
-        </div>
-
-        <div class="alert alert-secondary mt-4">
-
-            <strong>Érdekesség:</strong>
-
-            Sok támadás során a csalók nem technikai eszközökkel,
-            hanem pszichológiai manipulációval veszik rá az áldozatot a jóváhagyásra.
-
-        </div>
-
-    </div>
-
-</div>
-
-<h2 class="mt-5" id="csalas">5. Bankszámlaszám-változtatásos csalás</h2>
-
-<div class="row g-4 align-items-start mt-3">
-
-    <div class="col-lg-7">
-
-        <h4>5.1 Hogyan működik?</h4>
-
-        <p>
-            A bankszámlaszám-változtatásos csalás az egyik legveszélyesebb vállalati pénzügyi támadási forma.
-            A támadók célja, hogy a cégek vagy magánszemélyek a valódi partner helyett
-            a csalók bankszámlájára utalják a pénzt.
+            A szakértők szerint a hardveres tokenek és az authenticator alkalmazások
+            jelentik jelenleg a legerősebb védelmet az átlagos felhasználók számára.
         </p>
 
         <p>
-            Ezek a támadások gyakran nem technikai hibára,
-            hanem megtévesztésre és bizalomra épülnek.
-        </p>
-
-        <h5 class="mt-4">A csalás tipikus menete</h5>
-
-        <ol class="mt-3">
-
-            <li class="mb-3">
-                <strong>E-mail hozzáférés megszerzése:</strong>
-                a támadó phishing vagy gyenge jelszó segítségével hozzáfér egy e-mail fiókhoz.
-            </li>
-
-            <li class="mb-3">
-                <strong>Kommunikáció megfigyelése:</strong>
-                a támadó figyeli a számlázást, partnereket és pénzügyi folyamatokat.
-            </li>
-
-            <li class="mb-3">
-                <strong>Hamis üzenet küldése:</strong>
-                a támadó a partner nevében bankszámlaszám-változást jelent be.
-            </li>
-
-            <li class="mb-3">
-                <strong>Pénz átutalása:</strong>
-                az áldozat a hamis számla alapján a csalók számlájára utal.
-            </li>
-
-        </ol>
-
-        <div class="alert alert-danger mt-4">
-
-            <strong>Veszély:</strong>
-
-            Sok esetben a csalás csak napokkal vagy hetekkel később derül ki,
-            amikor a valódi partner jelzi, hogy nem érkezett meg az utalás.
-
-        </div>
-
-    </div>
-
-    <div class="col-lg-5">
-
-        <img src="https://images.unsplash.com/photo-1556742393-d75f468bfcb0?auto=format&fit=crop&w=900&q=80"
-             alt="Online pénzügyi csalás"
-             class="img-fluid rounded shadow mb-4">
-
-        <div class="info-card">
-
-            <h5 class="fw-bold">Miért működik?</h5>
-
-            <ul>
-                <li>A támadó valós kommunikációt lát</li>
-                <li>Hitelesnek tűnő e-maileket küld</li>
-                <li>A sürgetés csökkenti az ellenőrzést</li>
-                <li>A felhasználók bíznak a megszokott partnerekben</li>
-            </ul>
-
-        </div>
-
-    </div>
-
-</div>
-
-<div class="row g-4 align-items-start mt-5">
-
-    <div class="col-lg-7">
-
-        <h4>5.2 A csalás folyamatábrája</h4>
-
-        <p>
-            Az alábbi folyamatábra bemutatja,
-            hogyan épül fel lépésről lépésre egy bankszámlaszám-változtatásos támadás.
+            Az SMS-alapú hitelesítés még mindig sokkal biztonságosabb,
+            mint a kizárólagos jelszóhasználat, azonban a SIM-csere támadások miatt
+            már nem számít modern, kiemelten biztonságos megoldásnak.
         </p>
 
         <p>
-            Jól látható, hogy a támadók nem feltétlenül technikai rendszereket törnek fel,
-            hanem a céges kommunikációt és az emberi figyelmetlenséget használják ki.
+            A vállalati rendszerekben egyre gyakoribb a push értesítéses
+            hitelesítés és a hardveres biztonsági kulcsok használata,
+            mivel ezek jelentősen csökkentik a phishing támadások sikerességét.
         </p>
 
-        <div class="alert alert-warning mt-4">
+    </div>
 
-            <strong>Fontos:</strong>
+    <div class="alert alert-secondary mt-4">
 
-            Egyetlen ellenőrző telefonhívás vagy visszaigazolás
-            gyakran megakadályozhatná a teljes csalást.
+        <strong>Érdekesség:</strong>
 
-        </div>
+        A Microsoft kutatásai szerint a kétfaktoros azonosítás
+        több mint 99%-kal csökkenti az automatizált fiókfeltörések sikerességét.
 
     </div>
 
-    <div class="col-lg-5 text-center">
+    <h2 class="mt-5" id="hibak">4. Gyakori hibák és tévhitek</h2>
 
-        <img src="images/bankszamla_flow.png"
-             alt="Bankszámlaszám-változtatásos csalás folyamatábrája"
-             class="img-fluid rounded shadow">
+    <div class="row g-4 align-items-start mt-3">
 
-    </div>
+        <div class="col-lg-7">
 
-</div>
-
-<div class="row g-4 align-items-start mt-5">
-
-    <div class="col-lg-7">
-
-        <h4>5.3 Figyelmeztető jelek</h4>
-
-        <p>
-            A támadások során gyakran vannak olyan apró jelek,
-            amelyek gyanút kelthetnek.
-            Ezek felismerése kulcsfontosságú lehet a csalás megelőzésében.
-        </p>
-
-        <h5 class="mt-4">Gyanús jelek lehetnek:</h5>
-
-        <ul class="mt-3">
-
-            <li class="mb-3">
-                <strong>Sürgetés:</strong>
-                „Azonnal utalni kell”, „sürgős fizetés”, „ma lejár”.
-            </li>
-
-            <li class="mb-3">
-                <strong>Új bankszámlaszám:</strong>
-                hirtelen számlaszám-változás megfelelő magyarázat nélkül.
-            </li>
-
-            <li class="mb-3">
-                <strong>Szokatlan nyelvezet:</strong>
-                eltérő fogalmazás, furcsa mondatok vagy helyesírási hibák.
-            </li>
-
-            <li class="mb-3">
-                <strong>Apró domain eltérések:</strong>
-                például:
-                <br>
-                <code>cegnev-support.com</code>
-                a valódi
-                <code>cegnev.com</code>
-                helyett.
-            </li>
-
-            <li class="mb-3">
-                <strong>Szokatlan időpontban érkező üzenetek:</strong>
-                például késő este vagy hétvégén küldött sürgős kérések.
-            </li>
-
-        </ul>
-
-        <div class="alert alert-info mt-4">
-
-            <strong>Lényeg:</strong>
-
-            Bankszámlaszám-változást mindig más kommunikációs csatornán is ellenőrizni kell,
-            például telefonon vagy videóhívásban.
-
-        </div>
-
-    </div>
-
-    <div class="col-lg-5">
-
-        <div class="info-card">
-
-            <h5 class="fw-bold">Mit tegyünk gyanú esetén?</h5>
-
-            <ul>
-                <li>Ne utaljunk azonnal</li>
-                <li>Ellenőrizzük telefonon a változást</li>
-                <li>Nézzük meg pontosan az e-mail címet</li>
-                <li>Kérjünk hivatalos visszaigazolást</li>
-                <li>Értesítsük az IT vagy pénzügyi osztályt</li>
-            </ul>
-
-        </div>
-
-        <div class="alert alert-secondary mt-4">
-
-            <strong>Érdekesség:</strong>
-
-            Az ilyen támadások világszerte évente több milliárd dolláros kárt okoznak vállalatoknak.
-
-        </div>
-
-    </div>
-
-</div>
-
-<h2 class="mt-5" id="vedekezes">6. Védekezési tanácsok</h2>
-
-<div class="row g-4 align-items-start mt-3">
-
-    <div class="col-lg-6">
-
-        <div class="info-card h-100">
-
-            <h3 class="mb-4">Védekezés céges környezetben</h3>
+            <h4>4.1 Gyakori hibák</h4>
 
             <p>
-                A vállalatok különösen gyakori célpontjai a pénzügyi és hozzáférési támadásoknak,
-                ezért kiemelten fontos a több szintű védelem kialakítása.
+                Bár a kétfaktoros azonosítás jelentősen növeli a biztonságot,
+                a felhasználók sokszor olyan hibákat követnek el,
+                amelyek gyengítik vagy akár teljesen hatástalanná teszik a védelmet.
             </p>
 
             <p>
-                Egyetlen hibás utalás vagy kompromittált e-mail fiók
-                akár több millió forintos veszteséget is okozhat.
+                A támadók gyakran nem magát a technológiát törik fel,
+                hanem a felhasználók figyelmetlenségét és rossz szokásait használják ki.
             </p>
 
-            <h5 class="mt-4">Ajánlott biztonsági intézkedések</h5>
+            <h5 class="mt-4">Leggyakoribb hibák</h5>
 
             <ul class="mt-3">
 
                 <li class="mb-3">
-                    <strong>Több személyes jóváhagyás:</strong>
-                    nagyobb összegű utalásoknál több munkatárs jóváhagyása szükséges.
+                    <strong>Ugyanaz a jelszó mindenhol:</strong>
+                    ha egy weboldal adatbázisa kiszivárog,
+                    a támadók más szolgáltatásokba is megpróbálnak belépni ugyanazzal a jelszóval.
                 </li>
 
                 <li class="mb-3">
-                    <strong>Telefonos ellenőrzés:</strong>
-                    bankszámlaszám-változás esetén mindig történjen külön visszaigazolás.
+                    <strong>A 2FA kikapcsolása:</strong>
+                    sok felhasználó kényelmi okokból letiltja a kétfaktoros hitelesítést,
+                    így a fiók ismét csak a jelszótól függ.
                 </li>
 
                 <li class="mb-3">
-                    <strong>2FA minden e-mail fiókon:</strong>
-                    a pénzügyi és vezetői fiókok különösen fontos célpontok.
+                    <strong>Az SMS túlzott bizalma:</strong>
+                    sokan azt gondolják, hogy az SMS-kód teljesen biztonságos,
+                    pedig SIM-csere támadással a támadó megszerezheti az üzeneteket.
                 </li>
 
                 <li class="mb-3">
-                    <strong>Dolgozói oktatás:</strong>
-                    a munkatársaknak ismerniük kell a phishing és social engineering támadásokat.
+                    <strong>Jóváhagyás gondolkodás nélkül:</strong>
+                    push értesítés esetén a felhasználók gyakran automatikusan rányomnak az
+                    „Approve" gombra anélkül, hogy ellenőriznék a bejelentkezést.
                 </li>
 
                 <li class="mb-3">
-                    <strong>Rendszeres jogosultság-ellenőrzés:</strong>
-                    csak azok férjenek hozzá érzékeny adatokhoz,
-                    akiknek valóban szükséges.
+                    <strong>Biztonsági mentés hiánya:</strong>
+                    authenticator alkalmazás használatakor sokan nem mentik el a helyreállító kódokat,
+                    ezért telefoncsere vagy elvesztés esetén kizárhatják magukat a saját fiókjukból.
                 </li>
 
             </ul>
@@ -877,9 +482,133 @@
 
                 <strong>Fontos:</strong>
 
-                A legtöbb sikeres támadás emberi hibára épül,
-                ezért az oktatás és a tudatosság legalább olyan fontos,
-                mint a technikai védelem.
+                A legerősebb technológia sem nyújt teljes védelmet,
+                ha a felhasználó figyelmetlen vagy nem követi az alapvető biztonsági szabályokat.
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-5">
+
+            <div class="info-card">
+
+                <h5 class="fw-bold">Mire figyeljünk?</h5>
+
+                <ul>
+                    <li>Használjunk egyedi jelszavakat</li>
+                    <li>Kapcsoljuk be a 2FA-t minden fontos fiókon</li>
+                    <li>Ne hagyjunk jóvá ismeretlen bejelentkezést</li>
+                    <li>Mentsük el a helyreállító kódokat</li>
+                    <li>Frissítsük rendszeresen az eszközöket</li>
+                </ul>
+
+            </div>
+
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80"
+                 alt="Biztonsági figyelmeztetés"
+                 class="img-fluid rounded shadow mt-4">
+
+        </div>
+
+    </div>
+
+    <div class="row g-4 align-items-start mt-5">
+
+        <div class="col-lg-7">
+
+            <h4>4.2 Gyakori tévhitek</h4>
+
+            <p>
+                A kétfaktoros azonosítással kapcsolatban számos tévhit terjed az interneten.
+                Ezek hamis biztonságérzetet adhatnak a felhasználóknak.
+            </p>
+
+            <h5 class="mt-4">Gyakori tévhitek</h5>
+
+            <div class="mt-4">
+
+                <p class="fs-5">
+                    ❌ <strong>„A 2FA feltörhetetlen."</strong>
+                </p>
+
+                <p>
+                    A kétfaktoros hitelesítés jelentősen növeli a biztonságot,
+                    de phishing, SIM swap vagy social engineering támadásokkal továbbra is kijátszható lehet.
+                </p>
+
+                <hr>
+
+                <p class="fs-5">
+                    ❌ <strong>„Az SMS-kód teljesen biztonságos."</strong>
+                </p>
+
+                <p>
+                    Az SMS-alapú hitelesítés jobb a sima jelszónál,
+                    de a modernebb authenticator alkalmazások és hardveres tokenek erősebb védelmet nyújtanak.
+                </p>
+
+                <hr>
+
+                <p class="fs-5">
+                    ❌ <strong>„Engem úgysem támadnak meg."</strong>
+                </p>
+
+                <p>
+                    Az automatizált támadások során a bűnözők gyakran egyszerre több ezer felhasználót próbálnak megcélozni,
+                    ezért bárki áldozattá válhat.
+                </p>
+
+                <hr>
+
+                <p class="fs-5">
+                    ❌ <strong>„A hosszú jelszó önmagában elég."</strong>
+                </p>
+
+                <p>
+                    Egy erős jelszó fontos, de adatszivárgás vagy phishing esetén önmagában nem nyújt megfelelő védelmet.
+                </p>
+
+            </div>
+
+            <div class="alert alert-info mt-4">
+
+                <strong>Lényeg:</strong>
+
+                A kétfaktoros azonosítás jelentősen növeli a biztonságot,
+                de nem helyettesíti a tudatos felhasználói magatartást.
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-5">
+
+            <div class="info-card">
+
+                <h5 class="fw-bold">Miért működnek még mindig a támadások?</h5>
+
+                <p>
+                    A legtöbb sikeres támadás nem technikai hibát,
+                    hanem emberi figyelmetlenséget használ ki.
+                </p>
+
+                <ul>
+                    <li>Kapkodás</li>
+                    <li>Félelemkeltés</li>
+                    <li>Sürgetés</li>
+                    <li>Megszokásból történő kattintás</li>
+                    <li>Hamis biztonságérzet</li>
+                </ul>
+
+            </div>
+
+            <div class="alert alert-secondary mt-4">
+
+                <strong>Érdekesség:</strong>
+
+                Sok támadás során a csalók nem technikai eszközökkel,
+                hanem pszichológiai manipulációval veszik rá az áldozatot a jóváhagyásra.
 
             </div>
 
@@ -887,49 +616,166 @@
 
     </div>
 
-    <div class="col-lg-6">
+    <h2 class="mt-5" id="csalas">5. Bankszámlaszám-változtatásos csalás</h2>
 
-        <div class="info-card h-100">
+    <div class="row g-4 align-items-start mt-3">
 
-            <h3 class="mb-4">Védekezés magánszemélyek számára</h3>
+        <div class="col-lg-7">
+
+            <h4>5.1 Hogyan működik?</h4>
 
             <p>
-                A hétköznapi felhasználók is egyre gyakrabban válnak
-                adathalász és pénzügyi támadások célpontjává.
+                A bankszámlaszám-változtatásos csalás az egyik legveszélyesebb vállalati pénzügyi támadási forma.
+                A támadók célja, hogy a cégek vagy magánszemélyek a valódi partner helyett
+                a csalók bankszámlájára utalják a pénzt.
             </p>
 
             <p>
-                Néhány alapvető biztonsági szabály betartásával
-                azonban jelentősen csökkenthető a kockázat.
+                Ezek a támadások gyakran nem technikai hibára,
+                hanem megtévesztésre és bizalomra épülnek.
             </p>
 
-            <h5 class="mt-4">Ajánlott biztonsági lépések</h5>
+            <h5 class="mt-4">A csalás tipikus menete</h5>
+
+            <ol class="mt-3">
+
+                <li class="mb-3">
+                    <strong>E-mail hozzáférés megszerzése:</strong>
+                    a támadó phishing vagy gyenge jelszó segítségével hozzáfér egy e-mail fiókhoz.
+                </li>
+
+                <li class="mb-3">
+                    <strong>Kommunikáció megfigyelése:</strong>
+                    a támadó figyeli a számlázást, partnereket és pénzügyi folyamatokat.
+                </li>
+
+                <li class="mb-3">
+                    <strong>Hamis üzenet küldése:</strong>
+                    a támadó a partner nevében bankszámlaszám-változást jelent be.
+                </li>
+
+                <li class="mb-3">
+                    <strong>Pénz átutalása:</strong>
+                    az áldozat a hamis számla alapján a csalók számlájára utal.
+                </li>
+
+            </ol>
+
+            <div class="alert alert-danger mt-4">
+
+                <strong>Veszély:</strong>
+
+                Sok esetben a csalás csak napokkal vagy hetekkel később derül ki,
+                amikor a valódi partner jelzi, hogy nem érkezett meg az utalás.
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-5">
+
+            <img src="https://images.unsplash.com/photo-1556742393-d75f468bfcb0?auto=format&fit=crop&w=900&q=80"
+                 alt="Online pénzügyi csalás"
+                 class="img-fluid rounded shadow mb-4">
+
+            <div class="info-card">
+
+                <h5 class="fw-bold">Miért működik?</h5>
+
+                <ul>
+                    <li>A támadó valós kommunikációt lát</li>
+                    <li>Hitelesnek tűnő e-maileket küld</li>
+                    <li>A sürgetés csökkenti az ellenőrzést</li>
+                    <li>A felhasználók bíznak a megszokott partnerekben</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row g-4 align-items-start mt-5">
+
+        <div class="col-lg-7">
+
+            <h4>5.2 A csalás folyamatábrája</h4>
+
+            <p>
+                Az alábbi folyamatábra bemutatja,
+                hogyan épül fel lépésről lépésre egy bankszámlaszám-változtatásos támadás.
+            </p>
+
+            <p>
+                Jól látható, hogy a támadók nem feltétlenül technikai rendszereket törnek fel,
+                hanem a céges kommunikációt és az emberi figyelmetlenséget használják ki.
+            </p>
+
+            <div class="alert alert-warning mt-4">
+
+                <strong>Fontos:</strong>
+
+                Egyetlen ellenőrző telefonhívás vagy visszaigazolás
+                gyakran megakadályozhatná a teljes csalást.
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-5 text-center">
+
+            <img src="images/bankszamla_flow.png"
+                 alt="Bankszámlaszám-változtatásos csalás folyamatábrája"
+                 class="img-fluid rounded shadow">
+
+        </div>
+
+    </div>
+
+    <div class="row g-4 align-items-start mt-5">
+
+        <div class="col-lg-7">
+
+            <h4>5.3 Figyelmeztető jelek</h4>
+
+            <p>
+                A támadások során gyakran vannak olyan apró jelek,
+                amelyek gyanút kelthetnek.
+                Ezek felismerése kulcsfontosságú lehet a csalás megelőzésében.
+            </p>
+
+            <h5 class="mt-4">Gyanús jelek lehetnek:</h5>
 
             <ul class="mt-3">
 
                 <li class="mb-3">
-                    <strong>Authenticator alkalmazás használata:</strong>
-                    lehetőség szerint SMS helyett authenticator appot használjunk.
+                    <strong>Sürgetés:</strong>
+                    „Azonnal utalni kell", „sürgős fizetés", „ma lejár".
                 </li>
 
                 <li class="mb-3">
-                    <strong>Erős és egyedi jelszavak:</strong>
-                    minden szolgáltatáshoz külön jelszó ajánlott.
+                    <strong>Új bankszámlaszám:</strong>
+                    hirtelen számlaszám-változás megfelelő magyarázat nélkül.
                 </li>
 
                 <li class="mb-3">
-                    <strong>Gyanús linkek kerülése:</strong>
-                    ne kattintsunk ismeretlen vagy sürgető üzenetekre.
+                    <strong>Szokatlan nyelvezet:</strong>
+                    eltérő fogalmazás, furcsa mondatok vagy helyesírási hibák.
                 </li>
 
                 <li class="mb-3">
-                    <strong>Banki értesítések bekapcsolása:</strong>
-                    így azonnal látható minden tranzakció.
+                    <strong>Apró domain eltérések:</strong>
+                    például:
+                    <br>
+                    <code>cegnev-support.com</code>
+                    a valódi
+                    <code>cegnev.com</code>
+                    helyett.
                 </li>
 
                 <li class="mb-3">
-                    <strong>Rendszeres frissítések:</strong>
-                    az operációs rendszer és alkalmazások frissítése biztonsági hibákat javít.
+                    <strong>Szokatlan időpontban érkező üzenetek:</strong>
+                    például késő este vagy hétvégén küldött sürgős kérések.
                 </li>
 
             </ul>
@@ -938,8 +784,34 @@
 
                 <strong>Lényeg:</strong>
 
-                A tudatos felhasználói magatartás és a kétfaktoros azonosítás együtt
-                jelentősen megnehezíti a támadók dolgát.
+                Bankszámlaszám-változást mindig más kommunikációs csatornán is ellenőrizni kell,
+                például telefonon vagy videóhívásban.
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-5">
+
+            <div class="info-card">
+
+                <h5 class="fw-bold">Mit tegyünk gyanú esetén?</h5>
+
+                <ul>
+                    <li>Ne utaljunk azonnal</li>
+                    <li>Ellenőrizzük telefonon a változást</li>
+                    <li>Nézzük meg pontosan az e-mail címet</li>
+                    <li>Kérjünk hivatalos visszaigazolást</li>
+                    <li>Értesítsük az IT vagy pénzügyi osztályt</li>
+                </ul>
+
+            </div>
+
+            <div class="alert alert-secondary mt-4">
+
+                <strong>Érdekesség:</strong>
+
+                Az ilyen támadások világszerte évente több milliárd dolláros kárt okoznak vállalatoknak.
 
             </div>
 
@@ -947,197 +819,325 @@
 
     </div>
 
-</div>
+    <h2 class="mt-5" id="vedekezes">6. Védekezési tanácsok</h2>
 
-<div class="row mt-5">
+    <div class="row g-4 align-items-start mt-3">
 
-    <div class="col-lg-12">
+        <div class="col-lg-6">
 
-        <div class="alert alert-secondary">
+            <div class="info-card h-100">
 
-            <strong>Érdekesség:</strong>
+                <h3 class="mb-4">Védekezés céges környezetben</h3>
 
-            A kibertámadások jelentős része automatizált,
-            ezért nem csak nagyvállalatok vagy híres emberek lehetnek célpontok.
-            Bárki áldozattá válhat, aki nem fordít figyelmet az alapvető biztonsági szabályokra.
+                <p>
+                    A vállalatok különösen gyakori célpontjai a pénzügyi és hozzáférési támadásoknak,
+                    ezért kiemelten fontos a több szintű védelem kialakítása.
+                </p>
+
+                <p>
+                    Egyetlen hibás utalás vagy kompromittált e-mail fiók
+                    akár több millió forintos veszteséget is okozhat.
+                </p>
+
+                <h5 class="mt-4">Ajánlott biztonsági intézkedések</h5>
+
+                <ul class="mt-3">
+
+                    <li class="mb-3">
+                        <strong>Több személyes jóváhagyás:</strong>
+                        nagyobb összegű utalásoknál több munkatárs jóváhagyása szükséges.
+                    </li>
+
+                    <li class="mb-3">
+                        <strong>Telefonos ellenőrzés:</strong>
+                        bankszámlaszám-változás esetén mindig történjen külön visszaigazolás.
+                    </li>
+
+                    <li class="mb-3">
+                        <strong>2FA minden e-mail fiókon:</strong>
+                        a pénzügyi és vezetői fiókok különösen fontos célpontok.
+                    </li>
+
+                    <li class="mb-3">
+                        <strong>Dolgozói oktatás:</strong>
+                        a munkatársaknak ismerniük kell a phishing és social engineering támadásokat.
+                    </li>
+
+                    <li class="mb-3">
+                        <strong>Rendszeres jogosultság-ellenőrzés:</strong>
+                        csak azok férjenek hozzá érzékeny adatokhoz,
+                        akiknek valóban szükséges.
+                    </li>
+
+                </ul>
+
+                <div class="alert alert-warning mt-4">
+
+                    <strong>Fontos:</strong>
+
+                    A legtöbb sikeres támadás emberi hibára épül,
+                    ezért az oktatás és a tudatosság legalább olyan fontos,
+                    mint a technikai védelem.
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-6">
+
+            <div class="info-card h-100">
+
+                <h3 class="mb-4">Védekezés magánszemélyek számára</h3>
+
+                <p>
+                    A hétköznapi felhasználók is egyre gyakrabban válnak
+                    adathalász és pénzügyi támadások célpontjává.
+                </p>
+
+                <p>
+                    Néhány alapvető biztonsági szabály betartásával
+                    azonban jelentősen csökkenthető a kockázat.
+                </p>
+
+                <h5 class="mt-4">Ajánlott biztonsági lépések</h5>
+
+                <ul class="mt-3">
+
+                    <li class="mb-3">
+                        <strong>Authenticator alkalmazás használata:</strong>
+                        lehetőség szerint SMS helyett authenticator appot használjunk.
+                    </li>
+
+                    <li class="mb-3">
+                        <strong>Erős és egyedi jelszavak:</strong>
+                        minden szolgáltatáshoz külön jelszó ajánlott.
+                    </li>
+
+                    <li class="mb-3">
+                        <strong>Gyanús linkek kerülése:</strong>
+                        ne kattintsunk ismeretlen vagy sürgető üzenetekre.
+                    </li>
+
+                    <li class="mb-3">
+                        <strong>Banki értesítések bekapcsolása:</strong>
+                        így azonnal látható minden tranzakció.
+                    </li>
+
+                    <li class="mb-3">
+                        <strong>Rendszeres frissítések:</strong>
+                        az operációs rendszer és alkalmazások frissítése biztonsági hibákat javít.
+                    </li>
+
+                </ul>
+
+                <div class="alert alert-info mt-4">
+
+                    <strong>Lényeg:</strong>
+
+                    A tudatos felhasználói magatartás és a kétfaktoros azonosítás együtt
+                    jelentősen megnehezíti a támadók dolgát.
+
+                </div>
+
+            </div>
 
         </div>
 
     </div>
 
-</div>
+    <div class="row mt-5">
 
-<h2 class="mt-5" id="esettanulmany">7. Rövid esettanulmány</h2>
+        <div class="col-lg-12">
 
-<div class="row g-4 align-items-start mt-3">
+            <div class="alert alert-secondary">
 
-    <div class="col-lg-7">
+                <strong>Érdekesség:</strong>
 
-        <h4>Valósághoz hasonló példa</h4>
+                A kibertámadások jelentős része automatizált,
+                ezért nem csak nagyvállalatok vagy híres emberek lehetnek célpontok.
+                Bárki áldozattá válhat, aki nem fordít figyelmet az alapvető biztonsági szabályokra.
 
-        <p>
-            Egy közepes méretű vállalat pénzügyi munkatársa e-mailben kapott értesítést
-            egy régóta ismert partnercégtől.
-            Az üzenet szerint a partner bankszámlaszáma megváltozott,
-            ezért a következő számlát már az új számlaszámra kellett utalni.
-        </p>
-
-        <p>
-            Az e-mail teljesen hitelesnek tűnt:
-        </p>
-
-        <ul>
-
-            <li>a valódi partner neve szerepelt benne,</li>
-            <li>a levél stílusa megegyezett a korábbi kommunikációval,</li>
-            <li>valódi számlaadatok és projektek szerepeltek az üzenetben.</li>
-
-        </ul>
-
-        <p>
-            A háttérben azonban egy támadó már korábban hozzáférést szerzett
-            a partner egyik e-mail fiókjához,
-            és hetek óta figyelte a cégek közötti kommunikációt.
-        </p>
-
-        <p>
-            A támadó pontosan tudta,
-            mikor várható nagyobb összegű utalás,
-            ezért a megfelelő pillanatban küldte el a hamis bankszámlaszámot.
-        </p>
-
-        <p>
-            Mivel a pénzügyi osztály nem ellenőrizte telefonon a változást,
-            az utalás a csalók számlájára érkezett.
-        </p>
-
-        <div class="alert alert-danger mt-4">
-
-            <strong>Következmény:</strong>
-
-            A vállalat több millió forintos veszteséget szenvedett,
-            és a pénz jelentős részét már nem tudták visszaszerezni.
+            </div>
 
         </div>
-        <p class="text-muted mt-4">
-            Az esettanulmány oktatási célú, valós támadási módszereken alapuló összefoglaló példa.
-        </p>
 
     </div>
 
-    <div class="col-lg-5">
+    <h2 class="mt-5" id="esettanulmany">7. Rövid esettanulmány</h2>
 
-        <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=900&q=80"
-             alt="Pénzügyi csalás"
-             class="img-fluid rounded shadow mb-4">
+    <div class="row g-4 align-items-start mt-3">
 
-        <div class="info-card">
+        <div class="col-lg-7">
 
-            <h5 class="fw-bold">Mi segítette a támadót?</h5>
+            <h4>Valósághoz hasonló példa</h4>
+
+            <p>
+                Egy közepes méretű vállalat pénzügyi munkatársa e-mailben kapott értesítést
+                egy régóta ismert partnercégtől.
+                Az üzenet szerint a partner bankszámlaszáma megváltozott,
+                ezért a következő számlát már az új számlaszámra kellett utalni.
+            </p>
+
+            <p>
+                Az e-mail teljesen hitelesnek tűnt:
+            </p>
 
             <ul>
-                <li>Hiányzó telefonos ellenőrzés</li>
-                <li>Gyenge e-mail védelem</li>
-                <li>Nem megfelelő dolgozói tudatosság</li>
-                <li>A megszokott partnerbe vetett bizalom</li>
-                <li>Sürgető kommunikáció</li>
+
+                <li>a valódi partner neve szerepelt benne,</li>
+                <li>a levél stílusa megegyezett a korábbi kommunikációval,</li>
+                <li>valódi számlaadatok és projektek szerepeltek az üzenetben.</li>
+
+            </ul>
+
+            <p>
+                A háttérben azonban egy támadó már korábban hozzáférést szerzett
+                a partner egyik e-mail fiókjához,
+                és hetek óta figyelte a cégek közötti kommunikációt.
+            </p>
+
+            <p>
+                A támadó pontosan tudta,
+                mikor várható nagyobb összegű utalás,
+                ezért a megfelelő pillanatban küldte el a hamis bankszámlaszámot.
+            </p>
+
+            <p>
+                Mivel a pénzügyi osztály nem ellenőrizte telefonon a változást,
+                az utalás a csalók számlájára érkezett.
+            </p>
+
+            <div class="alert alert-danger mt-4">
+
+                <strong>Következmény:</strong>
+
+                A vállalat több millió forintos veszteséget szenvedett,
+                és a pénz jelentős részét már nem tudták visszaszerezni.
+
+            </div>
+            <p class="text-muted mt-4">
+                Az esettanulmány oktatási célú, valós támadási módszereken alapuló összefoglaló példa.
+            </p>
+
+        </div>
+
+        <div class="col-lg-5">
+
+            <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=900&q=80"
+                 alt="Pénzügyi csalás"
+                 class="img-fluid rounded shadow mb-4">
+
+            <div class="info-card">
+
+                <h5 class="fw-bold">Mi segítette a támadót?</h5>
+
+                <ul>
+                    <li>Hiányzó telefonos ellenőrzés</li>
+                    <li>Gyenge e-mail védelem</li>
+                    <li>Nem megfelelő dolgozói tudatosság</li>
+                    <li>A megszokott partnerbe vetett bizalom</li>
+                    <li>Sürgető kommunikáció</li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row g-4 align-items-start mt-5">
+
+        <div class="col-lg-7">
+
+            <h4>Mit lehetett volna másképp tenni?</h4>
+
+            <p>
+                Az eset több ponton is megelőzhető lett volna megfelelő biztonsági intézkedésekkel.
+            </p>
+
+            <h5 class="mt-4">Lehetséges megelőző lépések</h5>
+
+            <ul class="mt-3">
+
+                <li class="mb-3">
+                    <strong>Telefonos visszaellenőrzés:</strong>
+                    bankszámlaszám-változás esetén mindig szükséges.
+                </li>
+
+                <li class="mb-3">
+                    <strong>Kétfaktoros azonosítás használata:</strong>
+                    csökkenti az e-mail fiók feltörésének esélyét.
+                </li>
+
+                <li class="mb-3">
+                    <strong>Dolgozói oktatás:</strong>
+                    a pénzügyi munkatársaknak ismerniük kell az ilyen támadások működését.
+                </li>
+
+                <li class="mb-3">
+                    <strong>Több szintű jóváhagyás:</strong>
+                    nagyobb összegű utalásokat több személy ellenőrizzen.
+                </li>
+
+                <li class="mb-3">
+                    <strong>Figyelmeztető jelek felismerése:</strong>
+                    sürgetés, új bankszámlaszám vagy szokatlan kommunikáció esetén fokozott óvatosság szükséges.
+                </li>
+
             </ul>
 
         </div>
 
-    </div>
+        <div class="col-lg-5">
 
-</div>
+            <div class="info-card">
 
-<div class="row g-4 align-items-start mt-5">
+                <h5 class="fw-bold">Tanulságok</h5>
 
-    <div class="col-lg-7">
+                <ul>
+                    <li>A 2FA jelentősen növeli a biztonságot</li>
+                    <li>A sürgetés mindig gyanús jel lehet</li>
+                    <li>Az e-mail önmagában nem elég hitelesítés</li>
+                    <li>A tudatosság kulcsfontosságú</li>
+                    <li>A legtöbb támadás emberi hibára épül</li>
+                </ul>
 
-        <h4>Mit lehetett volna másképp tenni?</h4>
+            </div>
 
-        <p>
-            Az eset több ponton is megelőzhető lett volna megfelelő biztonsági intézkedésekkel.
-        </p>
+            <div class="alert alert-info mt-4">
 
-        <h5 class="mt-4">Lehetséges megelőző lépések</h5>
+                <strong>Összegzés:</strong>
 
-        <ul class="mt-3">
+                A modern kibertámadások gyakran nem technikai hibákat,
+                hanem emberi figyelmetlenséget és bizalmat használnak ki.
+                A megfelelő biztonsági gyakorlatok és a kétfaktoros hitelesítés
+                jelentősen csökkenthetik a sikeres támadások esélyét.
 
-            <li class="mb-3">
-                <strong>Telefonos visszaellenőrzés:</strong>
-                bankszámlaszám-változás esetén mindig szükséges.
-            </li>
-
-            <li class="mb-3">
-                <strong>Kétfaktoros azonosítás használata:</strong>
-                csökkenti az e-mail fiók feltörésének esélyét.
-            </li>
-
-            <li class="mb-3">
-                <strong>Dolgozói oktatás:</strong>
-                a pénzügyi munkatársaknak ismerniük kell az ilyen támadások működését.
-            </li>
-
-            <li class="mb-3">
-                <strong>Több szintű jóváhagyás:</strong>
-                nagyobb összegű utalásokat több személy ellenőrizzen.
-            </li>
-
-            <li class="mb-3">
-                <strong>Figyelmeztető jelek felismerése:</strong>
-                sürgetés, új bankszámlaszám vagy szokatlan kommunikáció esetén fokozott óvatosság szükséges.
-            </li>
-
-        </ul>
-
-    </div>
-
-    <div class="col-lg-5">
-
-        <div class="info-card">
-
-            <h5 class="fw-bold">Tanulságok</h5>
-
-            <ul>
-                <li>A 2FA jelentősen növeli a biztonságot</li>
-                <li>A sürgetés mindig gyanús jel lehet</li>
-                <li>Az e-mail önmagában nem elég hitelesítés</li>
-                <li>A tudatosság kulcsfontosságú</li>
-                <li>A legtöbb támadás emberi hibára épül</li>
-            </ul>
-
-        </div>
-
-        <div class="alert alert-info mt-4">
-
-            <strong>Összegzés:</strong>
-
-            A modern kibertámadások gyakran nem technikai hibákat,
-            hanem emberi figyelmetlenséget és bizalmat használnak ki.
-            A megfelelő biztonsági gyakorlatok és a kétfaktoros hitelesítés
-            jelentősen csökkenthetik a sikeres támadások esélyét.
+            </div>
 
         </div>
 
     </div>
 
+    <h3 class="mt-5">Forrásjegyzék</h3>
+
+    <ul>
+
+        <li>https://learn.microsoft.com/en-us/security</li>
+
+        <li>https://www.cisa.gov/topics/cyber-threats-and-advisories</li>
+
+        <li>https://owasp.org</li>
+
+        <li>https://www.ibm.com/topics/two-factor-authentication</li>
+
+        <li>https://www.yubico.com/resources/glossary/multi-factor-authentication-mfa/</li>
+
+    </ul>
+
 </div>
-
-<h3 class="mt-5">Forrásjegyzék</h3>
-
-<ul>
-
-    <li>https://learn.microsoft.com/en-us/security</li>
-
-    <li>https://www.cisa.gov/topics/cyber-threats-and-advisories</li>
-
-    <li>https://owasp.org</li>
-
-    <li>https://www.ibm.com/topics/two-factor-authentication</li>
-
-    <li>https://www.yubico.com/resources/glossary/multi-factor-authentication-mfa/</li>
-
-</ul>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
