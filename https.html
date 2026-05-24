@@ -498,8 +498,171 @@
         </div>
 
     </div>
+    <div id="kviz-szekcio" class="mt-5">
+        <h2 id="kviz" class="text-center mb-4">🛜 Interaktív kvíz – Biztonságos böngészés</h2>
+
+        <p class="text-center text-muted mb-4">
+            Döntsd el a kérdéseknél, mit tennél! A kvíz végén megkapod az eredményed.
+        </p>
+
+        <div id="exam-box" class="info-card">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div id="exam-progress" class="quiz-progress"></div>
+                <div id="exam-bar-wrapper" class="flex-grow-1 ms-3">
+                    <div id="exam-bar-bg">
+                        <div id="exam-bar-fill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exam-flex">
+                <div class="exam-right">
+                    <h4 id="exam-question"></h4>
+                    <div id="exam-answers"></div>
+                </div>
+            </div>
+
+            <div class="quiz-nav mt-4 d-flex justify-content-between">
+                <button id="prev-btn" class="btn btn-outline-secondary" style="visibility:hidden;">⬅ Előző</button>
+                <button id="next-btn" class="btn btn-primary">Következő ➡</button>
+            </div>
+        </div>
+
+        <div id="exam-result" class="quiz-result text-center mt-5" style="display:none;">
+            <h3>🎉 Eredmény</h3>
+            <p id="exam-score"></p>
+            <p id="exam-eval" class="fw-bold"></p>
+            <button class="btn btn-outline-primary" onclick="startExam()">Újraindítás</button>
+        </div>
+    </div>
+    <h3 class="mt-5">Forrásjegyzék</h3>
+
+    <ul>
+        <li>https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview</li>
+        <li>https://www.cloudflare.com/learning/ssl/what-is-https/</li>
+        <li>https://www.cisa.gov/secure-our-world</li>
+        <li>https://letsencrypt.org/how-it-works/</li>
+    </ul>
+
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+const allQuestions = [
+    { q: "Mit jelent a HTTPS-ben az 'S' betű?", a: ["Speed (sebesség)", "Secure (biztonságos)", "Server (szerver)"], c: 1 },
+    { q: "Mit garantál elsősorban a HTTPS?", a: ["Az oldal tartalma igaz", "A kapcsolat titkosított", "Az oldal gyorsabban tölt"], c: 1 },
+    { q: "Melyik protokoll titkosítja az adatokat?", a: ["HTTP", "HTTPS", "FTP"], c: 1 },
+    { q: "Mi jelzi a böngészőben a biztonságos kapcsolatot?", a: ["Lakat ikon", "Piros háromszög", "Csillag ikon"], c: 0 },
+    { q: "Mit használ a HTTPS a titkosításhoz?", a: ["TLS", "ZIP", "PDF"], c: 0 },
+    { q: "Ki állítja ki a tanúsítványokat?", a: ["A felhasználó maga", "Tanúsítványkiállító (CA)", "A böngésző fejlesztője"], c: 1 },
+    { q: "A lakat ikon önmagában garantálja, hogy az oldal megbízható?", a: ["Igen, mindig", "Nem, a domaint is ellenőrizni kell", "Csak bankoknál"], c: 1 },
+    { q: "Melyik a HTTPS alapértelmezett portja?", a: ["80", "443", "21"], c: 1 },
+    { q: "Mit tegyél, ha a böngésző 'nem biztonságos kapcsolat' figyelmeztetést ad?", a: ["Megadom a jelszavam", "Nem adok meg adatot, ellenőrzöm a domaint", "Letöltök egy fájlt"], c: 1 },
+    { q: "Melyik a gyanús (hamis) cím?", a: ["otpbank.hu", "otp-bank-login.hu", "www.otpbank.hu"], c: 1 },
+    { q: "Hová tartozik valójában a 'paypal.com.verify-login.net' cím?", a: ["A PayPalhoz", "A verify-login.net oldalhoz", "A Google-höz"], c: 1 },
+    { q: "Mi a Man-in-the-Middle (MITM) támadás?", a: ["A támadó beékelődik a kapcsolatba", "Vírus a mellékletben", "Lassú internet"], c: 0 },
+    { q: "Mi az 'Evil Twin' nyilvános Wi-Fin?", a: ["Hamis, valódinak tűnő hálózat", "Erős jelszó", "Gyors hálózat"], c: 0 },
+    { q: "Mit ajánlott használni nyilvános Wi-Fin?", a: ["Csak HTTP-t", "VPN-t és HTTPS-t", "Semmilyen védelmet"], c: 1 },
+    { q: "Mit NE csinálj nyilvános Wi-Fin?", a: ["HTTPS oldal böngészése", "Netbankolás védelem nélkül", "VPN bekapcsolása"], c: 1 },
+    { q: "Mi a tanúsítvány lejáratának lehetséges jele?", a: ["Csak karbantartás", "Karbantartás vagy csalás is lehet", "Mindig csalás"], c: 1 },
+    { q: "Melyik a legszigorúbb tanúsítványtípus?", a: ["DV", "OV", "EV"], c: 2 },
+    { q: "Mit véd a HTTPS lehallgatás esetén?", a: ["Semmit", "Az adatok titkosítva maradnak", "Csak a sebességet"], c: 1 },
+    { q: "Mi a VPN fő feladata?", a: ["Reklámok megjelenítése", "A teljes forgalom titkosítása", "Fájlok tömörítése"], c: 1 },
+    { q: "Melyik a biztonságosabb hely netbankoláshoz?", a: ["Nyilvános kávézó Wi-Fi", "Saját mobilnet vagy otthoni hálózat", "Ismeretlen nyílt hálózat"], c: 1 }
+];
+
+let selectedQuestions = [];
+let index = 0;
+let answers = [];
+const QUIZ_LENGTH = 10;
+
+function startExam() {
+    selectedQuestions = [...allQuestions]
+        .sort(() => Math.random() - 0.5)
+        .slice(0, QUIZ_LENGTH);
+
+    index = 0;
+    answers = Array(QUIZ_LENGTH).fill(null);
+
+    document.getElementById("exam-result").style.display = "none";
+    document.getElementById("exam-box").style.display = "block";
+
+    loadExamQuestion();
+}
+
+function loadExamQuestion() {
+    const q = selectedQuestions[index];
+
+    document.getElementById("exam-progress").innerText =
+        `Kérdés ${index + 1} / ${QUIZ_LENGTH}`;
+
+    const percent = (index / QUIZ_LENGTH) * 100;
+    document.getElementById("exam-bar-fill").style.width = `${percent}%`;
+
+    document.getElementById("exam-question").innerText = q.q;
+
+    const box = document.getElementById("exam-answers");
+    box.innerHTML = "";
+
+    q.a.forEach((ans, i) => {
+        const div = document.createElement("div");
+        div.classList.add("quiz-answer");
+        div.innerText = ans;
+
+        if (answers[index] === i) div.classList.add("selected");
+
+        div.onclick = () => {
+            answers[index] = i;
+            loadExamQuestion();
+        };
+
+        box.appendChild(div);
+    });
+
+    document.getElementById("prev-btn").style.visibility =
+        index === 0 ? "hidden" : "visible";
+
+    document.getElementById("next-btn").innerText =
+        index === QUIZ_LENGTH - 1 ? "Befejezés" : "Következő ➡";
+}
+
+document.getElementById("prev-btn").onclick = () => {
+    if (index > 0) index--;
+    loadExamQuestion();
+};
+
+document.getElementById("next-btn").onclick = () => {
+    if (index < QUIZ_LENGTH - 1) {
+        index++;
+        loadExamQuestion();
+    } else {
+        finishExam();
+    }
+};
+
+function finishExam() {
+    let score = 0;
+
+    selectedQuestions.forEach((q, i) => {
+        if (answers[i] === q.c) score++;
+    });
+
+    const percent = Math.round((score / QUIZ_LENGTH) * 100);
+
+    document.getElementById("exam-box").style.display = "none";
+    document.getElementById("exam-result").style.display = "block";
+
+    document.getElementById("exam-score").innerText =
+        `Pontszám: ${score} / ${QUIZ_LENGTH} (${percent}%)`;
+
+    document.getElementById("exam-eval").innerText =
+        percent >= 80 ? "✔ Kiváló! Átmentél!" :
+        percent >= 60 ? "⚠ Majdnem! Még egy kis gyakorlás kell." :
+                        "❌ Sikertelen. Gyakorolj még!";
+}
+
+startExam();
+</script>
 
 </body>
 </html>
