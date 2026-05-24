@@ -392,6 +392,80 @@
         A domain „lényegi" része mindig az utolsó pont előtti rész. A <code>paypal.com.verify-login.net</code>
         valójában a <code>verify-login.net</code> oldalhoz tartozik, nem a PayPalhoz!
     </div>
+    <h2 id="wifi" class="mt-5">4. A nyilvános Wi-Fi használatának kockázatai</h2>
+
+    <div class="row g-4 align-items-start mt-3">
+
+        <div class="col-lg-7">
+
+            <h4>4.1 Miért veszélyes a nyilvános Wi-Fi?</h4>
+
+            <p>
+                A kávézók, repülőterek, bevásárlóközpontok ingyenes Wi-Fi hálózatai kényelmesek, de komoly
+                biztonsági kockázatot jelentenek. A hálózat sok esetben nyílt, vagyis bárki csatlakozhat,
+                így a forgalom könnyebben lehallgatható.
+            </p>
+
+            <h5 class="mt-4">Tipikus támadási módszerek:</h5>
+
+            <ul class="mt-3">
+
+                <li class="mb-3">
+                    <strong>Man-in-the-Middle (MITM):</strong>
+                    a támadó beékelődik a felhasználó és a szerver közé, és olvassa vagy módosítja a forgalmat.
+                </li>
+
+                <li class="mb-3">
+                    <strong>Hamis hozzáférési pont (Evil Twin):</strong>
+                    a támadó egy valódinak tűnő hálózatot hoz létre (pl. „Free_Cafe_WiFi"),
+                    és aki csatlakozik, annak az adatait figyeli.
+                </li>
+
+                <li class="mb-3">
+                    <strong>Forgalom lehallgatása (sniffing):</strong>
+                    titkosítatlan (HTTP) kapcsolat esetén a támadó láthatja a beírt jelszavakat és üzeneteket.
+                </li>
+
+                <li class="mb-3">
+                    <strong>Munin / DNS hamisítás:</strong>
+                    a támadó átirányíthatja a felhasználót egy hamis weboldalra.
+                </li>
+
+            </ul>
+
+            <div class="alert alert-danger mt-4">
+                <strong>Valós példa:</strong>
+                Egy repülőtéren egy utas csatlakozott egy „ingyenes" Wi-Fi-hez, amely valójában egy támadó által
+                létrehozott hamis hálózat volt. Bejelentkezett az e-mail fiókjába HTTP-n keresztül, és a támadó
+                ellopta a jelszavát. Ha HTTPS-t és VPN-t használt volna, a támadó csak titkosított adatfolyamot látott volna.
+            </div>
+
+        </div>
+
+        <div class="col-lg-5">
+
+            <div class="info-card">
+                <h5 class="fw-bold">Mire figyeljünk nyilvános Wi-Fin?</h5>
+                <ul>
+                    <li>Csak HTTPS oldalakat használjunk</li>
+                    <li>Ne intézzünk netbankolást</li>
+                    <li>Használjunk VPN-t</li>
+                    <li>Kapcsoljuk ki az automatikus csatlakozást</li>
+                    <li>Ne kapcsolódjunk ismeretlen hálózathoz</li>
+                </ul>
+            </div>
+
+            <div class="info-card mt-4">
+                <h5 class="fw-bold">Mit véd a HTTPS Wi-Fin?</h5>
+                <p class="mb-0">
+                    Még ha a támadó le is hallgatja a hálózatot, a HTTPS miatt csak titkosított, értelmezhetetlen
+                    adatfolyamot lát. Ezért is fontos, hogy <strong>mindig HTTPS-en</strong> kommunikáljunk.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
