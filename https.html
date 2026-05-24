@@ -347,6 +347,51 @@
         </div>
 
     </div>
+    <h4 class="mt-5">3.2 Hamis és valódi domainek felismerése</h4>
+
+    <p>
+        A csalók gyakran a valódihoz nagyon hasonló címeket használnak. Egy apró eltérés is árulkodó jel lehet:
+    </p>
+
+    <div class="table-responsive mt-4">
+        <table class="table table-bordered table-hover align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Valódi cím</th>
+                    <th>Hamis (csaló) cím</th>
+                    <th>Mi a trükk?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>otpbank.hu</code></td>
+                    <td><code>otp-bank-login.hu</code></td>
+                    <td>Plusz szavak a domainben</td>
+                </tr>
+                <tr>
+                    <td><code>facebook.com</code></td>
+                    <td><code>faceboook.com</code></td>
+                    <td>Elgépelt domain (extra betű)</td>
+                </tr>
+                <tr>
+                    <td><code>paypal.com</code></td>
+                    <td><code>paypal.com.verify-login.net</code></td>
+                    <td>A valódi név csak aldomain</td>
+                </tr>
+                <tr>
+                    <td><code>microsoft.com</code></td>
+                    <td><code>micros0ft.com</code></td>
+                    <td>Számjegy a betű helyett (0 az o helyett)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="alert alert-info mt-4">
+        <strong>Tipp:</strong>
+        A domain „lényegi" része mindig az utolsó pont előtti rész. A <code>paypal.com.verify-login.net</code>
+        valójában a <code>verify-login.net</code> oldalhoz tartozik, nem a PayPalhoz!
+    </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
