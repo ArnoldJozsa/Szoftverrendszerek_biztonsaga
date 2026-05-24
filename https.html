@@ -189,6 +189,84 @@
         Ma már a legtöbb böngésző alapból HTTPS-en próbálja megnyitni az oldalakat, és külön
         figyelmeztet, ha egy oldal csak HTTP-n érhető el.
     </div>
+    <h2 id="tanusitvany" class="mt-5">2. A tanúsítványok szerepe</h2>
+
+    <div class="row g-4 align-items-start mt-3">
+
+        <div class="col-lg-7">
+
+            <h4>2.1 Mi az a digitális tanúsítvány?</h4>
+
+            <p>
+                A HTTPS működéséhez egy <strong>digitális tanúsítványra</strong> (SSL/TLS tanúsítvány) van szükség.
+                Ez egy elektronikus igazolás, amely megerősíti, hogy egy adott weboldal valóban az, aminek mondja magát.
+            </p>
+
+            <p>
+                A tanúsítványokat megbízható, független szervezetek, az úgynevezett
+                <strong>tanúsítványkiállítók</strong> (CA – Certificate Authority) állítják ki, miután ellenőrizték
+                a weboldal tulajdonosának jogosultságát.
+            </p>
+
+            <h4 class="mt-4">2.2 Hogyan épül fel a bizalom?</h4>
+
+            <p>
+                A böngésző egy beépített listát tartalmaz a megbízható tanúsítványkiállítókról. Amikor egy HTTPS
+                oldalra látogatunk, a böngésző ellenőrzi:
+            </p>
+
+            <ul>
+                <li>megbízható CA állította-e ki a tanúsítványt,</li>
+                <li>érvényes-e még a tanúsítvány (nem járt-e le),</li>
+                <li>valóban a meglátogatott domainre szól-e,</li>
+                <li>nem vonták-e vissza.</li>
+            </ul>
+
+            <p>
+                Ha minden rendben van, megjelenik a lakat ikon. Ha valami nem stimmel, a böngésző figyelmeztetést jelenít meg.
+            </p>
+
+            <h4 class="mt-4">2.3 Tanúsítványtípusok</h4>
+
+            <ul>
+                <li><strong>DV (Domain Validated):</strong> csak a domain tulajdonjogát ellenőrzi, gyorsan kiállítható.</li>
+                <li><strong>OV (Organization Validated):</strong> a szervezet létezését is ellenőrzi.</li>
+                <li><strong>EV (Extended Validation):</strong> a legszigorúbb ellenőrzés, jellemzően bankoknál, nagy cégeknél.</li>
+            </ul>
+
+            <div class="alert alert-warning mt-3">
+                <strong>Fontos:</strong>
+                A lakat ikon megléte önmagában nem jelenti, hogy az oldal megbízható! Csalók is szerezhetnek
+                ingyenes DV tanúsítványt egy hamis oldalra. Ezért mindig ellenőrizni kell a <strong>domain nevet</strong> is.
+            </div>
+
+        </div>
+
+        <div class="col-lg-5">
+
+            <div class="info-card">
+                <h5 class="fw-bold">Ki állítja ki a tanúsítványokat?</h5>
+                <ul>
+                    <li>Let's Encrypt (ingyenes, automatikus)</li>
+                    <li>DigiCert</li>
+                    <li>GlobalSign</li>
+                    <li>Sectigo</li>
+                </ul>
+            </div>
+
+            <div class="info-card mt-4">
+                <h5 class="fw-bold">Mit jelez egy érvényes tanúsítvány?</h5>
+                <ul>
+                    <li>A kapcsolat titkosított</li>
+                    <li>A domain valóban létezik</li>
+                    <li>A szerver azonosítható</li>
+                    <li>Az adatok útközben védettek</li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
