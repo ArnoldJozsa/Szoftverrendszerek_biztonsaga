@@ -75,40 +75,58 @@
 
             <p>
                 A <strong>HTTP</strong> (HyperText Transfer Protocol) az a protokoll, amelyen keresztül a böngésző
-                és a webszerver kommunikál egymással. Ez biztosítja, hogy a weboldalak betöltődjenek a gépünkön.
+                és a webszerver kommunikál egymással. Lényegében ez az a közös „nyelv", amelyen a böngészőnk
+                kéréseket küld (például: „kérem a kezdőlapot"), a szerver pedig válaszol (elküldi az oldal tartalmát).
+                Szinte minden, amit az interneten teszünk – weboldalak megnyitása, űrlapok kitöltése, képek betöltése –
+                a háttérben HTTP- vagy HTTPS-kéréseken keresztül zajlik.
             </p>
 
             <p>
-                A HTTP legnagyobb problémája, hogy az adatokat <strong>titkosítás nélkül</strong>, nyílt szövegként
-                továbbítja. Ez azt jelenti, hogy ha valaki lehallgatja a forgalmat (például egy nyilvános
-                Wi-Fi hálózaton), akkor olvasni tudja a beírt jelszavakat, üzeneteket és egyéb adatokat.
+                A HTTP-t az 1990-es évek elején alkották meg, amikor az internet még jóval kisebb és
+                „barátságosabb" hely volt, ezért a biztonság nem volt elsődleges szempont. A protokoll
+                legnagyobb gyengesége, hogy az adatokat <strong>titkosítás nélkül</strong>, nyílt szövegként
+                továbbítja. Ez azt jelenti, hogy az adat a böngészőnk és a szerver közötti úton bárhol
+                olvasható marad: ha valaki lehallgatja a forgalmat – például egy nyilvános Wi-Fi hálózaton,
+                egy feltört routeren vagy egy közbeékelődő eszközön keresztül –, akkor szó szerint olvasni
+                tudja a beírt jelszavakat, e-maileket, üzeneteket és minden más adatot, mintha egy nyitott
+                levelezőlapot olvasna el.
             </p>
 
             <h4 class="mt-4">1.2 Mi az a HTTPS?</h4>
 
             <p>
                 A <strong>HTTPS</strong> (HyperText Transfer Protocol <strong>Secure</strong>) ugyanaz a protokoll,
-                de egy titkosítási réteggel kiegészítve. A titkosítást a <strong>TLS</strong>
-                (Transport Layer Security) biztosítja, amely a régebbi SSL utódja.
+                mint a HTTP, csak egy titkosítási réteggel kiegészítve. A titkosítást a <strong>TLS</strong>
+                (Transport Layer Security) biztosítja, amely a régebbi, ma már elavultnak számító SSL protokoll
+                utódja. (Sokan a megszokás miatt máig „SSL-tanúsítványt" emlegetnek, de a valóságban a modern
+                rendszerek mind a TLS-t használják.)
             </p>
 
             <p>
-                A HTTPS használatakor az adatok titkosított csatornán haladnak a böngésző és a szerver között,
-                így egy esetleges lehallgató csak értelmezhetetlen, kódolt adatfolyamot lát.
+                A HTTPS használatakor az adatok egy titkosított csatornán haladnak a böngésző és a szerver között.
+                Mielőtt bármilyen tartalom elindulna, a két fél egy úgynevezett „kézfogás" (handshake) során
+                megállapodik egy közös titkos kulcsban, és ettől kezdve minden adatot ezzel kódolnak. Így ha egy
+                lehallgató meg is szerzi az átküldött csomagokat, csak értelmezhetetlen, összekevert
+                adatfolyamot lát – a tartalomhoz a kulcs nélkül nem fér hozzá.
             </p>
 
             <h5 class="mt-3">A HTTPS három fő védelmet nyújt:</h5>
 
             <ul>
-                <li><strong>Titkosítás:</strong> az adatokat más nem tudja elolvasni az átvitel közben.</li>
-                <li><strong>Sértetlenség (integritás):</strong> az adatokat útközben nem lehet észrevétlenül módosítani.</li>
-                <li><strong>Hitelesség:</strong> biztosak lehetünk benne, hogy valóban a megfelelő szerverrel kommunikálunk.</li>
+                <li><strong>Titkosítás (bizalmasság):</strong> az adatokat rajtunk és a szerveren kívül
+                    senki más nem tudja elolvasni az átvitel közben, még akkor sem, ha elfogja a forgalmat.</li>
+                <li><strong>Sértetlenség (integritás):</strong> az adatokat útközben nem lehet észrevétlenül
+                    módosítani vagy meghamisítani – ha valaki belenyúlna, az fény derülne.</li>
+                <li><strong>Hitelesség (azonosítás):</strong> a tanúsítványnak köszönhetően biztosak lehetünk
+                    benne, hogy valóban azzal a szerverrel beszélünk, amelyikkel szándékunkban állt, és nem
+                    egy csaló oldal adta ki magát annak.</li>
             </ul>
 
             <div class="alert alert-info mt-3">
                 <strong>Lényeg:</strong>
-                a HTTPS nem azt garantálja, hogy egy oldal megbízható tartalmú, hanem azt, hogy a kapcsolat
-                titkosított és nem hamisították meg az átvitel közben.
+                a HTTPS nem azt garantálja, hogy egy oldal tartalma igaz vagy az oldal megbízható, hanem azt,
+                hogy a <strong>kapcsolat</strong> titkosított, és hogy az adatokat útközben nem hamisították meg.
+                Egy adathalász oldalnak is lehet érvényes HTTPS-e – ezért a lakat mellett mindig a címet is nézzük meg.
             </div>
 
         </div>
@@ -136,6 +154,8 @@
 
                 <p class="mt-3 mb-0">
                     A lakat ikon a böngésző címsorában azt jelzi, hogy a kapcsolat titkosított.
+                    A legtöbb böngésző a titkosítatlan HTTP-oldalaknál külön „Nem biztonságos"
+                    felirattal figyelmeztet a cím mellett.
                 </p>
             </div>
 
@@ -180,6 +200,11 @@
                     <td>443</td>
                 </tr>
                 <tr>
+                    <td>Adatok módosíthatósága útközben</td>
+                    <td>Lehetséges (észrevétlenül)</td>
+                    <td>Nem (integritásvédelem)</td>
+                </tr>
+                <tr>
                     <td>Ajánlott érzékeny adatokhoz</td>
                     <td>Nem</td>
                     <td>Igen</td>
@@ -191,7 +216,9 @@
     <div class="alert alert-secondary mt-4">
         <strong>Érdekesség:</strong>
         Ma már a legtöbb böngésző alapból HTTPS-en próbálja megnyitni az oldalakat, és külön
-        figyelmeztet, ha egy oldal csak HTTP-n érhető el.
+        figyelmeztet, ha egy oldal csak HTTP-n érhető el. A keresőmotorok – például a Google – is
+        előnyben részesítik a HTTPS-t használó oldalakat a találati listában, így mára a titkosítás
+        nem csak biztonsági, hanem üzemeltetési alapelvárás is lett.
     </div>
     <h2 id="tanusitvany" class="mt-5">2. A tanúsítványok szerepe</h2>
 
@@ -203,45 +230,64 @@
 
             <p>
                 A HTTPS működéséhez egy <strong>digitális tanúsítványra</strong> (SSL/TLS tanúsítvány) van szükség.
-                Ez egy elektronikus igazolás, amely megerősíti, hogy egy adott weboldal valóban az, aminek mondja magát.
+                Ez egy elektronikus igazolás, amely megerősíti, hogy egy adott weboldal valóban az, aminek mondja
+                magát. Egy kicsit olyan, mint egy online személyi igazolvány: tartalmazza a weboldal domainnevét,
+                a tulajdonos adatait, az érvényességi időt, valamint a titkosításhoz használt nyilvános kulcsot.
             </p>
 
             <p>
                 A tanúsítványokat megbízható, független szervezetek, az úgynevezett
                 <strong>tanúsítványkiállítók</strong> (CA – Certificate Authority) állítják ki, miután ellenőrizték
-                a weboldal tulajdonosának jogosultságát.
+                a weboldal tulajdonosának jogosultságát. A CA-k szerepe kulcsfontosságú: ők azok a „közjegyzők",
+                akikben mind a böngészők, mind a felhasználók megbíznak, és akiknek a hitelesítése nélkül a
+                tanúsítvány mit sem érne.
             </p>
 
             <h4 class="mt-4">2.2 Hogyan épül fel a bizalom?</h4>
 
             <p>
-                A böngésző egy beépített listát tartalmaz a megbízható tanúsítványkiállítókról. Amikor egy HTTPS
-                oldalra látogatunk, a böngésző ellenőrzi:
+                Minden böngésző és operációs rendszer egy beépített listát tartalmaz a megbízhatónak ismert
+                tanúsítványkiállítókról (ez az úgynevezett „gyökértanúsítvány-tár"). Amikor egy HTTPS-oldalra
+                látogatunk, a böngésző a háttérben, a másodperc tört része alatt több dolgot is leellenőriz:
             </p>
 
             <ul>
-                <li>megbízható CA állította-e ki a tanúsítványt,</li>
-                <li>érvényes-e még a tanúsítvány (nem járt-e le),</li>
-                <li>valóban a meglátogatott domainre szól-e,</li>
-                <li>nem vonták-e vissza.</li>
+                <li>megbízható, a listán szereplő CA állította-e ki a tanúsítványt,</li>
+                <li>érvényes-e még a tanúsítvány, vagyis nem járt-e le az érvényességi ideje,</li>
+                <li>valóban arra a domainre szól-e, amelyiket épp meglátogattuk,</li>
+                <li>nem vonták-e vissza időközben (például mert kiszivárgott a hozzá tartozó kulcs).</li>
             </ul>
 
             <p>
-                Ha minden rendben van, megjelenik a lakat ikon. Ha valami nem stimmel, a böngésző figyelmeztetést jelenít meg.
+                Ha minden ellenőrzés sikeres, a böngésző zökkenőmentesen betölti az oldalt, és megjelenik a
+                lakat ikon. Ha viszont bármelyik pont hibázik – lejárt, visszavont vagy hamis tanúsítvány –,
+                a böngésző figyelmeztetést jelenít meg, és nem tölti be automatikusan az oldalt.
             </p>
 
             <h4 class="mt-4">2.3 Tanúsítványtípusok</h4>
 
+            <p>
+                Nem minden tanúsítvány egyforma: a kiállítás előtti ellenőrzés alapossága szerint három fő
+                típust különböztetünk meg.
+            </p>
+
             <ul>
-                <li><strong>DV (Domain Validated):</strong> csak a domain tulajdonjogát ellenőrzi, gyorsan kiállítható.</li>
-                <li><strong>OV (Organization Validated):</strong> a szervezet létezését is ellenőrzi.</li>
-                <li><strong>EV (Extended Validation):</strong> a legszigorúbb ellenőrzés, jellemzően bankoknál, nagy cégeknél.</li>
+                <li><strong>DV (Domain Validated):</strong> csak a domain tulajdonjogát ellenőrzi, percek alatt,
+                    automatikusan kiállítható, és gyakran ingyenes. A legtöbb kisebb weboldal ilyet használ.</li>
+                <li><strong>OV (Organization Validated):</strong> a domain mellett a mögötte álló szervezet
+                    valós létezését is ellenőrzik, így nagyobb bizalmat ad – jellemzően cégek használják.</li>
+                <li><strong>EV (Extended Validation):</strong> a legszigorúbb, legalaposabb ellenőrzésen átesett
+                    típus, ahol a kiállító részletesen igazolja a szervezet jogi létét. Jellemzően bankoknál,
+                    nagy webáruházaknál és más, kiemelten érzékeny szolgáltatásoknál találkozunk vele.</li>
             </ul>
 
             <div class="alert alert-warning mt-3">
                 <strong>Fontos:</strong>
-                A lakat ikon megléte önmagában nem jelenti, hogy az oldal megbízható! Csalók is szerezhetnek
-                ingyenes DV tanúsítványt egy hamis oldalra. Ezért mindig ellenőrizni kell a <strong>domain nevet</strong> is.
+                A lakat ikon megléte önmagában nem jelenti, hogy az oldal megbízható! Mivel a DV-tanúsítvány
+                ingyenesen és automatikusan beszerezhető, a csalók is könnyedén szereznek érvényes HTTPS-t a
+                hamis oldalaikra. A lakat tehát csak azt garantálja, hogy a kapcsolat titkosított – azt nem,
+                hogy az oldal mögött tisztességes szándék áll. Ezért mindig ellenőrizni kell a <strong>domain
+                nevet</strong> is, ne csak a lakatot.
             </div>
 
         </div>
@@ -284,8 +330,12 @@
             <h4>3.1 Miért figyelmeztet a böngésző?</h4>
 
             <p>
-                A böngészők egyre szigorúbban védik a felhasználókat. Ha egy oldallal probléma van, figyelmeztetést
-                jelenítenek meg, hogy elkerüljük az adatlopást vagy a csalásokat.
+                A böngészők az elmúlt években egyre szigorúbban védik a felhasználókat. Ha egy oldallal valamilyen
+                biztonsági probléma van, nem hagyják, hogy csendben, észrevétlenül betöltődjön: ehelyett feltűnő,
+                gyakran teljes oldalas figyelmeztetést jelenítenek meg. Ennek célja, hogy egy pillanatra
+                megállítsanak minket, és átgondoljuk, valóban folytatni akarjuk-e – így próbálják megelőzni az
+                adatlopást és a csalásokat. Érdemes ezeket az üzeneteket komolyan venni, mert a böngésző nem
+                véletlenül, hanem konkrét technikai ok miatt jelzi őket.
             </p>
 
             <h5 class="mt-4">Leggyakoribb figyelmeztetések:</h5>
@@ -294,26 +344,30 @@
 
                 <li class="mb-3">
                     <strong>„A kapcsolat nem biztonságos":</strong>
-                    az oldal HTTP-n keresztül érhető el, vagy nincs érvényes tanúsítványa.
-                    Ilyenkor ne adjunk meg jelszót vagy bankkártyaadatot.
+                    az oldal HTTP-n keresztül érhető el, vagy nincs érvényes tanúsítványa, ezért a beírt adatok
+                    titkosítatlanul utaznának. Ilyenkor semmiképp ne adjunk meg jelszót, bankkártyaadatot vagy
+                    más érzékeny információt.
                 </li>
 
                 <li class="mb-3">
                     <strong>„A tanúsítvány lejárt":</strong>
-                    a weboldal tanúsítványa már nem érvényes. Lehet egyszerű karbantartási hiba,
-                    de lehet csalás jele is.
+                    a weboldal tanúsítványa már nem érvényes. Ennek hátterében sokszor csak figyelmetlenség áll
+                    (az üzemeltető elfelejtette megújítani), de lehet csalás jele is – ezért amíg nem vagyunk
+                    biztosak a dolgunkban, jobb óvatosnak lenni.
                 </li>
 
                 <li class="mb-3">
                     <strong>„A tanúsítvány nem erre a webhelyre szól":</strong>
-                    a tanúsítvány más domainre lett kiállítva, mint amelyiken járunk.
-                    Ez gyakran adathalász oldalakra jellemző.
+                    a tanúsítványt egy másik domainre állították ki, mint amelyiken éppen járunk. Ez különösen
+                    gyanús jel, mert gyakran adathalász oldalakra jellemző, amelyek egy valódi oldal
+                    tanúsítványát próbálják „kölcsönvenni".
                 </li>
 
                 <li class="mb-3">
                     <strong>„Megtévesztő webhely / Veszélyes oldal":</strong>
-                    a böngésző egy ismert adathalász vagy kártevőterjesztő oldalt észlelt.
-                    Ilyenkor azonnal lépjünk vissza.
+                    a böngésző egy ismert adathalász vagy kártevőterjesztő oldalt észlelt (ezeket folyamatosan
+                    frissített feketelistákból ismeri fel). Ilyenkor azonnal lépjünk vissza, és semmiképp ne
+                    töltsünk le semmit az oldalról.
                 </li>
 
             </ul>
@@ -321,7 +375,8 @@
             <div class="alert alert-danger mt-4">
                 <strong>Soha ne hagyd figyelmen kívül!</strong>
                 A „Tovább az oldalra (nem biztonságos)" gombra csak akkor kattints, ha 100%-ig biztos vagy benne,
-                hogy az oldal megbízható. Érzékeny adatoknál soha.
+                hogy az oldal megbízható (például egy saját, tesztelés alatt álló fejlesztői oldalról van szó).
+                Érzékeny adatok – jelszó, banki adatok – megadásánál viszont soha ne lépd át a figyelmeztetést.
             </div>
 
         </div>
@@ -362,7 +417,10 @@
     <h4 class="mt-5">3.2 Hamis és valódi domainek felismerése</h4>
 
     <p>
-        A csalók gyakran a valódihoz nagyon hasonló címeket használnak. Egy apró eltérés is árulkodó jel lehet:
+        A csalók egyik kedvenc módszere, hogy a valódihoz nagyon hasonló webcímeket hoznak létre, abban bízva,
+        hogy a felhasználó nem nézi meg elég alaposan a címsort. Egyetlen apró eltérés – egy plusz betű, egy
+        kötőjel vagy egy szám – is árulkodó jel lehet. Érdemes szokássá tenni, hogy bejelentkezés vagy fizetés
+        előtt mindig elolvassuk a teljes domainnevet. Néhány tipikus trükk:
     </p>
 
     <div class="table-responsive mt-4">
@@ -401,8 +459,10 @@
 
     <div class="alert alert-info mt-4">
         <strong>Tipp:</strong>
-        A domain „lényegi" része mindig az utolsó pont előtti rész. A <code>paypal.com.verify-login.net</code>
-        valójában a <code>verify-login.net</code> oldalhoz tartozik, nem a PayPalhoz!
+        A domain „lényegi" része mindig az utolsó pont előtti rész (a legfelső szintű végződés, pl. <code>.hu</code>
+        vagy <code>.com</code> előtt). A <code>paypal.com.verify-login.net</code> cím ennek alapján valójában a
+        <code>verify-login.net</code> oldalhoz tartozik – a „paypal.com" itt csak megtévesztő aldomain, nincs
+        köze a valódi PayPalhoz!
     </div>
     <h2 id="wifi" class="mt-5">4. A nyilvános Wi-Fi használatának kockázatai</h2>
 
@@ -413,9 +473,16 @@
             <h4>4.1 Miért veszélyes a nyilvános Wi-Fi?</h4>
 
             <p>
-                A kávézók, repülőterek, bevásárlóközpontok ingyenes Wi-Fi hálózatai kényelmesek, de komoly
-                biztonsági kockázatot jelentenek. A hálózat sok esetben nyílt, vagyis bárki csatlakozhat,
-                így a forgalom könnyebben lehallgatható.
+                A kávézók, repülőterek, szállodák és bevásárlóközpontok ingyenes Wi-Fi hálózatai rendkívül
+                kényelmesek, de komoly biztonsági kockázatot rejtenek. A legnagyobb gond, hogy ezek a hálózatok
+                gyakran nyíltak, vagyis bárki csatlakozhat hozzájuk jelszó nélkül, és sok eszköz osztozik
+                ugyanazon a hálózaton. Ez megkönnyíti a támadók dolgát: ugyanahhoz a hálózathoz kapcsolódva
+                könnyebben megfigyelhetik vagy akár eltéríthetik a többiek forgalmát.
+            </p>
+
+            <p>
+                Fontos megérteni, hogy a veszély nem maga a Wi-Fi, hanem az, hogy egy idegen, nem ellenőrzött
+                hálózaton nem tudhatjuk, ki figyeli a forgalmat. Az alábbi módszerek a leggyakoribbak:
             </p>
 
             <h5 class="mt-4">Tipikus támadási módszerek:</h5>
@@ -423,24 +490,31 @@
             <ul class="mt-3">
 
                 <li class="mb-3">
-                    <strong>Man-in-the-Middle (MITM):</strong>
-                    a támadó beékelődik a felhasználó és a szerver közé, és olvassa vagy módosítja a forgalmat.
+                    <strong>Man-in-the-Middle (MITM), vagyis közbeékelődéses támadás:</strong>
+                    a támadó észrevétlenül beékelődik a felhasználó és a szerver közé, így minden adat rajta
+                    keresztül halad. Ezáltal el tudja olvasni, sőt akár módosítani is tudja a forgalmat,
+                    miközben mindkét fél azt hiszi, közvetlenül egymással kommunikál.
                 </li>
 
                 <li class="mb-3">
-                    <strong>Hamis hozzáférési pont (Evil Twin):</strong>
-                    a támadó egy valódinak tűnő hálózatot hoz létre (pl. „Free_Cafe_WiFi"),
-                    és aki csatlakozik, annak az adatait figyeli.
+                    <strong>Hamis hozzáférési pont (Evil Twin, „gonosz iker"):</strong>
+                    a támadó egy valódinak tűnő nevű hálózatot hoz létre (például „Free_Cafe_WiFi" vagy
+                    „Airport_Free_WiFi"), amely megtévesztésig hasonlít a hivatalosra. Aki gyanútlanul
+                    csatlakozik hozzá, annak a teljes forgalma a támadón keresztül megy, így az mindent láthat.
                 </li>
 
                 <li class="mb-3">
                     <strong>Forgalom lehallgatása (sniffing):</strong>
-                    titkosítatlan (HTTP) kapcsolat esetén a támadó láthatja a beírt jelszavakat és üzeneteket.
+                    titkosítatlan (HTTP) kapcsolat esetén a támadó egyszerű eszközökkel „lehallgathatja" a
+                    hálózaton áthaladó adatokat, és nyíltan láthatja a beírt jelszavakat, üzeneteket vagy
+                    egyéb információkat.
                 </li>
 
                 <li class="mb-3">
-                    <strong>Munin / DNS hamisítás:</strong>
-                    a támadó átirányíthatja a felhasználót egy hamis weboldalra.
+                    <strong>DNS-hamisítás (átirányítás):</strong>
+                    a támadó manipulálja a névfeloldást, így amikor beírjuk egy valódi oldal címét, valójában
+                    egy hamis, általa készített oldalra jutunk – anélkül, hogy bármi gyanúsat észlelnénk a
+                    címsorban.
                 </li>
 
             </ul>
@@ -448,8 +522,10 @@
             <div class="alert alert-danger mt-4">
                 <strong>Valós példa:</strong>
                 Egy repülőtéren egy utas csatlakozott egy „ingyenes" Wi-Fi-hez, amely valójában egy támadó által
-                létrehozott hamis hálózat volt. Bejelentkezett az e-mail fiókjába HTTP-n keresztül, és a támadó
-                ellopta a jelszavát. Ha HTTPS-t és VPN-t használt volna, a támadó csak titkosított adatfolyamot látott volna.
+                létrehozott hamis hálózat (Evil Twin) volt. Bejelentkezett az e-mail fiókjába egy titkosítatlan
+                HTTP-kapcsolaton keresztül, a támadó pedig a lehallgatott forgalomból egyszerűen kiolvasta és
+                ellopta a jelszavát. Ha HTTPS-t használt volna, a támadó csak titkosított, értelmezhetetlen
+                adatfolyamot látott volna – egy VPN bekapcsolásával pedig a teljes kapcsolat rejtve maradt volna.
             </div>
 
         </div>
@@ -484,16 +560,25 @@
     </div>
     <h4 class="mt-5">4.2 Hogyan védekezzünk?</h4>
 
+    <p>
+        A jó hír az, hogy néhány egyszerű szokással a nyilvános Wi-Fi kockázatainak nagy része kivédhető.
+        Nem kell lemondanunk a kényelemről – csak tudatosan kell használnunk ezeket a hálózatokat.
+    </p>
+
     <div class="row g-4 align-items-start mt-3">
 
         <div class="col-lg-6">
             <div class="info-card h-100">
                 <h5 class="fw-bold">Alapvető óvintézkedések</h5>
                 <ul>
-                    <li class="mb-2">Mindig ellenőrizd, hogy HTTPS-t használsz-e (lakat ikon).</li>
-                    <li class="mb-2">Érzékeny műveleteket (bankolás, vásárlás) inkább mobilneten végezz.</li>
-                    <li class="mb-2">Használj VPN-t, amely titkosítja a teljes forgalmat.</li>
-                    <li class="mb-2">Kapcsold ki a fájlmegosztást nyilvános hálózaton.</li>
+                    <li class="mb-2">Mindig ellenőrizd, hogy HTTPS-t használsz-e (lakat ikon a címsorban).</li>
+                    <li class="mb-2">Érzékeny műveleteket – bankolás, vásárlás, fontos bejelentkezés – inkább
+                        a saját mobilnetedről végezz, ne nyilvános Wi-Fin.</li>
+                    <li class="mb-2">Használj VPN-t, amely a teljes forgalmadat titkosítja, nem csak a
+                        weboldalakét.</li>
+                    <li class="mb-2">Kapcsold ki az automatikus csatlakozást, hogy az eszközöd ne kapcsolódjon
+                        magától ismeretlen hálózatokhoz.</li>
+                    <li class="mb-2">Kapcsold ki a fájlmegosztást, amikor nyilvános hálózaton vagy.</li>
                 </ul>
             </div>
         </div>
@@ -502,13 +587,18 @@
             <div class="info-card h-100">
                 <h5 class="fw-bold">Mi az a VPN?</h5>
                 <p>
-                    A <strong>VPN</strong> (Virtual Private Network) egy titkosított „alagutat" hoz létre az eszközöd
-                    és egy megbízható szerver között. Így még nyilvános Wi-Fin is védve marad a teljes internetes forgalmad,
-                    nem csak a HTTPS-oldalak.
+                    A <strong>VPN</strong> (Virtual Private Network, azaz virtuális magánhálózat) egy titkosított
+                    „alagutat" hoz létre az eszközöd és egy megbízható szerver között. Minden internetes
+                    forgalmad ezen az alagúton halad át, így még egy nyilvános, lehallgatott Wi-Fin is védve marad
+                    – nem csak a HTTPS-oldalak, hanem minden alkalmazás és szolgáltatás forgalma is.
+                </p>
+                <p class="mb-0">
+                    Ráadásul a VPN elrejti a valódi IP-címedet is, így a böngészésed nehezebben követhető vissza.
                 </p>
                 <div class="alert alert-info mt-3 mb-0">
-                    <strong>Tipp:</strong> megbízható, ismert VPN-szolgáltatót válassz, mert az ingyenes VPN-ek
-                    egy része maga gyűjti az adatokat.
+                    <strong>Tipp:</strong> mindig megbízható, ismert VPN-szolgáltatót válassz, mert egyes
+                    ingyenes VPN-ek éppen hogy maguk gyűjtik és értékesítik a felhasználók adatait – ezzel pont
+                    az ellenkezőjét érve el annak, amit várnánk tőlük.
                 </div>
             </div>
         </div>
