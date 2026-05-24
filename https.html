@@ -267,6 +267,86 @@
         </div>
 
     </div>
+    <h2 id="figyelmeztetes" class="mt-5">3. Böngésző figyelmeztetések értelmezése</h2>
+
+    <div class="row g-4 align-items-start mt-3">
+
+        <div class="col-lg-7">
+
+            <h4>3.1 Miért figyelmeztet a böngésző?</h4>
+
+            <p>
+                A böngészők egyre szigorúbban védik a felhasználókat. Ha egy oldallal probléma van, figyelmeztetést
+                jelenítenek meg, hogy elkerüljük az adatlopást vagy a csalásokat.
+            </p>
+
+            <h5 class="mt-4">Leggyakoribb figyelmeztetések:</h5>
+
+            <ul class="mt-3">
+
+                <li class="mb-3">
+                    <strong>„A kapcsolat nem biztonságos":</strong>
+                    az oldal HTTP-n keresztül érhető el, vagy nincs érvényes tanúsítványa.
+                    Ilyenkor ne adjunk meg jelszót vagy bankkártyaadatot.
+                </li>
+
+                <li class="mb-3">
+                    <strong>„A tanúsítvány lejárt":</strong>
+                    a weboldal tanúsítványa már nem érvényes. Lehet egyszerű karbantartási hiba,
+                    de lehet csalás jele is.
+                </li>
+
+                <li class="mb-3">
+                    <strong>„A tanúsítvány nem erre a webhelyre szól":</strong>
+                    a tanúsítvány más domainre lett kiállítva, mint amelyiken járunk.
+                    Ez gyakran adathalász oldalakra jellemző.
+                </li>
+
+                <li class="mb-3">
+                    <strong>„Megtévesztő webhely / Veszélyes oldal":</strong>
+                    a böngésző egy ismert adathalász vagy kártevőterjesztő oldalt észlelt.
+                    Ilyenkor azonnal lépjünk vissza.
+                </li>
+
+            </ul>
+
+            <div class="alert alert-danger mt-4">
+                <strong>Soha ne hagyd figyelmen kívül!</strong>
+                A „Tovább az oldalra (nem biztonságos)" gombra csak akkor kattints, ha 100%-ig biztos vagy benne,
+                hogy az oldal megbízható. Érzékeny adatoknál soha.
+            </div>
+
+        </div>
+
+        <div class="col-lg-5">
+
+            <div class="info-card">
+                <h5 class="fw-bold">Hogyan néz ki egy figyelmeztetés?</h5>
+
+                <div class="browser-bar insecure">
+                    <span class="lock-insecure">⚠</span>
+                    <span class="url-text">A kapcsolatod nem privát</span>
+                </div>
+
+                <p class="mt-3 mb-0">
+                    A böngésző jellemzően egy piros vagy figyelmeztető színű, teljes oldalas üzenetet jelenít meg,
+                    és nem tölti be automatikusan az oldalt.
+                </p>
+            </div>
+
+            <div class="info-card mt-4">
+                <h5 class="fw-bold">Mit tegyünk figyelmeztetésnél?</h5>
+                <ul>
+                    <li>Ne adjunk meg személyes adatot</li>
+                    <li>Ellenőrizzük a domain nevet</li>
+                    <li>Ne töltsünk le semmit az oldalról</li>
+                    <li>Inkább zárjuk be a fület</li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
