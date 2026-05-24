@@ -138,6 +138,57 @@
         </div>
 
     </div>
+    <h4 class="mt-5">1.3 Összehasonlító táblázat</h4>
+
+    <div class="table-responsive mt-4">
+        <table class="table table-bordered table-hover align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Szempont</th>
+                    <th>HTTP</th>
+                    <th>HTTPS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Titkosítás</td>
+                    <td>Nincs (nyílt szöveg)</td>
+                    <td>Van (TLS titkosítás)</td>
+                </tr>
+                <tr>
+                    <td>Adatlopás kockázata</td>
+                    <td>Magas</td>
+                    <td>Alacsony</td>
+                </tr>
+                <tr>
+                    <td>Böngésző jelzése</td>
+                    <td>„Nem biztonságos"</td>
+                    <td>Lakat ikon</td>
+                </tr>
+                <tr>
+                    <td>Tanúsítvány</td>
+                    <td>Nem szükséges</td>
+                    <td>Szükséges (CA által kiállított)</td>
+                </tr>
+                <tr>
+                    <td>Alapértelmezett port</td>
+                    <td>80</td>
+                    <td>443</td>
+                </tr>
+                <tr>
+                    <td>Ajánlott érzékeny adatokhoz</td>
+                    <td>Nem</td>
+                    <td>Igen</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="alert alert-secondary mt-4">
+        <strong>Érdekesség:</strong>
+        Ma már a legtöbb böngésző alapból HTTPS-en próbálja megnyitni az oldalakat, és külön
+        figyelmeztet, ha egy oldal csak HTTP-n érhető el.
+    </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
