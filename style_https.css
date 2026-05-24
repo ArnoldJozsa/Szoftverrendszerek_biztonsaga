@@ -28,7 +28,7 @@ body {
 .hero {
     background:
         linear-gradient(rgba(8,15,30,0.72), rgba(8,15,30,0.72)),
-        url("images/https_hero.jpg");
+        url("images/https_bg.webp");
 
     background-size: cover;
     background-position: center;
@@ -242,18 +242,28 @@ html {
 }
 
 .browser-bar .lock-secure {
-    color: #334155;
+    color: #16a34a;
     font-weight: 700;
 }
 
 .browser-bar .lock-insecure {
-    color: #334155;
+    color: #dc2626;
     font-weight: 700;
 }
 
 .browser-bar .url-text {
     color: #334155;
     word-break: break-all;
+}
+
+.browser-bar.secure {
+    border-color: #86efac;
+    background: #f0fdf4;
+}
+
+.browser-bar.insecure {
+    border-color: #fca5a5;
+    background: #fef2f2;
 }
 
 .quiz-progress {
