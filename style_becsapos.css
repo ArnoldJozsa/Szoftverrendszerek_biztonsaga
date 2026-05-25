@@ -288,7 +288,7 @@ body {
 html {
   scroll-behavior: smooth;
 }
-/* --- FŐ KONTÉNER: kép balra, kérdés jobbra --- */
+
 .exam-flex {
     display: flex;
     gap: 24px;
@@ -296,9 +296,8 @@ html {
     margin-bottom: 30px;
 }
 
-/* --- KÉP DOBOZ --- */
 .exam-image-wrapper {
-    width: 48%;
+    width: 45%;
     background: #f5f7fa;
     border-radius: 14px;
     padding: 14px;
@@ -312,12 +311,12 @@ html {
     border-radius: 10px;
 }
 
-/* --- JOBB OLDALI KÉRDÉS DOBOZ --- */
+
 .exam-right {
-    width: 52%;
+    width: 55%;
 }
 
-/* --- KÉRDÉS SZÖVEG --- */
+
 #exam-question {
     font-size: 22px;
     font-weight: 700;
@@ -326,7 +325,7 @@ html {
     line-height: 1.35;
 }
 
-/* --- VÁLASZGOMBOK --- */
+
 .quiz-answer {
     background: #ffffff;
     border: 2px solid #d9e1ec;
@@ -351,7 +350,7 @@ html {
     box-shadow: 0 3px 12px rgba(0,0,0,0.12);
 }
 
-/* --- FELSŐ SÁV MARAD, DE SZEBB --- */
+
 .quiz-progress {
     font-size: 16px;
     font-weight: 600;
@@ -372,7 +371,7 @@ html {
     transition: width 0.3s ease;
 }
 
-/* --- NAVIGÁCIÓS GOMBOK --- */
+
 .quiz-nav button {
     padding: 12px 26px;
     font-size: 16px;
@@ -390,11 +389,29 @@ html {
 }
 
 #next-btn {
-    background: #4a90e2;
+    background: linear-gradient(90deg, #4a90e2, #6fcf97);
     border: none;
     color: white;
+    font-weight: 600;
+    padding: 12px 26px;
+    border-radius: 10px;
+    transition: 0.25s ease;
 }
 
 #next-btn:hover {
-    background: #3b7ac0;
+    background: linear-gradient(90deg, #3b7ac0, #5ec487);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
+.source-list-simple {
+    margin-top: 15px;
+    padding-left: 20px;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.source-list-simple li {
+    margin-bottom: 6px;
+    word-break: break-all;
+}
+

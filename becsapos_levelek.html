@@ -998,11 +998,12 @@ photo[U+202E]gpj.exe
             </div>
         </div>
     </div>
+<div id="exam-container" class="quiz-wrapper mt-5">
+    <h2 class="text-center mb-4">📘 Kvíz - Mennyit tanultál meg?</h2>
 
-   <div id="exam-container" class="quiz-wrapper mt-5">
-    <h2 class="text-center mb-4">📘 Záróvizsga – Teljes tananyag</h2>
+    <div id="exam-box" class="info-card">
 
-    <div id="exam-box" class="quiz-box">
+
         <div class="d-flex justify-content-between align-items-center mb-3">
             <div id="exam-progress" class="quiz-progress"></div>
             <div id="exam-bar-wrapper" class="flex-grow-1 ms-3">
@@ -1014,24 +1015,25 @@ photo[U+202E]gpj.exe
 
         <div class="exam-flex">
 
-    <div class="exam-image-wrapper" id="exam-image" style="display:none;">
-        <img id="exam-image-tag" src="" alt="Kérdés illusztráció">
-    </div>
+            <div class="exam-right">
+                <h4 id="exam-question"></h4>
+                <div id="exam-answers"></div>
+            </div>
 
-    <div class="exam-right">
-        <h4 id="exam-question"></h4>
-        <div id="exam-answers"></div>
-    </div>
+            <div class="exam-image-wrapper" id="exam-image" style="display:none;">
+                <img id="exam-image-tag" src="" alt="Kérdés illusztráció">
+            </div>
 
-</div>
+        </div>
 
-
+        
         <div class="quiz-nav mt-4 d-flex justify-content-between">
             <button id="prev-btn" class="btn btn-outline-secondary" style="visibility:hidden;">⬅ Előző</button>
             <button id="next-btn" class="btn btn-primary">Következő ➡</button>
         </div>
     </div>
 
+    
     <div id="exam-result" class="quiz-result text-center mt-5" style="display:none;">
         <h3>🎉 Eredmény</h3>
         <p id="exam-score"></p>
@@ -1039,7 +1041,14 @@ photo[U+202E]gpj.exe
         <button class="btn btn-outline-primary" onclick="startExam()">Újraindítás</button>
     </div>
 </div>
+<h3 class="mt-5">Forrásjegyzék</h3>
 
+<ul class="source-list-simple">
+    <li>https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview</li>
+    <li>https://www.cloudflare.com/learning/ssl/what-is-https/</li>
+    <li>https://www.cisa.gov/secure-our-world</li>
+    <li>https://letsencrypt.org/how-it-works/</li>
+</ul>
 
 </div>
 
