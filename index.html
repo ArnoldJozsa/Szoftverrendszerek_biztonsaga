@@ -120,7 +120,7 @@
 </section>
 
 <script>
-const quizData = [
+let quizData = [
     
     {
         question: "Mi a phishing célja?",
@@ -311,7 +311,7 @@ const quizData = [
     {
         question: "Miért fontos a titkosítás?",
         options: [
-            "Megakadályozza, hogy illetéktelenek hozzáférjenek az adatokhoz",
+            "Megakadályozza, hogy illetékftelenek hozzáférjenek az adatokhoz",
             "Gyorsabb lesz a gép",
             "Több tárhelyet ad",
             "Nem kell jelszó"
@@ -589,6 +589,19 @@ const quizData = [
       answer: 0,
       image: "images/kviz4.jpg" }
 ];
+
+function getRandomQuestions(allQuestions, count) {
+    let shuffled = [...allQuestions];
+
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+
+    return shuffled.slice(0, count);
+}
+
+quizData = getRandomQuestions(quizData, 40);
 
 
 let currentIndex = 0;
