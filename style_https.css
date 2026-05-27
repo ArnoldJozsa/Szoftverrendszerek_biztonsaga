@@ -5,24 +5,9 @@ body {
     line-height: 1.8;
 }
 
-.navbar {
-    background: linear-gradient(90deg, #0f172a, #1e293b) !important;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.15);
-}
-
 .navbar-brand {
     font-weight: 700;
     font-size: 1.2rem;
-}
-
-.nav-link {
-    color: rgba(255,255,255,0.82) !important;
-    transition: 0.2s;
-}
-
-.nav-link:hover,
-.nav-link.active {
-    color: white !important;
 }
 
 .hero {
