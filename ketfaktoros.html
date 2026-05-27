@@ -63,6 +63,7 @@
     <a href="#csalas" class="btn btn-outline-primary mx-1">Bankszámlás csalás</a>
     <a href="#vedekezes" class="btn btn-outline-primary mx-1">Védekezés</a>
     <a href="#esettanulmany" class="btn btn-outline-primary mx-1">Esettanulmány</a>
+    <a href="#quiz" class="btn btn-outline-primary mx-1">Kvíz</a>
 </div>
 
 <div class="container py-5">
@@ -1120,6 +1121,259 @@
         </div>
 
     </div>
+
+    <section id="quiz" class="container my-5">
+        <h2 class="text-center mb-4">📱 Kvíz - Mennyit tanultál meg?</h2>
+    
+        <div class="quiz-wrapper">
+    
+            <div class="quiz-card p-4">
+    
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <span id="question-counter">Kérdés 1 / 10</span>
+                    <div class="progress w-75">
+                        <div id="quiz-progress"
+                             class="progress-bar"
+                             role="progressbar"
+                             style="width: 10%">
+                        </div>
+                    </div>
+                </div>
+    
+                <div id="quiz-container"></div>
+    
+                <div class="text-end mt-4">
+                    <button id="next-btn"
+                            class="btn btn-success px-4"
+                            onclick="nextQuestion()"
+                            style="display:none;">
+                        Következő →
+                    </button>
+                </div>
+    
+            </div>
+    
+        </div>
+    </section>
+    
+    <script>
+    
+    const quizQuestions = [
+    
+    {
+        question: "Mi a kétfaktoros azonosítás célja?",
+        options: [
+            "A fiók védelme akkor is, ha a jelszó kiszivárog",
+            "Az internet gyorsítása",
+            "A vírusok törlése"
+        ],
+        answer: 0
+    },
+    
+    {
+        question: "Melyik számít birtoklás alapú hitelesítésnek?",
+        options: [
+            "Telefon",
+            "Jelszó",
+            "Ujjlenyomat"
+        ],
+        answer: 0
+    },
+    
+    {
+        question: "Mi az SMS-alapú hitelesítés egyik legnagyobb gyengesége?",
+        options: [
+            "SIM-csere támadás",
+            "Túl hosszú jelszó",
+            "Lassú internet"
+        ],
+        answer: 0
+    },
+    
+    {
+        question: "Melyik authenticator alkalmazás szerepelt az anyagban?",
+        options: [
+            "Google Authenticator",
+            "Discord",
+            "Spotify"
+        ],
+        answer: 0
+    },
+    
+    {
+        question: "Mi a push bombing?",
+        options: [
+            "Sok jóváhagyási értesítés küldése",
+            "A telefon túlmelegedése",
+            "Automatikus vírusirtás"
+        ],
+        answer: 0
+    },
+    
+    {
+        question: "Mi a hardveres token egyik előnye?",
+        options: [
+            "Nagyon magas biztonság",
+            "Ingyenes használat",
+            "Nem kell hozzá jelszó"
+        ],
+        answer: 0
+    },
+    
+    {
+        question: "Mi történhet, ha mindenhol ugyanazt a jelszót használjuk?",
+        options: [
+            "Más szolgáltatásokba is beléphetnek a támadók",
+            "Gyorsabb lesz az internet",
+            "Kikapcsol a 2FA"
+        ],
+        answer: 0
+    },
+    
+    {
+        question: "Mi a bankszámlaszám-változtatásos csalás célja?",
+        options: [
+            "A pénz átirányítása a csalók számlájára",
+            "Új bankszámla nyitása",
+            "A bank szerverének frissítése"
+        ],
+        answer: 0
+    },
+    
+    {
+        question: "Mit kell tenni bankszámlaszám-változás esetén?",
+        options: [
+            "Telefonon is ellenőrizni kell",
+            "Azonnal utalni kell",
+            "Törölni kell az e-mailt"
+        ],
+        answer: 0
+    },
+    
+    {
+        question: "Miért működik sok támadás még ma is?",
+        options: [
+            "Az emberi figyelmetlenség miatt",
+            "A monitor hibája miatt",
+            "A lassú internet miatt"
+        ],
+        answer: 0
+    }
+    
+    ];
+    
+    let currentQuestion = 0;
+    let score = 0;
+    let answered = false;
+    
+    function loadQuestion() {
+    
+        answered = false;
+    
+        const q = quizQuestions[currentQuestion];
+    
+        document.getElementById("question-counter").innerText =
+            `Kérdés ${currentQuestion + 1} / ${quizQuestions.length}`;
+    
+        document.getElementById("quiz-progress").style.width =
+            `${((currentQuestion + 1) / quizQuestions.length) * 100}%`;
+    
+        document.getElementById("next-btn").style.display = "none";
+    
+        document.getElementById("quiz-container").innerHTML = `
+            <h3 class="mb-4">${q.question}</h3>
+    
+            ${q.options.map((option, index) => `
+                <div class="quiz-option mb-3"
+                     onclick="selectAnswer(${index})"
+                     id="option-${index}">
+                     ${option}
+                </div>
+            `).join("")}
+        `;
+    }
+    
+    function selectAnswer(index) {
+    
+        if(answered) return;
+    
+        answered = true;
+    
+        const q = quizQuestions[currentQuestion];
+    
+        q.options.forEach((_, i) => {
+    
+            const element = document.getElementById(`option-${i}`);
+    
+            if(i === q.answer){
+                element.classList.add("correct");
+            }
+    
+            if(i === index && i !== q.answer){
+                element.classList.add("wrong");
+            }
+    
+            element.style.pointerEvents = "none";
+        });
+    
+        if(index === q.answer){
+            score++;
+        }
+    
+        document.getElementById("next-btn").style.display = "inline-block";
+    }
+    
+    function nextQuestion() {
+    
+        currentQuestion++;
+    
+        if(currentQuestion < quizQuestions.length){
+    
+            loadQuestion();
+    
+        } else {
+    
+            showResult();
+        }
+    }
+    
+    function showResult() {
+    
+        document.getElementById("quiz-container").innerHTML = `
+            <div class="text-center">
+    
+                <h2 class="mb-4">Kvíz vége 🎉</h2>
+    
+                <h3>Eredmény: ${score} / ${quizQuestions.length}</h3>
+    
+                <p class="mt-3">
+                    ${score >= 8
+                        ? "Nagyon jól ismered a kétfaktoros azonosítás és a pénzügyi csalások témáját!"
+                        : "Érdemes még egyszer átnézni az anyagot."}
+                </p>
+    
+                <button class="btn btn-primary mt-3"
+                        onclick="restartQuiz()">
+                    Újraindítás
+                </button>
+    
+            </div>
+        `;
+    
+        document.getElementById("next-btn").style.display = "none";
+    }
+    
+    function restartQuiz(){
+    
+        currentQuestion = 0;
+        score = 0;
+    
+        loadQuestion();
+    }
+    
+    window.onload = loadQuestion;
+    
+    </script>
 
 </div>
 
