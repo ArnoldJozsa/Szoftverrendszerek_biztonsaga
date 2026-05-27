@@ -846,17 +846,28 @@ function loadQuestion() {
     }
 
     box.innerHTML = `
-    ${imageHTML}
-    <h5>${currentIndex + 1}. ${q.question}</h5>
+<div class="row align-items-start">
 
-    ${q.options.map((opt, i) => `
-        <div class="quiz-option" onclick="selectOption(${i})" id="opt-${i}">
-            ${opt}
-        </div>
-    `).join("")}
+    <div class="col-md-8">
+        <h5>${currentIndex + 1}. ${q.question}</h5>
 
-    <button class="btn btn-success mt-3" onclick="submitAnswer()">Válasz elküldése</button>
+        ${q.options.map((opt, i) => `
+            <div class="quiz-option" onclick="selectOption(${i})" id="opt-${i}">
+                ${opt}
+            </div>
+        `).join("")}
+
+        <button class="btn btn-success mt-3" onclick="submitAnswer()">Válasz elküldése</button>
+    </div>
+
+    
+    <div class="col-md-4 mb-3 text-center">
+        ${imageHTML}
+    </div>
+
+</div>
 `;
+
 
 }
 
