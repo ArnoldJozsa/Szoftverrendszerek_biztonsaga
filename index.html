@@ -615,7 +615,176 @@ let quizData = [
     { question: "KÉPES – Mi a gyanús ezen a FedEx‑es SMS‑en?",
       options: ["Rövidített, ismeretlen link", "Hivatalos alkalmazásra mutat", "Semmi gyanús"],
       answer: 0,
-      image: "images/kviz4.jpg" }
+      image: "images/kviz4.jpg" },
+
+    
+    {
+    question: "Mi a kétfaktoros azonosítás célja?",
+    options: [
+        "A felhasználói fiók védelme akkor is, ha a jelszó kiszivárog",
+        "A számítógép gyorsítása",
+        "A vírusok automatikus törlése",
+        "Az internetkapcsolat titkosítása"
+    ],
+    answer: 0
+    },
+
+    {
+    question: "Melyik hitelesítési faktor tartozik a birtoklás alapú faktorok közé?",
+    options: [
+        "PIN-kód",
+        "Telefon",
+        "Ujjlenyomat",
+        "Jelszó"
+    ],
+    answer: 1
+    },
+
+    {
+    question: "Mi az SMS-alapú 2FA legnagyobb gyengesége?",
+    options: [
+        "Nem működik internet nélkül",
+        "SIM-csere támadással kijátszható",
+        "Túl rövid a kód",
+        "Csak céges környezetben használható"
+    ],
+    answer: 1
+    },
+
+    {
+    question: "Melyik authenticator alkalmazás szerepelt az anyagban?",
+    options: [
+        "Discord",
+        "Spotify",
+        "Google Authenticator",
+        "Netflix"
+    ],
+    answer: 2
+        },
+
+    {
+    question: "Mi az authenticator alkalmazások egyik előnye?",
+    options: [
+        "A kód nem SMS-ben érkezik",
+        "Nem kell jelszó",
+        "Automatikusan törlik a vírusokat",
+        "Gyorsítják az internetet"
+    ],
+    answer: 0
+    },
+
+    {
+    question: "Mi a push bombing támadás lényege?",
+    options: [
+        "A támadó sok jóváhagyási értesítést küld",
+        "A telefon túlmelegszik",
+        "Automatikusan megváltozik a jelszó",
+        "A rendszer kikapcsolja a 2FA-t"
+    ],
+    answer: 0
+    },
+
+    {
+    question: "Mi a hardveres token egyik előnye?",
+    options: [
+        "Nagyon magas biztonságot nyújt",
+        "Nem kell hozzá internet",
+        "Automatikusan menti a jelszavakat",
+        "Ingyenes"
+    ],
+    answer: 0
+    },
+
+    {   
+    question: "Mi történhet, ha a felhasználó mindenhol ugyanazt a jelszót használja?",
+    options: [
+        "Gyorsabb lesz a belépés",
+        "Más szolgáltatásokba is beléphetnek a támadók",
+        "A 2FA kikapcsol",
+        "A rendszer törli a fiókot"
+    ],
+    answer: 1
+    },
+
+    {
+    question: "Miért veszélyes a megszokásból történő jóváhagyás?",
+    options: [
+        "Illetéktelen belépést engedhet",
+        "Lassítja a telefont",
+        "Törli a hitelesítő alkalmazást",
+        "Megváltoztatja a jelszót"
+    ],
+    answer: 0
+    },
+
+    {
+    question: "Mi a bankszámlaszám-változtatásos csalás célja?",
+    options: [
+        "A pénz átirányítása a csalók számlájára",
+        "Új bankszámla nyitása",
+        "A bank szerverének túlterhelése",
+        "A felhasználó jelszavának módosítása"
+    ],
+    answer: 0
+    },
+
+    {
+    question: "Mi lehet gyanús egy pénzügyi e-mailben?",
+    options: [
+        "Sürgetés és azonnali utalási kérés",
+        "Hivatalos aláírás",
+        "Céges logó",
+        "Normál megszólítás"
+    ],
+    answer: 0
+    },
+
+    {
+    question: "Mit kell tenni bankszámlaszám-változás esetén?",
+    options: [
+        "Azonnal utalni",
+        "Telefonon is ellenőrizni a változást",
+        "Továbbítani az e-mailt",
+        "Kikapcsolni a 2FA-t"
+    ],
+    answer: 1
+    },
+
+    {
+    question: "Miért működnek még mindig sokszor a kibertámadások?",
+    options: [
+        "Az emberek figyelmetlensége miatt",
+        "Mert nincs internet",
+        "A vírusirtók hibája miatt",
+        "A monitor felbontása miatt"
+    ],
+    answer: 0
+    },
+
+    {
+    question: "Mi ajánlott SMS helyett a biztonság növelésére?",
+    options: [
+        "Authenticator alkalmazás használata",
+        "Gyengébb jelszó",
+        "Nyilvános Wi-Fi használata",
+        "A 2FA kikapcsolása"
+    ],
+    answer: 0
+    },
+
+    {
+    question: "Mi segíthet megelőzni a pénzügyi csalásokat?",
+    options: [
+        "Telefonos visszaellenőrzés",
+        "Azonnali utalás",
+        "A figyelmeztetések figyelmen kívül hagyása",
+        "Az e-mailek automatikus megnyitása"
+    ],
+    answer: 0
+    },
+
+
+
 ];
 
 function getRandomQuestions(allQuestions, count) {
